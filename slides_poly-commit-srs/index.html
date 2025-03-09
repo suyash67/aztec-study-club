@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "Polynomial Commitments and Ignition Ceremony"}' />
+		<title>Polynomial Commitments and Ignition Ceremony</title>
+
+		<meta name="description" content="Aztec&#39;s ignition ceremony and the KZG polynomial commitment scheme.">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-mint">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="4e68b1d6b4de0325af7537773281bceb" data-background-color="#000000"><div class="sl-block" data-block-type="text" style="width: 1059px; left: 110.5px; top: 255px; height: auto;" data-block-id="18a183c2ef7a0be0dca19d0432a3e075" data-name="text-77f26f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Polynomial Commitment and SRS</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-862e92" data-block-id="73620fb028af4b9c1e1639c361d22c6c" style="height: auto; width: 692px; left: 294px; top: 360px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; letter-spacing: 0.03em; font-size: 110%;" data-has-letter-spacing="">
+<p>Aztec Study Club -  Session 10</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 692px; left: 294px; top: 419px;" data-block-id="3ffa67adf617d1de57732846c6975796" data-name="text-271494"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; letter-spacing: 0.03em; font-size: 80%;" data-has-letter-spacing="">
+<p>18th May 2022</p>
+</div></div></section><section data-id="0fb435d90a5447399a97674f3385e8d4" data-background-color="rgb(0, 0, 0)">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-7943e0" style="width: 429.441px; height: 279.8px; left: 130.559px; top: 36px; min-width: 1px; min-height: 1px;" data-block-id="db650f8c9c083a43450f9614ea838823"><div class="sl-block-content fragment" style="z-index: 10; border-style: solid; border-width: 1px;" data-fragment-index="0"><img style="" data-natural-width="2072" data-natural-height="1350" data-lazy-loaded="" data-src="poly-commit-srs/5509f7e95cb099330a28892275925ea7.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 429.441px; height: 279.8px; left: 720px; top: 36px; min-width: 1px; min-height: 1px;" data-name="image-2c7bb6" data-block-id="128d3961511d608131d6d8b1afd5a241"><div class="sl-block-content fragment" style="z-index: 11; border-style: solid; border-width: 1px;" data-fragment-index="1"><img style="left: -5px; top: 0px; width: 440px; height: 280px;" data-natural-width="2123" data-natural-height="1350" data-crop-x="0.012012" data-crop-y="0" data-crop-width="0.975977" data-crop-height="1" data-lazy-loaded="" data-src="poly-commit-srs/1601049e1337b4dfabec62c278f1683b.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 429.441px; height: 279.8px; left: 720px; top: 417px; min-width: 1px; min-height: 1px;" data-name="image-102761" data-block-id="3e19b4b9c56ff29314c245676caf9230"><div class="sl-block-content fragment" style="z-index: 12; border-style: solid; border-width: 1px;" data-fragment-index="2"><img style="left: -11px; top: 0px; width: 451px; height: 280px;" data-natural-width="2177" data-natural-height="1350" data-crop-x="0.024116" data-crop-y="0" data-crop-width="0.951768" data-crop-height="1" data-lazy-loaded="" data-src="poly-commit-srs/aa04edba304b8e7660be42bd81b885d8.png"></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-96d360" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 560px; top: 175.9px;" data-block-id="da183bc86d6a55e966d32df1823eb090"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="160" data-line-y2="0" data-line-color="#ffe599" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 22;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="160" height="1" viewbox="0 0 160 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="158" y2="0"></line><line class="line-element" stroke="#ffe599" stroke-width="2" x1="0" y1="0" x2="158" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#ffe599" stroke-width="2" transform="translate(158,0) rotate(90)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 934.721px; top: 315.8px;" data-name="line-af90b8" data-block-id="b9fe3712a5590448d3c279f6f2701d4a"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="101.19999999999996" data-line-color="#ffe599" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 23;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="101.19999999999996" viewbox="0 0 1 101.19999999999996"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="0" y2="99.19999999999996"></line><line class="line-element" stroke="#ffe599" stroke-width="2" x1="0" y1="0" x2="0" y2="99.19999999999996"></line><path style="fill: rgba(0,0,0,0);" stroke="#ffe599" stroke-width="2" transform="translate(0,99.19999999999996) rotate(180)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 562.146px; top: 556.9px;" data-name="line-26dc62" data-block-id="16bce2b0c43880b0c3de5da2c74650b9"><div class="sl-block-content fragment" data-line-x1="157.85400000000004" data-line-y1="0" data-line-x2="0" data-line-y2="5.684341886080802e-14" data-line-color="#ffe599" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 24;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="157.85400000000004" height="1" viewbox="0 0 157.85400000000004 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="157.85400000000004" y1="0" x2="2" y2="5.612321640967205e-14"></line><line class="line-element" stroke="#ffe599" stroke-width="2" x1="157.85400000000004" y1="0" x2="2" y2="5.612321640967205e-14"></line><path style="fill: rgba(0,0,0,0);" stroke="#ffe599" stroke-width="2" transform="translate(2,5.612321640967205e-14) rotate(270)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-f7dcd9" style="width: auto; height: auto;" data-block-id="6a50463f9bc292c87ae875bb58d94c04"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 346.852px 554.1px; z-index: 13;" data-fragment-index="3">
+<div class="sl-block" data-block-type="shape" data-name="shape-dcb1b0" style="width: 429.441px; height: 279.8px; left: 130.559px; top: 417px;" data-origin-id="a1f468bb55db083444191ba29d1af750" data-block-id="9305a8d5c513d2fa2ea36312b43b78de"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#ffffff" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 429 280"><defs><clippath id="shape-mask-3-1651047625385"><rect width="429.441" height="279.8" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#ffffff" stroke-width="2"></rect></clippath></defs><rect width="429.441" height="279.8" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ffffff" stroke-width="2" clip-path="url(#shape-mask-3-1651047625385)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-6b0942" style="width: auto; height: auto; left: 284.779px; top: 410.4px;" data-origin-id="4a57dea9198f694abca5e9c0300b879e" data-block-id="ac619dd93a9c5d1b103998577d377c26"><div class="sl-block-content notranslate" style="z-index: 15; font-size: 400%;"><div class="math-input">\pi</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-6b7859" style="height: auto; width: 334px; left: 178.279px; top: 423px;" data-origin-id="23609d4c143db002bab461f941508dfc" data-block-id="fd07d9d046c09a953b9593fb0d12202c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; color: rgb(255, 229, 154); font-size: 44%;">
+<h2>Proof</h2>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-a31138" data-origin-id="b3d2355833e5e15d63bc29f04f6b9a53" data-block-id="7e3ffc0183cc95ce4f9ca70c8669e055"><div class="sl-block-content sl-block-group-content" style="transform-origin: 346.852px 557.4px; z-index: 17;">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 130.559px; top: 696.8px;" data-origin-id="00b08d092e4b2fb6a4888ea210311cc0" data-name="line-74df3a" data-block-id="f4c276811738432b97c46f9e77140e9a"><div class="sl-block-style" style="z-index: 18; filter: blur(3px);"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="429.44100000000003" data-line-y2="5.684341886080802e-14" data-line-color="#c8afff" data-line-start-type="none" data-line-end-type="none" style="z-index: 18;" data-line-width="6px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="429.44100000000003" height="1" viewbox="0 0 429.44100000000003 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="429.44100000000003" y2="5.684341886080802e-14"></line><line class="line-element" stroke="#c8afff" stroke-width="6" x1="0" y1="0" x2="429.44100000000003" y2="5.684341886080802e-14"></line></svg></div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 562.146px; top: 417px;" data-origin-id="a630ffc4854cc23ddedb9853c3549636" data-name="line-99b52a" data-block-id="e03228d9a2b808c3121b1cbe323730f5"><div class="sl-block-style" style="z-index: 19; filter: blur(3px);"><div class="sl-block-content" data-line-x1="0" data-line-y1="279.79999999999995" data-line-x2="0" data-line-y2="0" data-line-color="#c8afff" data-line-start-type="none" data-line-end-type="none" style="z-index: 19;" data-line-width="6px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="279.79999999999995" viewbox="0 0 1 279.79999999999995"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="279.79999999999995" x2="0" y2="0"></line><line class="line-element" stroke="#c8afff" stroke-width="6" x1="0" y1="279.79999999999995" x2="0" y2="0"></line></svg></div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 130.559px; top: 417px;" data-name="line-9eb748" data-origin-id="6d3753e722ef053e825530976d1c9439" data-block-id="62247002c43c7bcb614886fb070bebee"><div class="sl-block-style" style="z-index: 20; filter: blur(3px);"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="431.5869999999999" data-line-y2="0" data-line-color="#c8afff" data-line-start-type="none" data-line-end-type="none" style="z-index: 20;" data-line-width="6px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="431.5869999999999" height="1" viewbox="0 0 431.5869999999999 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="431.5869999999999" y2="0"></line><line class="line-element" stroke="#c8afff" stroke-width="6" x1="0" y1="0" x2="431.5869999999999" y2="0"></line></svg></div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 130.559px; top: 417px;" data-name="line-e61eeb" data-origin-id="5658d64e6345fd5587d101b08d0dd092" data-block-id="a68d03cf744de459ec47d699f1c0b6c7"><div class="sl-block-style" style="z-index: 21; filter: blur(3px);"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="279.79999999999995" data-line-color="#c8afff" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-line-width="6px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="279.79999999999995" viewbox="0 0 1 279.79999999999995"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="0" y2="279.79999999999995"></line><line class="line-element" stroke="#c8afff" stroke-width="6" x1="0" y1="0" x2="0" y2="279.79999999999995"></line></svg></div></div></div>
+</div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="c08c357955f6e92cb5fc7df4069d55c1"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="c89b62cc39426df19d83352814f03db2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Polynomial Commitments</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 378px; top: 137px;" data-block-id="16aade2f9029635adbb2031372054850" data-name="math-2c6060"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 60%;" data-fragment-index="0"><div class="math-input">p(X) = c_1 + c_2 X + c_3 X^2 + \dots + c_n X^{n-1} </div></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-name="group-593a8c" data-block-id="635a8b2dce088888eecf0a626c5fcbd7"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1043px 115.75px; z-index: 12;" data-fragment-index="2">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 878.5px; top: 107px;" data-origin-id="64a292e8320c486266d9046e009937de" data-name="line-a2f88e" data-block-id="b33959b639685e6e43c06e9b402eaab9"><div class="sl-block-content" data-line-x1="0" data-line-y1="32.5" data-line-x2="52" data-line-y2="0" data-line-color="#abff87" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="52" height="32.5" viewbox="0 0 52 32.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="33" x2="52.5" y2="0.5"></line><line class="line-element" stroke="#abff87" stroke-width="1" x1="0.5" y1="33" x2="52.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 930.5px; top: 107px;" data-origin-id="7ff4184037789ef73dbc66170e8aa788" data-name="line-c7c1b5" data-block-id="62d5b6c3f926d243927ee65069e816a4"><div class="sl-block-content" data-line-x1="80" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#abff87" data-line-start-type="none" data-line-end-type="none" style="z-index: 14;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="80" height="1" viewbox="0 0 80 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="80.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#abff87" stroke-width="1" x1="80.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 177px; left: 1030.5px; top: 91.5px;" data-origin-id="90b21b4773477f6a04b4809b9259ecd4" data-name="text-8dbdb3" data-block-id="6db79e2f0131eff5d627e38495ced20c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; text-align: left; font-size: 80%;">
+<p>\(\text{deg}(p) = n-1\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-block-id="18e9ee3882fd3e98ec2ed2c8266c8e25" data-name="group-6abe22"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 251.5px 203.5px; z-index: 16;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 315px; top: 211px;" data-origin-id="b33959b639685e6e43c06e9b402eaab9" data-block-id="f5386a459ffda5ac68bb2f834791e09f" data-name="line-1b67d9"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="137" data-line-y2="0" data-line-color="#f9cb9c" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="137" height="1" viewbox="0 0 137 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="137.5" y2="0.5"></line><line class="line-element" stroke="#f9cb9c" stroke-width="1" x1="0.5" y1="0.5" x2="137.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 452px; top: 176px;" data-origin-id="62d5b6c3f926d243927ee65069e816a4" data-block-id="2e643a6e2094e9240bc50128f734b08c" data-name="line-999613"><div class="sl-block-content" data-line-x1="45" data-line-y1="0" data-line-x2="0" data-line-y2="35" data-line-color="#f9cb9c" data-line-start-type="none" data-line-end-type="none" style="z-index: 18;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="45" height="35" viewbox="0 0 45 35"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="45.5" y1="0.5" x2="0.5" y2="35.5"></line><line class="line-element" stroke="#f9cb9c" stroke-width="1" x1="45.5" y1="0.5" x2="0.5" y2="35.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 296px; left: 6px; top: 191px;" data-origin-id="6db79e2f0131eff5d627e38495ced20c" data-block-id="84f3ce2118ae03c9de02fd1f51297c18" data-name="text-b62fce"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: right; font-size: 80%;">
+<p>Coefficients \((c_0, c_1, \dots, c_n)\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-block-id="0b849b2de000ac6876df02cb4132860f" data-name="group-507e4f"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 824px 201.5px; z-index: 20;" data-fragment-index="1">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 579.5px; top: 176px;" data-origin-id="b33959b639685e6e43c06e9b402eaab9" data-block-id="17cebe183a8e46988a242a55c0847f7a" data-name="line-43ce78"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="48" data-line-y2="40" data-line-color="#6cedff" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="48" height="40" viewbox="0 0 48 40"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="48.5" y2="40.5"></line><line class="line-element" stroke="#6cedff" stroke-width="1" x1="0.5" y1="0.5" x2="48.5" y2="40.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 627.5px; top: 216px;" data-origin-id="62d5b6c3f926d243927ee65069e816a4" data-block-id="87888333579c98e596cccb5a46506dec" data-name="line-42fe08"><div class="sl-block-content" data-line-x1="252.5" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#6cedff" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="252.5" height="1" viewbox="0 0 252.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="253" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6cedff" stroke-width="1" x1="253" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 177px; left: 891.5px; top: 196px;" data-origin-id="6db79e2f0131eff5d627e38495ced20c" data-block-id="ef146ea8233b23ffa955814ca6ff6ff3" data-name="text-8815c4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 80%;">
+<p>Variable</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1138px; left: 80px; top: 273.5px;" data-block-id="f6b1b352f87fba1dcf2f331d24da1470"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="4">To commit to \(p(X)\), just compute \(p(\beta)\) for some universal secret \(\beta \in \mathbb{F}\) </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 378px; top: 350px;" data-block-id="5766ff5f56313af5df96f7d4e27ae53b" data-name="math-4c9334"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 60%;" data-fragment-index="5"><div class="math-input">p(\beta) = c_1 + c_2 \beta + c_3 \beta^2 + \dots + c_n \beta^{n-1} </div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1138px; left: 80px; top: 407.5px;" data-block-id="a8ae45483b9fab143a7bde27ce4d53c5" data-name="text-fe78ea"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="" data-fragment-index="6">
+<ul>
+	<li>Wait but...
+	<ul>
+		<li class="fragment" data-fragment-index="7">What's <span style="color:#FFD700">commit</span>? and why commit at all?</li>
+		<li class="fragment" data-fragment-index="8">What do you mean by a <span style="color:#FFD700">universal</span> <span style="color:#FFD700">secret</span> \(\beta\)?</li>
+		<li class="fragment" data-fragment-index="9">Does this even have any use?</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="28f8e1c9e3718d6ed085acaf4fb660dc" data-auto-animate=""><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="3e1061556fd3f00dd2639489c93f6a0b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" data-block-id="5bfed5530517d67bd1a6882d02cc6501" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="81feacb8d4e15b687a97673b7bdafef8" data-name="image-153e8f"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="234b2e0a62331282508a47ac6b7e13cf"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 424.5px 296.75px; z-index: 13;" data-fragment-index="0">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" data-block-id="4ef6651853c997d042cbc636365cb435" style="width: 529px; height: 130.5px; left: 160px; top: 211px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 529 131"><defs><clippath id="shape-mask-7-1652877097104"><rect width="529" height="130.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="529" height="130.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-7-1652877097104)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" data-block-id="1c6e38bbdf8c5c6891a7131551e137ad" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-block-id="a63cba92e3bec27f040d977750fdc1d6" data-name="line-9a2bcd"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="eed924a0a96f350e365b764bd770919f" data-name="line-6c70fa"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-7b74c6" data-block-id="a8b14258bb92f409eea8b3ea7c8e49f6" style="height: auto; width: 508px; left: 170.5px; top: 235.75px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 90%;" data-fragment-index="1">
+<p>I wish to convince Alice that I know \(p(X)\) without revealing it to her. Help!</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" data-block-id="8a3b0685e6c658e9e857eccacb193b46" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-block-id="2ccead9e3b7cb5c9f1011c7757b550a8" data-name="text-58d96e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25;">
+<p>Alice</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="cd87b6bc3a3e780143a53b9d49e1bd12"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="6e1339e74b96f3e129983893deb5bc33"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="b6614bcde2f145a104ed533ef5bd7fb0"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="ced394d39d072c56f8fd7d4edcdbd807"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="6f39723fee9f8ff22415651f20d7dbbe"><div class="sl-block-content sl-block-group-content" style="transform-origin: 385px 291.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 450px; height: 141.5px; left: 160px; top: 200px;" data-block-id="8e3638e14cfcea93972bffae09977207"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 450 142"><defs><clippath id="shape-mask-30-1652877761352"><rect width="450" height="141.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="450" height="141.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-30-1652877761352)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="a9fee53984fb297213199664b4a69ee5"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="3668cbf6ddd8923e6346a3b7d8e3cd2f"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="cef955b192d8144777240f23836f7ad4"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b5cb2b" data-block-id="a45c0888d9217305b71c0ce26fd05837" style="height: auto; width: 383px; left: 191px; top: 224.75px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; font-size: 90%; text-align: left;" data-fragment-index="0">
+<p>First, let me commit to \(p(X)\),</p>
+
+<p>i.e. evaluate \(p(\beta)\)</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-260e96" data-block-id="98ad261489ab2f4effae05a79b0a1f3c"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 989.5px 286.5px; z-index: 19;" data-fragment-index="3">
+<div class="sl-block" data-block-type="shape" style="width: 345px; height: 132px; left: 817px; top: 200px;" data-name="shape-06cd45" data-origin-id="36c33cb390efccb4f7e04e35bf4cd4ea" data-block-id="705cbe03c0fd76374fddf7ac8c1399c4"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 20;" data-shape-stroke-color="#6acae0" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 345 132"><defs><clippath id="shape-mask-31-1652877761355"><rect width="345" height="132" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2"></rect></clippath></defs><rect width="345" height="132" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2" clip-path="url(#shape-mask-31-1652877761355)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1074px; top: 331px;" data-name="line-ff925a" data-origin-id="4639548fa7017dd3e26d268b424943a1" data-block-id="171c8af7eb3b140d4703e5847ef5478f"><div class="sl-block-content" data-line-x1="32" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="32" height="1" viewbox="0 0 32 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="32" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="32" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1106px; top: 331px;" data-name="line-ff8a64" data-origin-id="6d3e823d4c1b785fb313d09c1c286a83" data-block-id="d4b34c98a96b366b042cf00f6c196864"><div class="sl-block-content" data-line-x1="52" data-line-y1="42" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="52" height="42" viewbox="0 0 52 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="52.5" y1="42.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="52.5" y1="42.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1070px; top: 331px;" data-name="line-7b93e7" data-origin-id="c53fa33cb37537ab02f2486e5259f6a1" data-block-id="936b8b20fbe312d66e749b9eaff96a81"><div class="sl-block-content" data-line-x1="88" data-line-y1="42" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="88" height="42" viewbox="0 0 88 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="88.5" y1="42.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="88.5" y1="42.5" x2="0.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="82b0b23ea3b40b5d02f88ff7022a9d0c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="14045496f29210a9cff4c727353bfbf3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block" data-block-type="line" data-name="line-40961b" data-block-id="257fdd45a22256a08d04e06779b97976" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 610px; top: 270.75px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="207" data-line-y2="0" data-line-color="#cccccc" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 26;" data-line-width="1px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="207" height="1" viewbox="0 0 207 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="205.5" y2="0.5"></line><line class="line-element" stroke="#cccccc" stroke-width="1" x1="0.5" y1="0.5" x2="205.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#cccccc" stroke-width="1" transform="translate(205,0) rotate(90)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-fb6bf7" data-block-id="f7ec64390dc508f8dd53ad56b36e20fc" style="height: auto; width: 85px; left: 671px; top: 224.75px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 27;" data-fragment-index="1">
+<p>\(p(\beta)\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 336.007px; left: 819.996px; top: 248.5px;" data-block-id="36b2887e81ef5ced76db21d20b95af19" data-name="text-ecf34d"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28; font-size: 90%; text-align: center;" data-fragment-index="3">
+<p>How do I believe you?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-489763" data-block-id="780b937c0dde9cefcbc33857aeecb148" style="height: auto; width: 600px; left: 420px; top: 624.5px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 29; color: rgb(136, 136, 136);" data-fragment-index="2">
+<p>Communication:  \([p(\beta)]\)</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="48e5864b3aacde72447aafc460ca314a"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="7d590b20da4a43da73f4c61fdf17197f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="77c796ee8e98e09d682d9da63cc42455"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="22710856c55d9cda45d853d37d0d30c4"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="68c53429893acec6da44a690777ced7a"><div class="sl-block-content sl-block-group-content" style="transform-origin: 333px 303.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 346px; height: 117.5px; left: 160px; top: 224px;" data-block-id="6de2ebd16f441fd7de932b8c4d3af93d"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 346 118"><defs><clippath id="shape-mask-54-1652878507335"><rect width="346" height="117.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="346" height="117.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-54-1652878507335)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="c623e0dbebb74c8f1d6dbb1b9617f312"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="2bac0e4f7f49d7995c5eade49143eda5"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="c0ee348840c7bcfa3f9071d99fd69df5"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-260e96" data-block-id="54f1383d9c93e65a1a864221f61897e6"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 941px 288.029px; z-index: 18;" data-fragment-index="1">
+<div class="sl-block" data-block-type="shape" style="width: 442px; height: 127.104px; left: 720px; top: 203px;" data-name="shape-06cd45" data-block-id="82d9273ff289fe5e26f550921b2347a6"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 19;" data-shape-stroke-color="#6acae0" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 442 127"><defs><clippath id="shape-mask-55-1652878507337"><rect width="442" height="127.104" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2"></rect></clippath></defs><rect width="442" height="127.104" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2" clip-path="url(#shape-mask-55-1652878507337)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1062.77px; top: 329.058px;" data-name="line-ff925a" data-block-id="c5febf3f6b46b99b502e270277289e88"><div class="sl-block-content" data-line-x1="36.081632653061206" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="36.081632653061206" height="1" viewbox="0 0 36.081632653061206 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="36.081632653061206" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="36.081632653061206" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1098.86px; top: 329.058px;" data-name="line-ff8a64" data-block-id="41febd3a37612be1afd32f78ef138716"><div class="sl-block-content" data-line-x1="58.63265306122457" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="58.63265306122457" height="43.94219653179192" viewbox="0 0 58.63265306122457 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1058.26px; top: 329.058px;" data-name="line-7b93e7" data-block-id="3294b235496d8a4755402eca24e72cee"><div class="sl-block-content" data-line-x1="99.22448979591832" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="99.22448979591832" height="43.94219653179192" viewbox="0 0 99.22448979591832 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="d073d628ffa37839d2e7627b05b09a2a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="74a391f6af3b554adcf0ff7e9fd098d4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-36e746" data-block-id="9b55e57967d8ebde994457a877f4eeee" style="height: auto; width: 343px; left: 184.092px; top: 245.75px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25; font-size: 90%; text-align: left;" data-fragment-index="0">
+<p>Fair enough! Give me a challenge!</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 402px; left: 747px; top: 224px;" data-block-id="ecba2f369c6d7ce80421d7a881bcfa17" data-name="text-cc6cad"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26; font-size: 90%; text-align: left;" data-fragment-index="1">
+<p>Okay, lets generate a challenge:</p>
+
+<p>\(z = \textsf{hash}(p(\beta))\)</p>
+</div></div>
+<div class="sl-block" data-block-type="line" data-name="line-30622d" data-block-id="07a0b1152a99f92f37e3912829d8f17e" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 506px; top: 268px;"><div class="sl-block-content fragment" data-line-x1="214" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#cccccc" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 27;" data-line-width="1px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="214" height="1" viewbox="0 0 214 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="214.5" y1="0.5" x2="2.5" y2="0.5"></line><line class="line-element" stroke="#cccccc" stroke-width="1" x1="214.5" y1="0.5" x2="2.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#cccccc" stroke-width="1" transform="translate(1.9999999999999998,0) rotate(270)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-af7844" data-block-id="9c5ae057598c4739df7f831474bfe3e8" style="height: auto; width: 60px; left: 583px; top: 224px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28;" data-fragment-index="2">
+<p>\(z\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-47356c" data-block-id="9e339bfcf6f9cb6f1a2dc529500e9e7a" style="height: auto; width: 600px; left: 340px; top: 624.5px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 29;" data-fragment-index="3">
+<p><span style="color:rgb(136, 136, 136)">Communication:  \([p(\beta), z]\)</span></p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="bcdd5ca6ff5ddb951cfd2cdfd50f9e90"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="7d59b761c73ef927f88fe7eebfd67299"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="844668c0f7369a4e4443a2911d138909"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="4e36e1a6014710c56082cf9719638680"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="d254f200f4933ffcd335a439cc67ae59"><div class="sl-block-content sl-block-group-content" style="transform-origin: 429px 275.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 538px; height: 173.5px; left: 160px; top: 168px;" data-block-id="b350dfb3749c9d191c0c77e295c66da0"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 538 174"><defs><clippath id="shape-mask-36-1652877977808"><rect width="538" height="173.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="538" height="173.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-36-1652877977808)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="1936f9493d71fa7685e26b21c56b1416"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="4fbf1330a5ecd2340fca84be6fc08360"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="ec577a5e5fd669a2f46a058745b96185"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="d45e5d126149be353337cb88601f6d9e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="dab7c8752543f05268be460796a32144"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-d03257" data-block-id="4a1fa6e7c36cc618b6b3eca84b9dc8ff" style="height: auto; width: 600px; left: 180px; top: 191px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; font-size: 90%; text-align: left;" data-fragment-index="0">
+<p>Now let me compute a new polynomial:</p>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1f95d6" data-block-id="ceec8b738363f36d7999eda200aec2c8" style="width: auto; height: auto; left: 180px; top: 252px;"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 80%;" data-fragment-index="1"><div class="math-input">w(X) = \frac{p(X)-p(z)}{X-z}</div></div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="d0b9db84951b6fc296f88b5fdf72885c"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="0b628e31f1208f75274389529248447f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="5fa7ed7d3a4efa7974707feef37467c9"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="e11997592fb8a17c61b485666132f5c7"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="b0ef35cfd4b7696a62732974381784c7"><div class="sl-block-content sl-block-group-content" style="transform-origin: 350.5px 302.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 381px; height: 119.5px; left: 160px; top: 222px;" data-block-id="ba4ad9ab67612117ecc53cf6fe596487"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 381 120"><defs><clippath id="shape-mask-58-1652878615368"><rect width="381" height="119.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="381" height="119.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-58-1652878615368)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="fbd5eb11016e3a83166385ba4f564405"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="afa6ac3820854137b6f0e0f5695a3c66"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="6c8803ebe134948b2c151f070c1cfe98"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="28f8fde0ea2e28770f04ad57fd10ee33"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="dadb07184de2c82d01c57df171a9d9d3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block" data-block-type="line" data-name="line-bb5d19" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 541px; top: 281.75px;" data-block-id="8ef5e9f4d1b52a0697b1cce8e1e9c706"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="271" data-line-y2="0" data-line-color="#cccccc" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 21;" data-line-width="1px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="271" height="1" viewbox="0 0 271 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="269.5" y2="0.5"></line><line class="line-element" stroke="#cccccc" stroke-width="1" x1="0.5" y1="0.5" x2="269.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#cccccc" stroke-width="1" transform="translate(269,0) rotate(90)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-a38170" data-block-id="fbb9f8b4f414ece23de5f53ad9c905dc" style="height: auto; width: 98px; left: 627.5px; top: 237px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22;" data-fragment-index="1">
+<p>\(w(\beta)\)</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-260e96" data-block-id="3816d9a5447f5fa2ccf4d1a0e28d09ae"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 987px 288.029px; z-index: 23;" data-fragment-index="3">
+<div class="sl-block" data-block-type="shape" style="width: 350px; height: 127.104px; left: 812px; top: 203px;" data-name="shape-06cd45" data-origin-id="82d9273ff289fe5e26f550921b2347a6" data-block-id="236b35efb4e43e7fed550f7cd8a3b832"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 24;" data-shape-stroke-color="#6acae0" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 350 127"><defs><clippath id="shape-mask-59-1652878615371"><rect width="350" height="127.104" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2"></rect></clippath></defs><rect width="350" height="127.104" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2" clip-path="url(#shape-mask-59-1652878615371)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1062.77px; top: 329.058px;" data-name="line-ff925a" data-origin-id="c5febf3f6b46b99b502e270277289e88" data-block-id="97bae89b3f6e3fee8818952059c157c5"><div class="sl-block-content" data-line-x1="36.081632653061206" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 25;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="36.081632653061206" height="1" viewbox="0 0 36.081632653061206 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="36.081632653061206" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="36.081632653061206" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1098.86px; top: 329.058px;" data-name="line-ff8a64" data-origin-id="41febd3a37612be1afd32f78ef138716" data-block-id="1553e4c2c9cf7da465b87b24b39acde3"><div class="sl-block-content" data-line-x1="58.63265306122457" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 26;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="58.63265306122457" height="43.94219653179192" viewbox="0 0 58.63265306122457 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1058.26px; top: 329.058px;" data-name="line-7b93e7" data-origin-id="3294b235496d8a4755402eca24e72cee" data-block-id="a818d26d73604a42291481f7a8d3cce0"><div class="sl-block-content" data-line-x1="99.22448979591832" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 27;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="99.22448979591832" height="43.94219653179192" viewbox="0 0 99.22448979591832 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-dd66bb" data-block-id="bcdd25594d2b986434a04a9139d515b1" style="height: auto; width: 280px; left: 840px; top: 228.052px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28; text-align: left; font-size: 90%;" data-fragment-index="4">
+<p>Ok, thank you,</p>
+
+<p>but how do I verify?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-489763" style="height: auto; width: 600px; left: 343px; top: 624.5px;" data-block-id="db5667f2ffc6d2b4d03fc7f8ca819a79"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 29; color: rgb(136, 136, 136);" data-fragment-index="2">
+<p>Communication:  \([p(\beta), z, w(\beta)]\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-761536" data-block-id="1f8151a45607497949d2103d8fec7781" style="height: auto; width: 317px; left: 192px; top: 239.25px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 30; font-size: 90%; text-align: left;" data-fragment-index="0">
+<p><span style="color:rgb(255, 255, 255)">Lets commit to \(w(X)\) by evaluating \(w(\beta)\)</span></p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="69234385e5340d20eb88f5a5e9f224fd"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="b2590c207fe153b331179d0b19fb606a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="e7c8c91396a4660e8d2e9fd8f1462bbb"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="24b1459d126eb61710b9767ec6c2c172"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="8c875da9cac40b473400ba18c944d0a0"><div class="sl-block-content sl-block-group-content" style="transform-origin: 350.5px 302.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 381px; height: 119.5px; left: 160px; top: 222px;" data-block-id="888cec0e1d8f2e2962034a3fd43b23a1"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 381 120"><defs><clippath id="shape-mask-44-1652878269878"><rect width="381" height="119.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="381" height="119.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-44-1652878269878)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="0e31ef4ba9b4cc3bcd7ec227705bbe8c"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="7e451ba54bbf3f0cbedb30b1cae46eb9"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="5d1e81667d294b2541843de50b4d45fc"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="17260931db64173f2a6f36b2c691bafd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="30ef0da2c5391a9c33384e7f50500c37"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-489763" style="height: auto; width: 600px; left: 343px; top: 624.5px;" data-block-id="8472c204b32adad9db2049e8245d0caa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25; color: rgb(136, 136, 136);">
+<p>Communication:  \([p(\beta), z, w(\beta)]\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cafe2e" data-block-id="4eadce17ae7094f2e21007551e244361" style="height: auto; width: 285px; left: 177.5px; top: 246.75px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26; font-size: 90%; text-align: left;" data-fragment-index="0">
+<p>Use our past communication!</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="ef4087d296c24a7c119feae65f61ce51"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="7f3a940c7a87a9c5eb6fe91cca1008b6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Opening a Polynomial</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" data-name="image-847819" style="width: 120.092px; height: 203px; left: 80px; top: 373px; min-width: 1px; min-height: 1px;" data-block-id="902268ddcb7557e6990e71d5e4228d0a"><div class="sl-block-content" style="z-index: 11;"><img style="left: 0px; top: 0px; width: 515px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 120.021px; height: 202.88px; left: 1079.98px; top: 373px; min-width: 1px; min-height: 1px;" data-name="image-153e8f" data-block-id="cdf1c61f3f1f647341048bddbbb7ab1b"><div class="sl-block-content" style="z-index: 12;"><img style="left: -394px; top: 0px; width: 514px; height: 405px;" data-natural-width="1572" data-natural-height="1238" data-crop-x="0.766617" data-crop-y="0" data-crop-width="0.233383" data-crop-height="0.500938" data-lazy-loaded="" data-src="poly-commit-srs/5b806050990ace74676e6591ac620d67.png"></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-242af2" data-block-id="9409e64ad90d6faca7524e0a599a26a2"><div class="sl-block-content sl-block-group-content" style="transform-origin: 350.5px 302.25px; z-index: 13;">
+<div class="sl-block" data-block-type="shape" data-name="shape-71f174" style="width: 381px; height: 119.5px; left: 160px; top: 222px;" data-block-id="e98879c4bc00dec6c9e614ac486de4f8"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#fee739" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 381 120"><defs><clippath id="shape-mask-50-1652878454243"><rect width="381" height="119.5" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2"></rect></clippath></defs><rect width="381" height="119.5" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fee739" stroke-width="2" clip-path="url(#shape-mask-50-1652878454243)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-7ee84a" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-block-id="30fbec4947aed903f5f52a7761eea9f4"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="30" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="42" viewbox="0 0 30 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="30.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 191px; top: 340.5px;" data-name="line-9a2bcd" data-block-id="5b55e62f9af6cac808c7ccff93310790"><div class="sl-block-content" data-line-x1="30" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="30" height="1" viewbox="0 0 30 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="30" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="30" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 161px; top: 340.5px;" data-name="line-6c70fa" data-block-id="35c5038fb5098564c39be0771f56662a"><div class="sl-block-content" data-line-x1="0" data-line-y1="42" data-line-x2="60" data-line-y2="0" data-line-color="#fee739" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="60" height="42" viewbox="0 0 60 42"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line><line class="line-element" stroke="#fee739" stroke-width="1" x1="0.5" y1="42.5" x2="60.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b3baeb" style="height: auto; width: 129px; left: 75.546px; top: 585.5px;" data-block-id="e8c9e4f8c7b3fcb7491ed4ee226cfcb9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>Bob</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 129px; left: 1075.49px; top: 585.5px;" data-name="text-58d96e" data-block-id="c71e8e553d518da124ca459bd2ac10b2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;">
+<p>Alice</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-260e96" data-block-id="6497b371831f0659a12f57a64ee7a839"><div class="sl-block-content sl-block-group-content" style="transform-origin: 924.5px 278.029px; z-index: 20;">
+<div class="sl-block" data-block-type="shape" style="width: 475px; height: 147.104px; left: 687px; top: 183px;" data-name="shape-06cd45" data-block-id="032c861c12961a09d8b8ba6de4d2c0f9"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 21;" data-shape-stroke-color="#6acae0" data-shape-stroke-width="1px" data-shape-corner-radius="20px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 475 147"><defs><clippath id="shape-mask-51-1652878454244"><rect width="475" height="147.104" rx="20" ry="20" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2"></rect></clippath></defs><rect width="475" height="147.104" rx="20" ry="20" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#6acae0" stroke-width="2" clip-path="url(#shape-mask-51-1652878454244)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1062.77px; top: 329.058px;" data-name="line-ff925a" data-block-id="28b7909200f443a762618a126e4cc496"><div class="sl-block-content" data-line-x1="36.081632653061206" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="36.081632653061206" height="1" viewbox="0 0 36.081632653061206 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="36.081632653061206" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="36.081632653061206" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1098.86px; top: 329.058px;" data-name="line-ff8a64" data-block-id="cae9c7b910f0bc4eaa0c5850f5ad2b13"><div class="sl-block-content" data-line-x1="58.63265306122457" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="58.63265306122457" height="43.94219653179192" viewbox="0 0 58.63265306122457 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="59.13265306122457" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1058.26px; top: 329.058px;" data-name="line-7b93e7" data-block-id="06afc5cc699f3bf5e700b4b0ebe9552a"><div class="sl-block-content" data-line-x1="99.22448979591832" data-line-y1="43.94219653179192" data-line-x2="0" data-line-y2="0" data-line-color="#6acae0" data-line-start-type="none" data-line-end-type="none" style="z-index: 24;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="99.22448979591832" height="43.94219653179192" viewbox="0 0 99.22448979591832 43.94219653179192"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#6acae0" stroke-width="1" x1="99.72448979591832" y1="44.44219653179192" x2="0.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-489763" style="height: auto; width: 448.176px; left: 700.412px; top: 200.75px;" data-block-id="bc5a868615ca8b0b068b722b7d5332b9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25; color: rgb(136, 136, 136); text-align: left; font-size: 90%;">
+<p>Communication:  \([p(\beta), z, w(\beta)]\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-cafe2e" style="height: auto; width: 285px; left: 177.5px; top: 246.75px;" data-block-id="804e86055a1882e276cee3b1e11bc959"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26; font-size: 90%; text-align: left;">
+<p>Use our past communication!</p>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1f95d6" style="width: auto; height: auto; left: 702.86px; top: 253.75px;" data-block-id="3e09ee5acc5823e0e3a5b1d507b4c41b"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 70%;" data-fragment-index="0"><div class="math-input">w(X)(\beta - z) \stackrel{?}{=} (p(\beta) - z)</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-6d6bd5" data-block-id="c5939c5bea1ed94f05342f987515c506" style="width: 179px; height: 63px; left: 941px; top: 246.75px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 28;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 179 63"><rect width="179" height="63" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="562ba282078e37ce3fde1c2970b6bdea"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="5525405ec56cf59dd62178db4b3368e0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Why did it work?</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d01dda" style="width: auto; height: auto; left: 160px; top: 305px;" data-block-id="a452e2c868bdfdfc615890b0a0b56278"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 60%;" data-fragment-index="1"><div class="math-input">\begin{aligned}
+p(X)-p(z) &amp;= (c_0 + c_1X + \dots + c_{n-1}X^{n-1}) - (c_0 + c_1z + \dots + c_{n-1}z^{n-1}) \\[5pt]
+&amp;= c_1(X-z) + c_2(X^2-z^2) \dots + c_{n-1}(X^{n-1}-z^{n-1}) \\[5pt]
+&amp;= c_1\textcolor{orange}{(X-z)} + c_2\textcolor{orange}{(X-z)}(X+z) \dots + c_{n-1}\textcolor{orange}{(X-z)}(X^{n-2} + \dots + z^{n-2}) \\[5pt]
+&amp;= \textcolor{orange}{(X-z)}\Big\{c_1 + c_2(X+z) + \dots c_{n-1}(X^{n-2} + zX^{n-3} + \dots + z^{n-2})\Big\}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 483px; top: 194px;" data-name="math-d239af" data-block-id="39aa22bb7c1d1699edd8ea74893a6dfb"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 65%;" data-fragment-index="0"><div class="math-input">\begin{aligned}
+w(X) &amp;:= \frac{p(X)-p(z)}{X-z}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 122px; top: 576px;" data-name="math-0bb7d8" data-block-id="bcab8c15321ce1ed9dd6d2f5f0bb30a7"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 60%;" data-fragment-index="6"><div class="math-input">\begin{aligned}
+\therefore \ \frac{p(X)-p(z)}{\textcolor{orange}{(X-z)}} = \big(c_1 + c_2(X+z) + \dots c_{n-1}(X^{n-2} + zX^{n-3} + \dots + z^{n-2})\big)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-002d88" style="width: 924px; height: 57px; left: 330px; top: 358px;" data-block-id="15e0e75d1494aebb5e279c28ac2aa072"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 924px; height: 57px; left: 330px; top: 421px;" data-name="shape-febdbd" data-block-id="80601a2d2fb87740d640acf813946780"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 15;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 924px; height: 57px; left: 330px; top: 487px;" data-name="shape-ab857a" data-block-id="910fce3ae4d61cd6233f4204b4c0b7d2"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 16;" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-a39a65" data-block-id="0124a3b9e7e8c9427d0bf25238e5fcd9"><div class="sl-block-content sl-block-group-content" style="transform-origin: 581.821px 328.685px; z-index: 17;">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-7fb5e7" style="width: 33.8745px; height: 44.5503px; left: 365.682px; top: 306.808px;" data-origin-id="8ede05c895d0c96b111c0b714b746a72" data-block-id="d997580308bbe07ab8345437c6d86866"><div class="sl-block-content fragment" data-points="503.87 453.67,505.76 448.85,508.24 445.2,510.39 442.78,514.23 438.42,518.56 433.5,520.82 430.47,522.53 427.87,523.69 426.17,525.09 424.51,527.73 420.6,530.65 416.63,532.96 413.9,534.59 411.93,536.14 410.51" data-timestamp="1646300656289" style="z-index: 18;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="501.68182373046875 411.3078918457031 33.87445068359375 44.55029296875"><path fill="rgb(255, 0, 0)" d="M 502.22320800296455 451.80570787401643 Q 502.22 451.81 503.22 449.74 504.22 447.67 505.5 445.8 506.77 443.93 508.11 442.37 509.45 440.81 511.44 438.71 513.42 436.62 515.37 434.46 517.32 432.3 518.4 430.75 519.49 429.2 520.43 427.74 521.37 426.27 522.64 424.42 523.91 422.58 525.19 420.79 526.47 419.01 527.88 417.16 529.3 415.31 530.87 413.44 532.44 411.57 533.76 411.38 535.07 411.2 535.46 412.47 535.85 413.73 534.66 414.32 533.46 414.9 532.7 413.81 531.94 412.72 532.9 411.8 533.85 410.88 534.91 411.68 535.97 412.48 534.17 415.05 532.37 417.63 531.05 419.45 529.72 421.27 528.42 423.19 527.12 425.11 525.8 426.8 524.49 428.49 523.41 429.91 522.34 431.32 521.09 432.89 519.84 434.45 517.99 436.72 516.13 439 514.32 441.21 512.52 443.42 511.32 444.83 510.12 446.24 509.07 447.81 508.01 449.38 507.18 451.4 506.34 453.43 506.14 453.95 505.93 454.48 505.75 454.78 505.58 455.08 505.32 455.31 505.06 455.54 504.74 455.67 504.43 455.81 504.08 455.85 503.74 455.88 503.4 455.8 503.06 455.73 502.76 455.55 502.46 455.38 502.23 455.12 502 454.86 501.87 454.54 501.73 454.23 501.69 453.88 501.66 453.54 501.74 453.2 501.81 452.86 502.02 452.33 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-02057d" style="width: 28.1215px; height: 43.3097px; left: 769.839px; top: 306.011px;" data-origin-id="7bfa5f89cd19315f6f029ad5d5ed1146" data-block-id="809c3b4f3971e37648a9f3e3092fcd94"><div class="sl-block-content fragment" data-points="908.07 451.59,908.5 449.23,911.65 442.93,916.65 435.75,920.24 430.62,922.13 427.43,923.04 425.39,923.93 423.57,926.35 420.12,929.59 416.01,931.79 413.22,933.34 411.56,934.18 409.48" data-timestamp="1646300671039" style="z-index: 19;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="905.839111328125 410.5111999511719 28.1214599609375 43.309722900390625"><path fill="rgb(255, 0, 0)" d="M 905.9425890252336 450.66324475042154 Q 905.94 450.66 906.5 449.11 907.05 447.56 908.96 444.37 910.88 441.19 913.27 437.88 915.67 434.57 917.32 432.12 918.98 429.67 919.94 427.88 920.89 426.08 921.8 424.11 922.7 422.14 923.98 420.31 925.26 418.49 926.76 416.6 928.26 414.7 929.51 412.82 930.76 410.93 932.02 410.61 933.29 410.3 933.8 411.49 934.31 412.69 933.2 413.39 932.1 414.08 931.24 413.1 930.39 412.11 931.22 411.11 932.06 410.11 933.18 410.78 934.3 411.45 932.74 414.22 931.19 416.99 929.77 418.83 928.36 420.68 927.18 422.3 926.01 423.91 924.88 425.82 923.75 427.72 922.62 429.55 921.5 431.37 919.82 433.81 918.15 436.25 916.07 439.54 913.98 442.82 912.61 445.71 911.25 448.61 910.82 450.05 910.39 451.48 910.34 451.74 910.29 452 910.17 452.33 910.06 452.67 909.84 452.95 909.63 453.23 909.33 453.43 909.04 453.63 908.7 453.73 908.37 453.83 908.01 453.82 907.66 453.81 907.33 453.69 906.99 453.58 906.71 453.36 906.43 453.15 906.23 452.85 906.03 452.56 905.93 452.22 905.83 451.89 905.84 451.53 905.85 451.18 905.9 450.92 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 113px;" data-name="text-a73f1f" data-block-id="3aab1f486c3c5088f796d38f0ba6d69e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="0">
+<ul>
+	<li>The opening polynomial is enough!</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="e599f6d95667ec5cfe8759b93be4033d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="42e4ab3bbf0417ac954eec5c2a809580"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Could Bob have cheated?</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 113px;" data-name="text-a73f1f" data-block-id="d7082def7f5bdb4a3ad869b5eeb80bf3"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="0">
+<ul>
+	<li>Bob can cheat if he can find \(g(X)\neq p(X)\) s.t. \(g(s)=p(s)\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 374px;" data-name="text-ae466e" data-block-id="337e43c50337acd19818bc40b9fda598"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="6">For the commitments to match: \(g(s)=p(s) \implies p(s)-g(s)=0\)</li>
+	<li class="fragment" data-fragment-index="7">So the polynomial \((p-g)(X)\) must be \(0\) at \(s\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-34a53c" style="width: auto; height: auto; left: 340px; top: 187px;" data-block-id="51e3e2074d8207b3ce1df7c10a407349"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 65%;" data-fragment-index="1"><div class="math-input">p(X) = c_0 + c_1X + c_2X^2 + \dots + c_{n-1}X^{n-1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 340px; top: 246px;" data-name="math-5e19b0" data-block-id="b3a9d14ffab856bd191aa11a4ec409eb"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 65%;" data-fragment-index="2"><div class="math-input">g(X) = b_0 + b_1X + b_2X^2 + \dots + b_{n-1}X^{n-1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 288px; top: 247px;" data-name="math-b22ad8" data-block-id="360a950bdc1c8d33baaf457478211415"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 65%;" data-fragment-index="3"><div class="math-input">-</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-35b9db" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 240px; top: 299px;" data-block-id="16b3f22f4e1881c7090c2e4cb64b6c2c"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="720" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="720" height="1" viewbox="0 0 720 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="720.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="720.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 228px; top: 309px;" data-name="math-2d5028" data-block-id="878ba35733f62ec906aedcca316ab9c5"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 65%;" data-fragment-index="5"><div class="math-input">p(X)-g(X) = (c_0-b_0) + (c_1-b_1)X + \dots + (c_{n-1}-b_{n-1})X^{n-1}</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-7352bc" data-block-id="1aa5ae69d4e8ba7974f77be42a03e3f0"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 468.748px 244.728px; z-index: 18;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-d52ab5" style="width: 4.50574px; height: 103.755px; left: 449.667px; top: 193.175px;" data-origin-id="9a8f68db12331f21050be694e52c8ba0" data-block-id="46f679fa4789aa573f0ce6165aad3477"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-5bd3b3" style="width: 35.7281px; height: 4.78998px; left: 450.98px; top: 291.51px;" data-origin-id="430b68ce2e3a2c08d59c7cb81a07bc9b" data-block-id="dfce74a30b8e28885bfaa86d1cbb1028"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-f1b049" style="width: 4.49091px; height: 102.317px; left: 484.36px; top: 192.525px;" data-origin-id="aa9f67f94a32533ccb6958bf55711f07" data-block-id="5e5925abbd0269fd337f8174424c52f3"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 21;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-62193c" style="width: 39.9279px; height: 4.46317px; left: 448.645px; top: 192.967px;" data-origin-id="dff850fa46aedf4104e1b3230cb78ff6" data-block-id="0c74ff228445708d8e66cf2b21d7d760"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 22;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-c3830d" data-block-id="0517aa5fdbc3caf4d19074afd6fff733"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 536.748px 244.728px; z-index: 23;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" style="width: 4.50574px; height: 103.755px; left: 517.667px; top: 193.175px;" data-origin-id="7e3c95ce74222150fa960bdf5f0372c7" data-name="drawing-849ee8" data-block-id="dcb484d4e2d1c21a355d8f4a516dff15"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 24;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 35.7281px; height: 4.78998px; left: 518.98px; top: 291.51px;" data-origin-id="409a04a8042b96d4e03214fbf9e58429" data-name="drawing-b3b31d" data-block-id="efa814cc3bd972f6850804ecea506e23"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 25;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 4.49091px; height: 102.317px; left: 552.36px; top: 192.525px;" data-origin-id="dadbdbb1b4690996b657e766f104e349" data-name="drawing-9c8916" data-block-id="2937fff0ff1c0495408860bde70e94df"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 26;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 39.9279px; height: 4.46317px; left: 516.645px; top: 192.967px;" data-origin-id="09f5e48165cbe53e8f72b9307916ff2c" data-name="drawing-d248bb" data-block-id="76a75449d4031eaa94f13537204c318c"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 27;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-6f19bc" data-block-id="92a899ccc1fbc63895cda2e769b9815f"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 633.748px 244.728px; z-index: 28;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" style="width: 4.50574px; height: 103.755px; left: 614.667px; top: 193.175px;" data-origin-id="456c2e02c2140a294bc6f0fc36869580" data-name="drawing-8fe20a" data-block-id="2e57d7e14f7958ec47e27b71e3d00cb7"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 29;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 35.7281px; height: 4.78998px; left: 615.98px; top: 291.51px;" data-origin-id="d3d9f22e7fd7f663c53bfe1f7d4d2fe8" data-name="drawing-54f0a0" data-block-id="b8bbcedcd03d5931054c28d0968d2f23"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 30;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 4.49091px; height: 102.317px; left: 649.36px; top: 192.525px;" data-origin-id="80b1ab36a17492887459d3915bd39dd6" data-name="drawing-c77176" data-block-id="39630b001967c26c99ee773c63941ddd"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 31;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 39.9279px; height: 4.46317px; left: 613.645px; top: 192.967px;" data-origin-id="3cece7b69d91640333c08509f9bafc68" data-name="drawing-69bdb3" data-block-id="140f3a982ffc34095c0f371b16182bf8"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 32;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-af1920" data-block-id="fe54599b5aca7a0262396a465dee183a"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 833.66px 249.647px; z-index: 33;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-43e18e" style="width: 4.51996px; height: 100.511px; left: 798.27px; top: 191.37px;" data-origin-id="8567acdca23adfbde327d92ad0b6326f" data-block-id="75374bd55656f61ec72be0ea97a21846"><div class="sl-block-content" data-points="936.53 327.1,936.53 329.59,936.53 334.83,936.53 341.66,936.53 350.09,936.53 358.28,936.53 366.68,936.53 378.29,936.53 388.17,936.53 395.01,936.53 401.16,936.53 405.21,936.53 408.47,936.53 411.8,936.53 415.44,936.53 418.63,936.53 420.66,936.53 422.48,936.53 424.52,936.53 426.75" data-timestamp="1646302796208" style="z-index: 34;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="934.27001953125 324.8699951171875 4.51995849609375 100.51089477539062"><path fill="rgb(255, 197, 84)" d="M 938.7893192626952 327.64468750000003 Q 938.79 327.64 938.78 329.07 938.77 330.49 938.64 333.14 938.52 335.78 938.36 339.28 938.19 342.77 938.11 346.87 938.03 350.97 938.03 355.08 938.03 359.2 938.03 363.74 938.03 368.29 938.03 373.74 938.03 379.2 938.03 383.87 938.03 388.55 938.03 392.05 938.03 395.55 938.03 398.45 938.03 401.34 938.05 403.39 938.06 405.44 938.13 407.13 938.2 408.82 938.27 410.52 938.33 412.22 938.38 413.98 938.43 415.74 938.48 417.46 938.53 419.18 938.62 421.42 938.72 423.66 937.8 424.74 936.87 425.82 935.66 425.08 934.45 424.34 934.99 423.03 935.54 421.71 936.92 422.05 938.3 422.38 938.19 423.79 938.08 425.21 936.66 425.32 935.24 425.43 934.89 422.31 934.53 419.18 934.58 417.46 934.63 415.74 934.68 413.98 934.73 412.22 934.79 410.52 934.86 408.82 934.93 407.13 935 405.44 935.01 403.39 935.03 401.34 935.03 398.45 935.03 395.55 935.03 392.05 935.03 388.55 935.03 383.87 935.03 379.2 935.03 373.74 935.03 368.29 935.03 363.74 935.03 359.2 935.03 355.08 935.03 350.97 934.95 346.87 934.87 342.77 934.7 339.28 934.54 335.78 934.42 333.14 934.29 330.49 934.28 329.07 934.27 327.64 934.27 327.37 934.27 327.1 934.33 326.75 934.38 326.4 934.54 326.09 934.7 325.77 934.95 325.52 935.2 325.27 935.52 325.11 935.83 324.95 936.18 324.9 936.53 324.84 936.88 324.9 937.23 324.95 937.54 325.11 937.86 325.27 938.11 325.52 938.36 325.77 938.52 326.09 938.68 326.4 938.73 326.75 938.79 327.1 938.79 327.37 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-c6ea37" style="width: 73.7545px; height: 4.51999px; left: 796.51px; top: 290.94px;" data-origin-id="1a6a3fba36a82d32b419bad26b9ecc19" data-block-id="57d8b5d42762e75eb0ddec3818229246"><div class="sl-block-content" data-points="934.7 426.7,939.75 426.7,946.44 426.7,953.95 426.7,960.53 426.7,967.13 426.7,969.61 426.7,971.64 426.7,974.13 426.7,976.15 426.7,978.19 426.7,980.21 426.7,983.07 426.7,986.41 426.7,988.72 426.7,991.09 426.7,993.54 426.7,996.7 426.7,1000.8 426.7,1004.94 426.7,1007 426.7" data-timestamp="1646302798175" style="z-index: 35;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="932.510009765625 424.44000244140625 73.7545166015625 4.519989013671875"><path fill="rgb(255, 197, 84)" d="M 935.8046875 424.48265157063804 Q 935.8 424.48 938.26 424.58 940.72 424.67 944.04 424.84 947.37 425.01 950.97 425.1 954.57 425.2 957.9 425.2 961.23 425.2 964.35 425.17 967.47 425.14 969.97 425.02 972.46 424.89 974.67 424.79 976.87 424.68 979.15 424.61 981.43 424.55 984.29 424.52 987.15 424.5 989.64 424.47 992.13 424.44 994.69 424.44 997.25 424.45 999.26 424.49 1001.26 424.53 1002.93 424.56 1004.6 424.59 1005.65 425.48 1006.69 426.37 1005.97 427.54 1005.26 428.71 1003.99 428.18 1002.72 427.66 1003.04 426.33 1003.36 424.99 1004.73 425.1 1006.1 425.21 1006.2 426.57 1006.31 427.94 1003.79 428.4 1001.26 428.87 999.26 428.91 997.25 428.95 994.69 428.96 992.13 428.96 989.64 428.93 987.15 428.9 984.29 428.88 981.43 428.85 979.15 428.79 976.87 428.72 974.67 428.61 972.46 428.51 969.97 428.38 967.47 428.26 964.35 428.23 961.23 428.2 957.9 428.2 954.57 428.2 950.97 428.3 947.37 428.39 944.04 428.56 940.72 428.73 938.26 428.82 935.8 428.92 935.25 428.92 934.7 428.92 934.36 428.86 934.01 428.81 933.71 428.65 933.4 428.49 933.15 428.25 932.91 428 932.75 427.69 932.59 427.39 932.54 427.04 932.48 426.7 932.54 426.36 932.59 426.01 932.75 425.71 932.91 425.4 933.15 425.15 933.4 424.91 933.71 424.75 934.01 424.59 934.36 424.54 934.7 424.48 935.25 424.48 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-454acb" style="width: 76.4291px; height: 4.32419px; left: 795.445px; top: 192.396px;" data-origin-id="eb1ace9af14726570f9601e193e63da5" data-block-id="60d03c7dee3bca09c4d81f31c072b00a"><div class="sl-block-content" data-points="933.58 328.06,940.24 328.06,952.72 328.06,967.54 328.06,985.07 328.06,993.3 328.06,998.94 328.06,1001.64 328.06,1004.29 328.06,1006.8 328.06,1009.53 328.06" data-timestamp="1646302800266" style="z-index: 36;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="931.4449462890625 325.89581298828125 76.42913818359375 4.324188232421875"><path fill="rgb(255, 197, 84)" d="M 935.036875 325.89581904296875 Q 935.04 325.9 938.68 326.08 942.32 326.25 948.49 326.41 954.66 326.56 962.21 326.56 969.76 326.56 977.36 326.56 984.96 326.56 989.22 326.56 993.49 326.56 996.17 326.56 998.85 326.56 1000.68 326.55 1002.5 326.53 1004.56 326.49 1006.61 326.45 1007.4 327.13 1008.2 327.81 1007.65 328.7 1007.11 329.59 1006.14 329.19 1005.17 328.79 1005.41 327.77 1005.66 326.76 1006.7 326.84 1007.75 326.92 1007.83 327.96 1007.91 329.01 1005.21 329.3 1002.5 329.59 1000.68 329.57 998.85 329.56 996.17 329.56 993.49 329.56 989.22 329.56 984.96 329.56 977.36 329.56 969.76 329.56 962.21 329.56 954.66 329.56 948.49 329.71 942.32 329.87 938.68 330.04 935.04 330.22 934.31 330.22 933.58 330.22 933.25 330.17 932.91 330.12 932.61 329.96 932.31 329.81 932.07 329.57 931.83 329.33 931.68 329.03 931.52 328.73 931.47 328.39 931.42 328.06 931.47 327.73 931.52 327.39 931.68 327.09 931.83 326.79 932.07 326.55 932.31 326.31 932.61 326.16 932.91 326 933.25 325.95 933.58 325.9 934.31 325.9 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-642164" style="width: 4.51996px; height: 115.413px; left: 863.96px; top: 192.51px;" data-origin-id="1f24f776fb7453f408377369c7be298e" data-block-id="429ac0ea0dd622b20be49b3882e30bb6"><div class="sl-block-content" data-points="1002.22 328.24,1002.22 330.96,1002.22 335.4,1002.22 342.22,1002.22 352.81,1002.22 377.19,1002.22 387.87,1002.22 399.24,1002.22 407.83,1002.22 411.76,1002.22 413.08,1002.22 413.66,1002.22 414.25,1002.22 415.47,1002.22 417.62,1002.22 419.65,1002.22 420.93,1002.22 421.92,1002.22 423.99,1002.22 427.62,1002.22 432.19,1002.22 436.59,1002.22 439.41,1002.22 440.79,1002.22 441.69,1002.22 441.58" data-timestamp="1646302802342" style="z-index: 37;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="999.9600219726562 326.010009765625 4.51995849609375 115.41253662109375"><path fill="rgb(255, 197, 84)" d="M 1004.4776854166666 328.83500000000004 Q 1004.48 328.84 1004.47 330.25 1004.47 331.67 1004.38 334.05 1004.29 336.43 1004.11 340.12 1003.92 343.81 1003.82 350.42 1003.72 357.02 1003.72 367.01 1003.72 377 1003.72 383 1003.72 389 1003.72 394.42 1003.72 399.84 1003.72 403.76 1003.72 407.69 1003.72 409.78 1003.72 411.87 1003.74 413.41 1003.75 414.96 1003.83 416.57 1003.91 418.18 1004.03 420.26 1004.15 422.33 1004.21 425.29 1004.28 428.24 1004.25 430.45 1004.22 432.66 1004.21 434.69 1004.2 436.72 1004.29 438.22 1004.38 439.72 1003.47 440.79 1002.56 441.86 1001.36 441.12 1000.16 440.39 1000.7 439.09 1001.24 437.79 1002.6 438.12 1003.97 438.45 1003.86 439.85 1003.75 441.25 1002.35 441.36 1000.95 441.47 1000.59 439.09 1000.24 436.72 1000.23 434.69 1000.22 432.66 1000.19 430.45 1000.16 428.24 1000.23 425.29 1000.29 422.33 1000.41 420.26 1000.53 418.18 1000.61 416.57 1000.69 414.96 1000.7 413.41 1000.72 411.87 1000.72 409.78 1000.72 407.69 1000.72 403.76 1000.72 399.84 1000.72 394.42 1000.72 389 1000.72 383 1000.72 377 1000.72 367.01 1000.72 357.02 1000.62 350.42 1000.52 343.81 1000.33 340.12 1000.15 336.43 1000.06 334.05 999.97 331.67 999.97 330.25 999.96 328.84 999.96 328.54 999.96 328.24 1000.02 327.89 1000.07 327.54 1000.23 327.23 1000.39 326.91 1000.64 326.66 1000.89 326.41 1001.21 326.25 1001.52 326.09 1001.87 326.04 1002.22 325.98 1002.57 326.04 1002.92 326.09 1003.23 326.25 1003.55 326.41 1003.8 326.66 1004.05 326.91 1004.21 327.23 1004.37 327.54 1004.42 327.89 1004.48 328.24 1004.48 328.54 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 196px; top: 504px;" data-name="math-51c3a8" data-block-id="c2fc31075b86a974f328f5564e174fb7"><div class="sl-block-content notranslate fragment" style="z-index: 38; font-size: 65%;" data-fragment-index="8"><div class="math-input">\text{deg}((p-g)(X)) \le (n-1)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 589.72px; top: 504px;" data-name="math-6d0c11" data-block-id="26c643558fe51560921c0040e611b85b"><div class="sl-block-content notranslate fragment" style="z-index: 39; font-size: 65%;" data-fragment-index="9"><div class="math-input">\implies \ \text{Roots: }\big|\{x \ | \ (p-g)(x)=0\}\big| \le n</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 407.5px; top: 572px;" data-name="math-b000ec" data-block-id="0aa0d23567cfb76584cdbad7b3d494c5"><div class="sl-block-content notranslate fragment" style="z-index: 40; font-size: 65%;" data-fragment-index="10"><div class="math-input">\mathbb{P}\left((p-g)(s) = 0\right) = \frac{n}{q} \approx 0 \text{ since } q \gg n</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 635px;" data-name="text-f22152" data-block-id="3807256e2fecd1523a0ddec91709c23c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 41; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="11">For largest possible \(n=2^{28}\) and \(q \approx 2^{254}\), its still very unlikely: \(2^{-226}\)</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="47be2b1c47d44615f47f7ff967ae8692"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="1519e4bebd99e3f464317770ca41c744"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>What's a universal secret?</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 113px;" data-name="text-a73f1f" data-block-id="c5ac293251de15f4afdadbdcd18e598f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Recall we said \(\beta\) was a universal secret</li>
+	<li class="fragment" data-fragment-index="1">Instead of directly evaluating \(p(\beta)\), we do:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-93833f" data-block-id="78de8e5caa5bc4bf07ebbfec7fe7674d" style="width: auto; height: auto; left: 307px; top: 246px;"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 70%;" data-fragment-index="2"><div class="math-input">\begin{aligned}
+\textsf{comm}(p) &amp;= p(\beta)G \\
+&amp;= (c_1 + c_2\beta + c_3\beta^2 + \dots + c_n\beta^{n-1})G \\
+&amp;= c_1G + c_2\beta G + c_3\beta^2G + \dots + c_n\beta^{n-1}G \\
+&amp;= c_1\textcolor{orange}{G} + c_2\textcolor{orange}{\beta G} + c_3\textcolor{orange}{\beta^2G} + \dots + c_n\textcolor{orange}{\beta^{n-1}G}\\
+&amp;= \langle \vec{c}, \ \textcolor{orange}{\vec{G}} \rangle
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 373px; top: 518px;" data-name="math-2d5028" data-block-id="396bd4ba4fa28bb569ea94340abf8b62"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 70%;" data-fragment-index="8"><div class="math-input">\textsf{srs}_1 = \{\textcolor{orange}{G}, \textcolor{orange}{\beta G}, \textcolor{orange}{\beta^2G}, \textcolor{orange}{\beta^3G}, \dots, \textcolor{orange}{\beta^DG}\}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-b5eeb1" data-block-id="c02c01d461c69716a8e8bd555a85bd77" style="width: 605px; height: 46px; left: 438px; top: 295px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 14;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 605 46"><rect width="605" height="46" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 617px; height: 46px; left: 438px; top: 344px;" data-block-id="d9485edec4b718abff2f7e6bb4f2db6e" data-name="shape-7d1d70"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 15;" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 617 46"><rect width="617" height="46" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 617px; height: 46px; left: 438px; top: 404px;" data-block-id="24eb849c3e18aeb06204edfd7f64a088" data-name="shape-a3709c"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 16;" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 617 46"><rect width="617" height="46" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-name="group-593a8c" data-block-id="4a76dd90237dc8655abfb60aab9222e4"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 771px 240px; z-index: 17;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 582px; top: 231.25px;" data-origin-id="b33959b639685e6e43c06e9b402eaab9" data-name="line-a2f88e" data-block-id="17c0b97352a264ab54b634fe4bb88958"><div class="sl-block-content" data-line-x1="0" data-line-y1="32.5" data-line-x2="52" data-line-y2="0" data-line-color="#abff87" data-line-start-type="none" data-line-end-type="none" style="z-index: 18;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="52" height="32.5" viewbox="0 0 52 32.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="33" x2="52.5" y2="0.5"></line><line class="line-element" stroke="#abff87" stroke-width="1" x1="0.5" y1="33" x2="52.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 634px; top: 231.25px;" data-origin-id="62d5b6c3f926d243927ee65069e816a4" data-name="line-c7c1b5" data-block-id="822b791ff6bf93a26556cdeefc02c4dd"><div class="sl-block-content" data-line-x1="80" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#abff87" data-line-start-type="none" data-line-end-type="none" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="80" height="1" viewbox="0 0 80 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="80.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#abff87" stroke-width="1" x1="80.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 226px; left: 734px; top: 215.75px;" data-origin-id="6db79e2f0131eff5d627e38495ced20c" data-name="text-8dbdb3" data-block-id="732069fe487fc4c335368deca65eb468"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; font-size: 80%;">
+<p>Group generator</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 592px;" data-block-id="8e3c31397be9008128dc85f393961f50" data-name="text-b9f09e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="9">We pre-compute these elements and call it as SRS</li>
+	<li class="fragment" data-fragment-index="10">Its a one-time computation!</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 617px; height: 46px; left: 438px; top: 458px;" data-block-id="0c8c160dbbb0312bae43efde95294155" data-name="shape-646452"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="7"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 617 46"><rect width="617" height="46" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="e0e714b98c16197acd4e3cc76584a174"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="5bfa706e2694cd0abcb3a18c0fca2f64"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Ignition Ceremony</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 373px; top: 118px;" data-name="math-2d5028" data-block-id="af0349af6ffa78c283f6192ca27bbcfa"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 70%;" data-fragment-index="0"><div class="math-input">\textsf{srs} = \{\textcolor{orange}{G}, \textcolor{orange}{\beta G}, \textcolor{orange}{\beta^2G}, \textcolor{orange}{\beta^3G}, \dots, \textcolor{orange}{\beta^DG}\}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 185px;" data-name="text-b9f09e" data-block-id="ba7c5d75b0e9fd1e74eb00e5121b85b5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="1">First participant chooses a secret \(x_1 \in \mathbb{F}\) and computes:  </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 373px; top: 254px;" data-block-id="a7e80afe95d6398ccc383efc93cdb0fe" data-name="math-19e2ea"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 70%;" data-fragment-index="2"><div class="math-input">\textsf{srs}_1 = 
+\{\textcolor{orange}{1}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x_1}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x_1^2}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x_1^3}\textcolor{grey}{G}, \dots, 
+\ \textcolor{orange}{x_1^D}\textcolor{grey}{G}\}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 329px;" data-block-id="4a3d88486328ff040cd277b8abe95cd4" data-name="text-093ba4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="3">Second participant chooses a secret \(x_2 \in \mathbb{F}\) and computes:  </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 231px; top: 406px;" data-block-id="dce9bd13c4951a328222c259ae3c9c72" data-name="math-dfeb9f"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 70%;" data-fragment-index="4"><div class="math-input">\textsf{srs}_1 = 
+\{\textcolor{orange}{1}\textcolor{grey}{\textsf{srs}_1[0]}, 
+\ \textcolor{orange}{x_2}\textcolor{grey}{\textsf{srs}_1[1]}, 
+\ \textcolor{orange}{x_2^2}\textcolor{grey}{\textsf{srs}_1[2]}, 
+\ \textcolor{orange}{x_2^3}\textcolor{grey}{\textsf{srs}_1[3]}, \dots, 
+\ \textcolor{orange}{x_2^D}\textcolor{grey}{\textsf{srs}_1[D-1]}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 294px; top: 467px;" data-block-id="2f2ca9db1340f5ac02c42dc32bd4bc8e" data-name="math-fa0dd1"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 70%;" data-fragment-index="5"><div class="math-input">= 
+\{\textcolor{orange}{1}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x_2}\textcolor{grey}{x_1G}, 
+\ \textcolor{orange}{x_2^2}\textcolor{grey}{x_1^2G}, 
+\ \textcolor{orange}{x_2^3}\textcolor{grey}{x_1^3G}, \dots, 
+\ \textcolor{orange}{x_2^D}\textcolor{grey}{x_1^{D-1}G]}\}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 538px;" data-block-id="a5067f96bfb8d64f1544a245d8f2d930" data-name="text-4e1b3d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="6">If 100 participants participated:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-e506cb" data-block-id="77c8ca7e6bc81db97cc564dbd7c5a1e4" style="width: auto; height: auto; left: 480px; top: 596px;"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 70%;" data-fragment-index="7"><div class="math-input">\beta = (\textcolor{orange}{x_{100}x_{99} \dots x_2 x_1})</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 661px;" data-block-id="cbcf1de28ad51be6049366fb58356c35" data-name="text-c1667b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="8">Only one needs to be honest!</li>
+</ul>
+</div></div></section><section data-id="790fbfca75ce39860081708deb0d5b6c"><div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 567px;" data-name="math-dfeb9f" data-block-id="ab9d3a1ff86a230d6cca9de3e8052b94"><div class="sl-block-content notranslate fragment" style="z-index: 10; font-size: 70%;" data-fragment-index="0"><div class="math-input">e(
+\textcolor{orange}{1}\textcolor{grey}{\textsf{srs}_1[0]}, 
+\textcolor{lightgreen}{x_2}\textcolor{grey}{\textsf{srs}_2[1]}
+)
+\stackrel{?}{=}
+e(
+\textcolor{orange}{x_2}\textcolor{grey}{\textsf{srs}_1[1]}, 
+\textcolor{lightgreen}{1}\textcolor{grey}{\textsf{srs}_2[0]}
+)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 632px;" data-block-id="81439e14e936c9a7c66a4fdae9c964fa" data-name="math-57b03b"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 90%;" data-fragment-index="0"><div class="math-input">e(
+\textcolor{orange}{x_2^i}\textcolor{grey}{\textsf{srs}_1[i]}, 
+\textcolor{lightgreen}{x_2}\textcolor{grey}{\textsf{srs}_2[1]}
+)
+\stackrel{?}{=}
+e(
+\textcolor{orange}{x_2^{i+1}}\textcolor{grey}{\textsf{srs}_1[i+1]}, 
+\textcolor{lightgreen}{1}\textcolor{grey}{\textsf{srs}_2[0]}
+)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 434px;" data-block-id="1230f90485251e1a2509991491b5b414" data-name="math-c57896"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_1 = 
+\{\textcolor{orange}{1}\textcolor{grey}{\textsf{srs}_1[0]}, 
+\ \textcolor{orange}{x_2}\textcolor{grey}{\textsf{srs}_1[1]}, 
+\ \textcolor{orange}{x_2^2}\textcolor{grey}{\textsf{srs}_1[2]}, 
+\ \textcolor{orange}{x_2^3}\textcolor{grey}{\textsf{srs}_1[3]}, \dots, 
+\ \textcolor{orange}{x_2^D}\textcolor{grey}{\textsf{srs}_1[D-1]}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 506px;" data-block-id="54f874c06eea018184601063de481ec9" data-name="math-e555fa"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_2 = 
+\{\textcolor{lightgreen}{1}\textcolor{grey}{\textsf{srs}_2[0]}, 
+\ \textcolor{lightgreen}{x_2}\textcolor{grey}{\textsf{srs}_2[1]}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 20px;" data-block-id="b1198a344c573a963415795fa6cb3ca7" data-name="math-ec593d"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_1 = 
+\{\textcolor{orange}{1}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x^2}\textcolor{grey}{G}, 
+\ \textcolor{orange}{x^3}\textcolor{grey}{G}, \dots, 
+\ \textcolor{orange}{x^D}\textcolor{grey}{G}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 92px;" data-block-id="93bad794438b71c4f813e94de0b1141c" data-name="math-9571e3"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_2 = 
+\{\textcolor{lightgreen}{1}\textcolor{grey}{H}, 
+\ \textcolor{lightgreen}{x}\textcolor{grey}{H}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 164px;" data-block-id="681a163cd65b90f7963aa242aeda4e0d" data-name="math-b6d9d8"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_1 = 
+\{\textcolor{orange}{1}\textcolor{grey}{G}, 
+\ \textcolor{orange}{y}\textcolor{grey}{xG}, 
+\ \textcolor{orange}{y^2}\textcolor{grey}{x^2G}, 
+\ \textcolor{orange}{y^3}\textcolor{grey}{x^3G}, \dots, 
+\ \textcolor{orange}{y^D}\textcolor{grey}{x^4G}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 236px;" data-block-id="e8977747d142237a7c653a51fc41d00c" data-name="math-114621"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 70%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_2 = 
+\{\textcolor{lightgreen}{1}\textcolor{grey}{H}, 
+\ \textcolor{lightgreen}{y}\textcolor{grey}{xH}\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 160px; top: 318px;" data-block-id="7be130479900ed2cef861d46224e0da6" data-name="math-99bb0f"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 70%;" data-fragment-index="1"><div class="math-input">e(\textcolor{orange}{y}\textcolor{grey}{xG}, \textcolor{lightgreen}{1}\textcolor{grey}{H}) =
+e(\textcolor{blue}{y}\textcolor{grey}{G}, \textcolor{lightgreen}{x}\textcolor{grey}{H}) = 
+e(\textcolor{orange}{1}\textcolor{grey}{G}, \textcolor{lightgreen}{y}\textcolor{grey}{xH})</div></div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2399329,"slug":"poly-commit-srs","title":"Polynomial Commitments and Ignition Ceremony","description":"Aztec's ignition ceremony and the KZG polynomial commitment scheme.","width":1280,"height":720,"margin":0.05,"visibility":"all","published_at":"2022-05-18T11:34:10.701Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/727c98a00bce9e99e9d3daacb3221fc3/thumb.jpg?1652880649","view_count":57,"user":{"id":1496266,"username":"suyashbagad_aztec","name":"Suyash Bagad","description":"Cryptography Engineer ","thumbnail_url":"https://media.slid.es/avatars/1496266/suyash-profile.jpg","account_type":"enterprise","team_id":2257,"settings":{"id":6852744,"present_controls":true,"present_upsizing":true,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null},"membership":{"role":"owner","manager":true,"activated":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-mint","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":false,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":15,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":null,"data_updated_at":1686564579510,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 1280,
+				height: 720,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				scrollActivationWidth: null,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+
+	</body>
+</html>

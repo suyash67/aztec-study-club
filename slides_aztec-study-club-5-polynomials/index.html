@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "Magic of Polynomials"}' />
+		<title>Magic of Polynomials</title>
+
+		<meta name="description" content="Aztec Study Club&#39;s fifth presentation on basics of polynomial commitment schemes.">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-orange">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="4e68b1d6b4de0325af7537773281bceb" data-background-color="#000000"><div class="sl-block" data-block-type="text" style="width: 971px; left: 154.5px; top: 216px; height: auto;" data-block-id="18a183c2ef7a0be0dca19d0432a3e075" data-name="text-77f26f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Magic of Polynomials</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 340px; top: 343px;" data-name="text-09af44" data-block-id="0730da4392430bae59438d1fe73975b4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Aztec Study Club - 5</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 340px; top: 395px;" data-block-id="2e98b8372800be8d00d8cb033e869693" data-name="text-621f2d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 70%;">
+<p>9 March 2022</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="0179320f389418db621675cbb341ab57"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="a09db760b9d439b07852071840178fe1"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 90%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Recap</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 104px;" data-name="text-a73f1f" data-block-id="e5511ef90a4de99f2313811df3a8d52c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Schnorr's identity protocol
+	<ul>
+		<li class="fragment" data-fragment-index="1">Proving that I own secret key \(\alpha\) given \(U=\alpha G\)</li>
+	</ul>
+	</li>
+</ul>
+</div></div>
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 927.5px; left: 80px; top: 226px;" data-block-id="0c0a466967478544473a4fcffde2ea5e" data-name="text-33cbb1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="2">
+<ul>
+	<li class="">Interactive sigma protocols:</li>
+</ul>
+</div></div>
+
+
+
+<div class="sl-block" data-block-type="line" data-name="line-2a2c63" data-block-id="a7224561fba9e82da3b0d05c6cc2bf7f" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 543.75px; top: 376px;"><div class="sl-block-content fragment" data-line-x1="256.25" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#a7ffa7" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 13;" data-line-width="2px" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="256.25" height="1" viewbox="0 0 256.25 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="256.25" y1="0" x2="2" y2="0"></line><line class="line-element" stroke="#a7ffa7" stroke-width="2" x1="256.25" y1="0" x2="2" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#a7ffa7" stroke-width="2" transform="translate(2,0) rotate(270)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 543.75px; top: 436.5px;" data-block-id="cdfb5fa20f1d281706bd84d47438facc" data-name="line-6b58e2"><div class="sl-block-content fragment" data-line-x1="256.25" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 14;" data-line-width="2px" data-fragment-index="7"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="256.25" height="1" viewbox="0 0 256.25 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="254.25" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#fec0cb" stroke-width="2" x1="254.25" y1="0" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#fec0cb" stroke-width="2" transform="translate(254.25,0) rotate(270)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 543.75px; top: 496px;" data-block-id="8e77ddc059fd0580039087a314317e26" data-name="line-cbe31e"><div class="sl-block-content fragment" data-line-x1="256.25" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#a7ffa7" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 15;" data-line-width="2px" data-fragment-index="9"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="256.25" height="1" viewbox="0 0 256.25 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="256.25" y1="0" x2="2" y2="0"></line><line class="line-element" stroke="#a7ffa7" stroke-width="2" x1="256.25" y1="0" x2="2" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#a7ffa7" stroke-width="2" transform="translate(2,0) rotate(270)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-2f0f26" data-block-id="e0a0a082c7c4ec07680bf8c99dff9f8f" style="height: auto; width: 146px; left: 830px; top: 293px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; text-align: left; color: rgb(167, 255, 167);" data-fragment-index="3">
+<p>Prover</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 146px; left: 367px; top: 293px;" data-block-id="f10465a4982bcf66fb245b6334d57e09" data-name="text-7f2898"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: right; color: rgb(254, 192, 203);" data-fragment-index="3">
+<p>Verifier</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 210px; left: 830px; top: 350.5px;" data-block-id="b43bb0e8d7c3fd6ef7075ebd2acf282b" data-name="text-51d7d6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left;" data-fragment-index="4">
+<p>\(\textsf{commitment}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 210px; left: 303px; top: 411px;" data-block-id="d24f2827ffaf6ac294d734649380b0e5" data-name="text-d17a95"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: right;" data-fragment-index="6">
+<p>\(\textsf{challenge}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 210px; left: 830px; top: 470.5px;" data-block-id="dffdd11f3c067e461f69f50b60f0a295" data-name="text-7c9675"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left;" data-fragment-index="8">
+<p>\(\textsf{response}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 927.5px; left: 80px; top: 590px;" data-block-id="1cc099e46fcbc480892db5c9ba166371" data-name="text-935d83"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="11">Non-interactive digital signatures using Fiat-Shamir</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 617px; left: 331.5px; top: 666px;" data-block-id="034d2b9e3f86e6393dc26941cfae9528" data-name="text-e2c8ee"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; text-align: center;" data-fragment-index="12">
+<p>\(\textsf{challenge} = H(\textsf{commitment})\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 210px; left: 303px; top: 513.5px;" data-block-id="2c1157692bb45f71c063982f8df2b0d4" data-name="text-30d109"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: right;" data-fragment-index="10">
+<p>\(\textsf{output} \in \{0,1\}\)</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="b1adfc1e8f2549f071ecc14d585a8c0c"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="2c95bfaab10c13dbd42a4dc39af384c1"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 90%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Vectors</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-fbe35f" data-block-id="97c55940f83751c30f134209976ce11d" style="width: auto; height: auto; left: 818px; top: 218px;"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 90%;" data-fragment-index="5"><div class="math-input">\vec{a} = 3\hat{x} + 2\hat{y}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 818px; top: 295px;" data-block-id="8e9fb1f8631dfd6f3cbc11f7fdef807d" data-name="math-0fe004"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 90%;" data-fragment-index="7"><div class="math-input">\vec{b} = 1\hat{x} + 4\hat{y}</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 144px;" data-block-id="9377f7110cc0c409ec753a749a2e5945" data-name="line-8a6c11"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="432" data-line-x2="320" data-line-y2="0" data-line-color="#ffc554" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 30;" data-line-width="1px" data-line-style="dashed" data-fragment-index="10"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="320" height="432" viewbox="0 0 320 432"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="432.5" x2="318.11908979749705" y2="3.7142287733789834"></line><line class="line-element" stroke="#ffc554" stroke-width="1" stroke-dasharray="2.9700529095842567 2.9700529095842567" x1="0.5" y1="432.5" x2="318.11908979749705" y2="3.7142287733789834"></line><polygon fill="#ffc554" transform="translate(317.61908979749705,3.2142287733789834) rotate(36.529)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 818px; top: 387px;" data-block-id="bf6b3721071bcc9f632639a4ec6fc207" data-name="math-127993"><div class="sl-block-content notranslate fragment" style="z-index: 31; font-size: 90%;" data-fragment-index="9"><div class="math-input">\vec{c} = 4\hat{x} + 6\hat{y}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 50px; left: 514px; top: 155.5px;" data-block-id="869da4a87f781f3c1e408fac7a5fa467" data-name="text-4268a1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 32;" data-fragment-index="10">
+<p>\(\vec{c}\)</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-df5620" data-block-id="f4987ae1e462b78aebc8107eb21fc22c" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 263.562px 553.906px; z-index: 33;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 576px;" data-block-id="e231343fce34f7917c3dd1d14a1378c3" data-name="line-2ad34e"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="94" data-line-y2="0" data-line-color="#ffff00" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 35;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="94" height="1" viewbox="0 0 94 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="90.5" y2="0.5"></line><line class="line-element" stroke="#ffff00" stroke-width="1" stroke-dasharray="2.84375 2.84375" x1="0.5" y1="0.5" x2="90.5" y2="0.5"></line><polygon fill="#ffff00" transform="translate(90,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-61c368" data-block-id="5aa05309d4a12b20efe121fe278352e9" style="width: 189.25px; height: 189.25px; left: 114.75px; top: 481.375px;"><div class="sl-block-content" data-shape-type="circle" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 34;" data-shape-stroke-color="#444444" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 189 189"><defs><clippath id="shape-mask-4-1646247639867"><ellipse rx="94.625" ry="94.625" cx="94.625" cy="94.625" fill="rgba(0, 0, 0, 0)" stroke="#444444" stroke-width="2"></ellipse></clippath></defs><ellipse rx="94.625" ry="94.625" cx="94.625" cy="94.625" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#444444" stroke-width="2" clip-path="url(#shape-mask-4-1646247639867)"></ellipse></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 481.375px;" data-block-id="ff9790cdfe06d63d2f894f215733facc" data-name="line-fc020b"><div class="sl-block-content" data-line-x1="0" data-line-y1="94.625" data-line-x2="0" data-line-y2="0" data-line-color="#ffff00" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 36;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="94.625" viewbox="0 0 1 94.625"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="95.125" x2="0.5" y2="4.5"></line><line class="line-element" stroke="#ffff00" stroke-width="1" stroke-dasharray="2.86328125 2.86328125" x1="0.5" y1="95.125" x2="0.5" y2="4.5"></line><polygon fill="#ffff00" transform="translate(0,4) rotate(0)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-56c6ad" data-block-id="caecb5a7cda9b4adf5c620c4f19fa948" style="height: auto; width: 203px; left: 209.375px; top: 594px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 37; text-align: left; font-size: 80%;">
+<p>Basis  \(\hat{x}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 133.625px; left: 108.062px; top: 484.5px;" data-block-id="976d65115e2c5e47bf2fd0ae74b7178f" data-name="text-0fdc96"><div class="sl-block-style" style="z-index: 38; transform: rotate(-90deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 38; text-align: left; font-size: 80%;">
+<p>Basis  \(\hat{y}\)</p>
+</div></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-735609" data-block-id="b4d06212ad3778bc9543f83a2f666ca7" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 434.188px 378px; z-index: 11;" data-fragment-index="0">
+<div class="sl-block" data-block-type="line" data-name="line-958b00" data-block-id="fdc8bb55d04e235f4f247a01ee67dacf" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 144px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="432" data-line-x2="0" data-line-y2="0" data-line-color="#cccccc" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 12;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="432" viewbox="0 0 1 432"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="432.5" x2="0.5" y2="4.5"></line><line class="line-element" stroke="#cccccc" stroke-width="1" x1="0.5" y1="432.5" x2="0.5" y2="4.5"></line><polygon fill="#cccccc" transform="translate(0,4) rotate(0)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 576px;" data-block-id="73357d1cb5aa79b99d608b1f50ccedcc" data-name="line-f5cf57"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="499" data-line-y2="0" data-line-color="#cccccc" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 13;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="499" height="1" viewbox="0 0 499 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="495.5" y2="0.5"></line><line class="line-element" stroke="#cccccc" stroke-width="1" x1="0.5" y1="0.5" x2="495.5" y2="0.5"></line><polygon fill="#cccccc" transform="translate(495,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-f96f13" data-block-id="d89072e06e3105baed3d592b5b89f27e" style="height: auto; width: 50px; left: 159.375px; top: 144px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 70%;">
+<p>\(y\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 50px; left: 655px; top: 576px;" data-block-id="1c0f28e4a1486574609474321b0f527b" data-name="text-7453cf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; font-size: 70%;">
+<p>\(x\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-2a5b0f" data-block-id="3e39631f7aee4f7d1750e818c139144c" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 265px 410.5px; z-index: 19;" data-fragment-index="2">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 288px;" data-block-id="0ffb2843ff014a40c6391d4cb10a4562" data-name="line-df2b99"><div class="sl-block-content" data-line-x1="0" data-line-y1="288" data-line-x2="80" data-line-y2="0" data-line-color="#a7ffa7" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 20;" data-line-width="1px" data-line-style="solid"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="80" height="288" viewbox="0 0 80 288"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="288.5" x2="79.42942454485562" y2="4.354071638519763"></line><line class="line-element" stroke="#a7ffa7" stroke-width="1" x1="0.5" y1="288.5" x2="79.42942454485562" y2="4.354071638519763"></line><polygon fill="#a7ffa7" transform="translate(78.92942454485562,3.854071638519762) rotate(15.524)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 80px; left: 240px; top: 245px;" data-block-id="5d9122d2f2b587dd48eec717f371957a" data-name="text-7d27bd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;">
+<p>\(\vec{b}\small{(1,4)}\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-8b7174" data-block-id="db3fc8c5873546b4efc0c886f616d49b" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 366.5px 504px; z-index: 16;" data-fragment-index="1">
+<div class="sl-block" data-block-type="line" data-name="line-e32358" data-block-id="fc3f557e9e0a8d6d9f13696611b7c77d" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 432px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="144" data-line-x2="240" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 17;" data-line-width="1px" data-line-style="solid"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="240" height="144" viewbox="0 0 240 144"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="144.5" x2="237.07002829714983" y2="2.5579830217101063"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="144.5" x2="237.07002829714983" y2="2.5579830217101063"></line><polygon fill="#fec0cb" transform="translate(236.57002829714983,2.0579830217101063) rotate(59.036)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 81px; left: 442px; top: 432.375px;" data-block-id="767981bd2287771eb384fb77ebf3b330" data-name="text-d30a1d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;">
+<p>\(\vec{a}\small{(3,2)}\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-947656" data-block-id="a9e08231c111fdb8b1be56ab1196a849"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 330.5px 504px; z-index: 22;" data-fragment-index="4">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 450px; top: 432px;" data-block-id="2c4237734ca414dda53b03099fbbdbd3" data-name="line-291dae"><div class="sl-block-content" data-line-x1="0" data-line-y1="144" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="144" viewbox="0 0 1 144"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="144.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.9375 2.9375" x1="0.5" y1="144.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 432px;" data-block-id="405f6423780df2d2fa17c5bf67edf402" data-name="line-c77834"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="240" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 24;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="240" height="1" viewbox="0 0 240 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="240.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.9625000000000004 2.9625000000000004" x1="0.5" y1="0.5" x2="240.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-8ab9e2" data-block-id="2904e335e145a429e4dba8e849fae186"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 250.5px 432px; z-index: 25;" data-fragment-index="6">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 290px; top: 288px;" data-block-id="1c7429a5b0674ec02a7a244c352d7fba" data-name="line-d0302a"><div class="sl-block-content" data-line-x1="0" data-line-y1="288" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 26;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="288" viewbox="0 0 1 288"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="288.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.96875 2.96875" x1="0.5" y1="288.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 288px;" data-block-id="c923c74f52693b0f03274a05d974016d" data-name="line-547c85"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="80" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 27;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="80" height="1" viewbox="0 0 80 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="80.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.9615384615384617 2.9615384615384617" x1="0.5" y1="0.5" x2="80.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="c08fbf29c9b25bf657f7ea2db0466f7f" data-name="group-712770"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 370px 360px; z-index: 39;" data-fragment-index="10">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 529px; top: 144px;" data-origin-id="7455123673c7208f03cb1440270cc7cf" data-block-id="c5cea179add77df592ca6f0130bdfca6" data-name="line-4f624b"><div class="sl-block-content" data-line-x1="0" data-line-y1="432" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 40;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="432" viewbox="0 0 1 432"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="432.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.979166666666667 2.979166666666667" x1="0.5" y1="432.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 210px; top: 144px;" data-origin-id="b91ad5a4bfe7198e835f788bb3506ee9" data-block-id="b46305fa04c811cb4a5bfdc8bca3e2ae" data-name="line-87c315"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="320" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 41;" data-line-width="1px" data-line-style="dashed"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="320" height="1" viewbox="0 0 320 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="320.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" stroke-dasharray="2.990566037735849 2.990566037735849" x1="0.5" y1="0.5" x2="320.5" y2="0.5"></line></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 750px; top: 295px;" data-block-id="3133332fc3ae3ddd0406cb2afefb2ab4" data-name="math-87476f"><div class="sl-block-content notranslate fragment" style="z-index: 42; font-size: 90%;" data-fragment-index="8"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-2a4ff1" data-block-id="e9afb14eb73a5a58b4844ee8666800e0" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 797px; top: 370px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="273" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 43;" data-line-width="1px" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="273" height="1" viewbox="0 0 273 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="273.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="273.5" y2="0.5"></line></svg></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="a7a88151d7e442c0b84cce2ac90f841b"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="850d77ac5ef90e72858a8b4bc300c541"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 90%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Polynomials</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="iframe" data-name="iframe-5eef21" style="width: 1164px; height: 631.064px; left: 58px; top: 88.936px;" data-block-id="e6d4c2301e96e0b184782ec6a95e3214"><div class="sl-block-content" style="z-index: 11;"><iframe allowfullscreen="" allow="fullscreen; accelerometer; geolocation; gyroscope; camera; encrypted-media; microphone; midi" sandbox="allow-forms allow-scripts allow-popups allow-same-origin allow-pointer-lock allow-presentation" data-preload="true" data-lazy-loaded="" data-src="https://www.desmos.com/calculator/vx1zolmbpj"></iframe></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-1fd6d6" style="width: 1175px; height: 48.064px; left: 58px; top: 88.936px;" data-block-id="92af95fb6ab9bcc20764f64d8afd0404"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 1175 48"><rect width="1175" height="48.064" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="74c7bd6f4b0ec4f91312b2a74dd6d5e4"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="eddbe6f1866e0254eb750140fc1f9340"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 90%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Polynomials</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 109px;" data-name="text-a73f1f" data-block-id="24b9c5c5b2bb5c71e07eb489ec8dd013"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Represented in two forms
+	<ul>
+		<li class="fragment" data-fragment-index="1">\(\color{lightpink}{\text{Evaluation}}\) form: \(f(X) = \sum_{i \in [n]}f(i)L_i(X)\)</li>
+		<li class="fragment" data-fragment-index="2">\(\color{lightgreen}{\text{Monomial}}\) form: \(f(X) = c_0 + c_1X + c_2X^2 + \dots + c_{n-1}X^{n-1}\)</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="3">If \(x\)-coordinates have nice structure, e.g. \(X = \{1, \omega, \omega^2, \dots, \omega^{n-1}\}\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-d30778" data-block-id="f0ebd82487f3696eababfe10ef784e72" style="width: auto; height: auto; left: 696px; top: 370px;"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 70%;" data-fragment-index="6"><div class="math-input">\Big\{\textcolor{lightpink}{f(1), f(\omega), f(\omega^2), \dots, f(\omega^{n-1})}\Big\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 167px; top: 370px;" data-block-id="ee126011d50f757b26265dec18312dc0" data-name="math-12602a"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 70%;" data-fragment-index="4"><div class="math-input">\Big\{\underbrace{\textcolor{lightgreen}{c_0, c_1, c_2, \dots, c_{n-1}}}_{n=2^m}\Big\}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 477px;" data-block-id="e6d7dd718bc1a837c4ca738db6e5d890" data-name="text-5b30bf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="8">Polynomial division and multiplication is cheaper in FFT form</li>
+	<li class="fragment" data-fragment-index="9">Addition and subtraction have similar costs</li>
+	<li class="fragment" data-fragment-index="10">Evaluation at \(x \in \mathbb{F}\)? Barycentric formula for FFT!</li>
+	<li class="fragment" data-fragment-index="11">Honk teaser: Plonk with everything in the FFT form 😲</li>
+</ul>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-6ab515" data-block-id="b6114635496853ebaaaf039055519319" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 583px 373px; z-index: 14;" data-fragment-index="5">
+<div class="sl-block" data-block-type="line" data-name="line-81c0fa" data-block-id="2af56b0a5d939603b4af31d412f7bacc" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 496px; top: 390px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="174" data-line-y2="0" data-line-color="#ffffff" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 15;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="174" height="1" viewbox="0 0 174 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="172.5" y2="0.5"></line><line class="line-element" stroke="#ffffff" stroke-width="1" x1="0.5" y1="0.5" x2="172.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#ffffff" stroke-width="1" transform="translate(172,0) rotate(90)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-f5c0d0" data-block-id="c3e673d80822d39c7a6761c483d18e3d" style="height: auto; width: 99px; left: 533.5px; top: 353px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; font-size: 80%;">
+<p>\(\textsf{FFT}\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-91387e" data-block-id="0e50de706300c7ebed47381989a95402" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 583px 440.5px; z-index: 17;" data-fragment-index="7">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 496px; top: 419px;" data-block-id="b720f7d0350c73899476587a513c8415" data-name="line-ed03d0"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="174" data-line-y2="0" data-line-color="#ffffff" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 18;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="174" height="1" viewbox="0 0 174 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.5" y1="0.5" x2="174.5" y2="0.5"></line><line class="line-element" stroke="#ffffff" stroke-width="1" x1="2.5" y1="0.5" x2="174.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#ffffff" stroke-width="1" transform="translate(2,0) rotate(90)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 99px; left: 533.5px; top: 422px;" data-block-id="6157636284a0efa2dc76184393bb6681" data-name="text-bf06fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; font-size: 80%;">
+<p>\(\textsf{iFFT}\)</p>
+</div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="78898eaf85780930f8aa0bed4209acbd"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="1486f13b48eae61b25d7b7935149d086"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 109px;" data-name="text-a73f1f" data-block-id="9aa10f7b8d67ae5c4c6b43f7f237ed95"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">For a visa application, we need to submit bank statements</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="table" data-name="table-fe5d0a" data-block-id="8d5ac40bd5ca47c8a3512248cd979859" style="height: auto; min-width: 120px; width: 323px; left: 519px; top: 168px;"><div class="sl-block-content fragment" style="z-index: 12; color: rgb(255, 255, 255); font-size: 80%;" data-table-border-color="rgb(102, 102, 102)" data-table-rows="7" data-table-cols="2" data-fragment-index="1"><table><tbody>
+<tr>
+<th style="border-color: rgb(102, 102, 102); width: 149px;">Month</th>
+<th style="border-color: rgb(102, 102, 102);">Avg Balance</th>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">January</td>
+<td style="border-color: rgb(102, 102, 102);">$1000</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">February</td>
+<td style="border-color: rgb(102, 102, 102);">$2500</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">March</td>
+<td style="border-color: rgb(102, 102, 102);">$1500</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">April</td>
+<td style="border-color: rgb(102, 102, 102);">$2000</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">May</td>
+<td style="border-color: rgb(102, 102, 102);">$3100</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">June</td>
+<td style="border-color: rgb(102, 102, 102);">$1800</td>
+</tr>
+</tbody></table></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-48148c" data-block-id="8e567241d13a2f24fe566feeeb46df43" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 457.5px 321.25px; z-index: 13;" data-fragment-index="3">
+<div class="sl-block" data-block-type="table" data-name="table-1dbba3" data-block-id="079659c13e9e278b1fe7ec81075ef51f" style="height: auto; min-width: 120px; width: 115px; left: 400px; top: 168px;"><div class="sl-block-content" style="z-index: 14; font-size: 80%;" data-table-cols="1" data-table-rows="7" data-table-border-color="rgb(102, 102, 102)"><table><tbody>
+<tr><th style="border-color: rgb(102, 102, 102);">X</th></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+<tr><td style="border-color: rgb(102, 102, 102);"></td></tr>
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3989be" data-block-id="7ff02112a70e817fb61d6e7ae73a24a0" style="height: auto; width: 82px; left: 407.5px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; text-align: left; font-size: 90%;">
+<p>\(1\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 252px;" data-block-id="e053fb3b859fd4c016bf5627b72694a1" data-name="text-3795d0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; text-align: left; font-size: 90%;">
+<p>\(\omega\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 297.5px;" data-block-id="6337a7500adc7fa5611c67454a7911c3" data-name="text-2ab71d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 90%;">
+<p>\(\omega^2\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 343.5px;" data-block-id="eb9d9e6967e3372f07dd5beb005a3429" data-name="text-088c61"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: left; font-size: 90%;">
+<p>\(\omega^3\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 385.5px;" data-block-id="0474f0c07e7b406ba93aa6df6de4692b" data-name="text-4f0671"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19; text-align: left; font-size: 90%;">
+<p>\(\omega^4\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 428.5px;" data-block-id="99408cdc77a5f6ce431fff9826cc0768" data-name="text-710e64"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; font-size: 90%;">
+<p>\(\omega^5\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-c7cb83" data-block-id="ea6e20b48b2000bd7728ee9d5cc7309b" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 621px 509.5px; z-index: 21;" data-fragment-index="4">
+<div class="sl-block" data-block-type="table" data-name="table-f51cae" data-block-id="f783a11e17227c461989b6a70d980d58" style="height: auto; min-width: 120px; width: 442px; left: 400px; top: 463px;"><div class="sl-block-content" style="z-index: 22; font-size: 80%;" data-table-border-color="rgb(102, 102, 102)" data-table-rows="2" data-table-has-header="false"><table><tbody>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 119px;"></td>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">-</td>
+<td style="border-color: rgb(102, 102, 102);">$0</td>
+</tr>
+<tr>
+<td style="border-color: rgb(102, 102, 102); width: 119px;"></td>
+<td style="border-color: rgb(102, 102, 102); width: 149px;">-</td>
+<td style="border-color: rgb(102, 102, 102);">$0</td>
+</tr>
+</tbody></table></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 468.5px;" data-block-id="9c1d8c8a7f03ce78709dfb85ba942bea" data-name="text-b329f5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 90%;">
+<p>\(\omega^6\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 82px; left: 407.5px; top: 510px;" data-block-id="ff7c465591fe79f7c5460533f4a8a590" data-name="text-bf8d0f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24; text-align: left; font-size: 90%;">
+<p>\(\omega^7\)</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 584px;" data-block-id="815258cd1fde9d6407c83066e1262c23" data-name="text-dfbd78"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="2">How do I prove my balance without revealing the bank statment?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-014e60" data-block-id="ba6cd3ca52eace2b749df8bfaaf50d65" style="width: 119px; height: 339px; left: 400px; top: 210px;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 26;" data-shape-stroke-color="#fec0cb" data-shape-stroke-width="2px" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 119 339"><defs><clippath id="shape-mask-11-1646287736839"><rect width="119" height="339" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#fec0cb" stroke-width="4"></rect></clippath></defs><rect width="119" height="339" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fec0cb" stroke-width="4" clip-path="url(#shape-mask-11-1646287736839)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-0f9298" data-block-id="88e91a808d5c210cecf92bd99a1634f7" style="width: auto; height: auto; left: 330px; top: 203px;"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 70%;" data-fragment-index="5"><div class="math-input">X
+\begin{cases}
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+\end{cases}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 806.5px; top: 203px;" data-block-id="565d5be15d73012f0e94d8354c615b9e" data-name="math-e01dc9"><div class="sl-block-style" style="z-index: 28; transform: rotate(180deg);"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 70%;" data-fragment-index="6"><div class="math-input">\begin{cases}
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+&amp; \\
+\end{cases}</div></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 174px; height: 339px; left: 668px; top: 210px;" data-block-id="4321ce7250c571d4c2e737306c84dc24" data-name="shape-8e2e41"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 29;" data-shape-stroke-color="#fec0cb" data-shape-stroke-width="2px" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 174 339"><defs><clippath id="shape-mask-12-1646287736847"><rect width="174" height="339" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#fec0cb" stroke-width="4"></rect></clippath></defs><rect width="174" height="339" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#fec0cb" stroke-width="4" clip-path="url(#shape-mask-12-1646287736847)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-eb4473" data-block-id="e6dbd46a11af2d50818513fda1cfd09f" style="width: auto; height: auto; left: 880px; top: 353.5px;"><div class="sl-block-content notranslate fragment" style="z-index: 30; font-size: 70%;" data-fragment-index="6"><div class="math-input">f(X)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 71px; top: 652px;" data-block-id="0a4721d431a03b6379b7c2d87827884b" data-name="math-caeb42"><div class="sl-block-content notranslate fragment" style="z-index: 31; font-size: 65%;" data-fragment-index="7"><div class="math-input">\textcolor{lightpink}{f(X)} = 1000L_1^n(X) + \dots + 1800L_6^{n}(X)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 635px; top: 650px;" data-block-id="372a201ac4da84f5a36ea5d2a5f02324" data-name="math-7c1c21"><div class="sl-block-content notranslate fragment" style="z-index: 32; font-size: 65%;" data-fragment-index="8"><div class="math-input">\xrightarrow{\textsf{iFFT}} \textcolor{lightgreen}{f(X)} = c_0 + c_1X + \dots + c_{n-1}X^{n-1}</div></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="e62e9b035388f83b3f5aa69a07d312bb"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="10e31748bca7f71d5d4cbd09f89b110d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 109px;" data-name="text-a73f1f" data-block-id="494c820be7c83895e912a192a72d2c33"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">The commit phase: for some <em>secret</em> scalar \(s \in \mathbb{F}_q\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 355px; top: 190.5px;" data-name="math-7c1c21" data-block-id="923622667888cc86a6f41dab445dcb30"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 65%;" data-fragment-index="1"><div class="math-input">\textsf{commit}\left(\textcolor{lightgreen}{f}\right) \equiv f(s)= c_0 + c_1s + \dots + c_{n-1}s^{n-1}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 253.5px;" data-block-id="618e88c9fd87cc8ab35a7130e8d8f17c" data-name="text-60f7de"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="2">The open phase: given a challenge \(z\in \mathbb{F}_q,\) we compute:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-3e54f2" data-block-id="f6757e6a4faff3075610779039373db6" style="height: auto; width: 600px; left: 340px; top: 330px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; font-size: 110%;" data-fragment-index="3">
+<p>\(\begin{aligned}\textsf{open}\left(f, z\right) \equiv w(s)= \frac{f(s)-f(z)}{s-z}\end{aligned}\)</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-03a88b" data-block-id="9dc58953a1581315fc60e8440160cbd7" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 318px 418.25px; z-index: 15;" data-fragment-index="4">
+<div class="sl-block" data-block-type="line" data-name="line-18e734" data-block-id="7c6800513bd3b30da34aae8e6d129b33" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 560px; top: 389px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="43" data-line-x2="48" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="48" height="43" viewbox="0 0 48 43"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="43.5" x2="45.52065865710777" y2="3.168993286340958"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="43.5" x2="45.52065865710777" y2="3.168993286340958"></line><polygon fill="#fec0cb" transform="translate(45.02065865710777,2.668993286340958) rotate(48.145)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 340px; top: 432px;" data-block-id="3b7ea9dcbb75ed3c10faa8fb0837f92a" data-name="line-2cdc9e"><div class="sl-block-content" data-line-x1="220" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="220" height="1" viewbox="0 0 220 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="220.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="220.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-02d11b" data-block-id="4c99a60fc29222c59b2cdab8b936da57" style="height: auto; width: 294px; left: 28px; top: 416.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; font-size: 80%; text-align: right; color: rgb(204, 204, 204);">
+<p>opening polynomial</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-704645" data-block-id="330f8a4a85f9d514cd38ceca77514d13" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 988.5px 425.75px; z-index: 19;" data-fragment-index="5">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 821px; top: 404px;" data-block-id="7e5f30f297a8a6d050752325ce9e7fa5" data-name="line-40183b"><div class="sl-block-content" data-line-x1="23" data-line-y1="28" data-line-x2="0" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 20;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="23" height="28" viewbox="0 0 23 28"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="23.5" y1="28.5" x2="3.0389576934400555" y2="3.590905018100937"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="23.5" y1="28.5" x2="3.0389576934400555" y2="3.590905018100937"></line><polygon fill="#fec0cb" transform="translate(2.5389576934400555,3.090905018100937) rotate(-39.401)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 844px; top: 432px;" data-block-id="ebaf93b74e9dea74b9bb4d2f22c38f98" data-name="line-f9c362"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 966px; top: 416.5px;" data-block-id="fb4430430e0270a62baf16b042f1f9d2" data-name="text-7a4fbf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; font-size: 80%; text-align: left; color: rgb(204, 204, 204);">
+<p>opening point</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 469.5px;" data-block-id="0b28bb84b6d73f349db53cf85fb2a0b5" data-name="text-73f95f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="6">The opening proof: \(\pi = \big\{\textcolor{lightgreen}{f(s), w(s), f(z)}\big\}\)</li>
+	<li class="fragment" data-fragment-index="7">The verification:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-ec41dc" data-block-id="bcda98f0000fbfdc923ac347fee5d4e3" style="width: auto; height: auto; left: 333.5px; top: 601px;"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 65%;" data-fragment-index="8"><div class="math-input">\textsf{verify}\left(\pi, z\right) \equiv \textcolor{lightgreen}{w(s)}\cdot (s-z) \stackrel{?}{=} (\textcolor{lightgreen}{f(s)}-\textcolor{lightgreen}{f(z)})</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-ebeb7d" data-block-id="e1eef7290302a0d840a15b3f862bb5c7"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 637.889px 629.903px; z-index: 25;" data-fragment-index="11">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-ac5d47" data-block-id="57f8edf7bc2ae779cdab1bc36e23f2bd" style="width: 4.45996px; height: 34.9168px; left: 617.52px; top: 611.18px;"><div class="sl-block-content" data-points="755.75 756.88,755.75 761.53,755.75 767.74,755.75 774.82,755.75 781.14,755.75 784.88,755.75 787.15,755.75 788.12,755.75 789.29,755.75 789.39,755.75 789.5,755.75 789.62,755.75 789.73,755.75 789.74,755.75 789.74" data-timestamp="1646299173678" style="z-index: 26;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="753.52001953125 754.6800537109375 4.4599609375 34.91680908203125"><path fill="rgb(255, 0, 0)" d="M 757.9773516845703 757.8971875 Q 757.98 757.9 757.9 760.17 757.83 762.43 757.67 765.53 757.52 768.63 757.4 772.03 757.29 775.43 757.29 778.34 757.29 781.24 757.37 783.23 757.46 785.21 757.61 786.61 757.77 788.01 756.92 789.01 756.07 790 754.95 789.32 753.83 788.63 754.33 787.42 754.83 786.21 756.11 786.52 757.38 786.82 757.28 788.13 757.18 789.44 755.87 789.54 754.56 789.64 754.3 787.43 754.04 785.21 754.13 783.23 754.21 781.24 754.21 778.34 754.21 775.43 754.1 772.03 753.98 768.63 753.83 765.53 753.67 762.43 753.6 760.17 753.52 757.9 753.52 757.39 753.52 756.88 753.58 756.54 753.63 756.19 753.79 755.88 753.95 755.57 754.19 755.32 754.44 755.08 754.75 754.92 755.06 754.76 755.41 754.71 755.75 754.65 756.09 754.71 756.44 754.76 756.75 754.92 757.06 755.08 757.31 755.32 757.55 755.57 757.71 755.88 757.87 756.19 757.92 756.54 757.98 756.88 757.98 757.39 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-e34a7d" data-block-id="618105b351d5fb8567dff38b9e9e0f0a" style="width: 43.9546px; height: 4.56995px; left: 613.58px; top: 612.035px;"><div class="sl-block-content" data-points="751.81 757.82,754.23 757.82,756.9 757.82,761.53 757.82,767.48 757.82,774.19 757.82,780.4 757.82,783.5 757.82,786.51 757.82,788.79 757.82,790.87 757.82,793.05 757.82,795.05 757.82" data-timestamp="1646299176103" style="z-index: 27;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="749.5799560546875 755.5350341796875 43.95458984375 4.5699462890625"><path fill="rgb(255, 0, 0)" d="M 752.339375 755.5602672200521 Q 752.34 755.56 753.46 755.54 754.58 755.53 756.1 755.54 757.62 755.55 759.98 755.64 762.34 755.73 765.32 755.87 768.31 756.01 771.56 756.12 774.81 756.23 777.6 756.24 780.38 756.25 782.07 756.17 783.77 756.09 785.48 756.01 787.2 755.93 789.53 755.82 791.87 755.7 792.92 756.6 793.96 757.49 793.24 758.66 792.52 759.83 791.26 759.31 789.99 758.78 790.31 757.44 790.63 756.11 792 756.22 793.37 756.32 793.48 757.69 793.58 759.06 790.39 759.39 787.2 759.71 785.48 759.63 783.77 759.55 782.07 759.47 780.38 759.39 777.6 759.4 774.81 759.41 771.56 759.52 768.31 759.63 765.32 759.77 762.34 759.91 759.98 760 757.62 760.09 756.1 760.1 754.58 760.11 753.46 760.1 752.34 760.08 752.07 760.08 751.81 760.08 751.46 760.02 751.11 759.97 750.8 759.81 750.48 759.65 750.23 759.4 749.98 759.15 749.82 758.83 749.66 758.52 749.61 758.17 749.55 757.82 749.61 757.47 749.66 757.12 749.82 756.81 749.98 756.49 750.23 756.24 750.48 755.99 750.8 755.83 751.11 755.67 751.46 755.62 751.81 755.56 752.07 755.56 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-6b603a" data-block-id="287f05edd0f257f6574bcd4e2a0e402f" style="width: 4.48267px; height: 39.7487px; left: 655.85px; top: 608.525px;"><div class="sl-block-content" data-points="794.09 754.24,794.09 758.14,794.09 762.12,794.09 766.35,794.09 771.14,794.09 775.34,794.09 779.29,794.09 781.35,794.09 783.89,794.09 786.41,794.09 788.51,794.09 790.96,794.09 793.65" data-timestamp="1646299178240" style="z-index: 28;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="791.8499755859375 752.0250244140625 4.482666015625 39.7486572265625"><path fill="rgb(255, 0, 0)" d="M 796.3326684570313 755.093125 Q 796.33 755.09 796.31 756.86 796.29 758.63 796.26 760.62 796.23 762.61 796.19 764.77 796.15 766.93 796.11 769.23 796.07 771.53 796.06 773.63 796.06 775.73 796.08 777.83 796.1 779.92 796.17 782.31 796.24 784.7 796.3 787.35 796.35 790 795.4 791.11 794.44 792.23 793.19 791.46 791.94 790.7 792.5 789.34 793.06 787.98 794.49 788.32 795.92 788.67 795.81 790.13 795.69 791.6 794.23 791.71 792.76 791.83 792.35 788.26 791.94 784.7 792.01 782.31 792.08 779.92 792.1 777.83 792.12 775.73 792.12 773.63 792.11 771.53 792.07 769.23 792.03 766.93 791.99 764.77 791.95 762.61 791.92 760.62 791.89 758.63 791.87 756.86 791.85 755.09 791.85 754.67 791.85 754.24 791.9 753.89 791.96 753.55 792.12 753.23 792.28 752.92 792.52 752.67 792.77 752.43 793.08 752.27 793.4 752.11 793.74 752.05 794.09 752 794.44 752.05 794.78 752.11 795.1 752.27 795.41 752.43 795.66 752.67 795.9 752.92 796.06 753.23 796.22 753.55 796.28 753.89 796.33 754.24 796.33 754.67 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-39158a" data-block-id="4ee30a8d8ce26104bbd188000a7e6217" style="width: 46.643px; height: 4.48438px; left: 615.555px; top: 646.796px;"><div class="sl-block-content" data-points="753.77 792.54,757.57 792.54,762.81 792.54,769.82 792.54,777.82 792.54,785.63 792.54,793.66 792.54,797.22 792.54,799.52 792.54" data-timestamp="1646299180111" style="z-index: 29;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="751.5550537109375 790.295654296875 46.64300537109375 4.484375"><path fill="rgb(255, 0, 0)" d="M 754.6012499999999 790.2956282552083 Q 754.6 790.3 756.47 790.33 758.35 790.36 761.07 790.48 763.79 790.6 767.3 790.76 770.82 790.91 774.73 790.98 778.65 791.04 782.58 791.04 786.51 791.04 790.03 791.04 793.55 791.04 795.28 791.04 797.01 791.04 797.76 791.67 798.5 792.31 797.99 793.14 797.48 793.97 796.58 793.59 795.68 793.22 795.91 792.27 796.13 791.33 797.1 791.4 798.08 791.48 798.15 792.45 798.23 793.42 795.89 793.73 793.55 794.04 790.03 794.04 786.51 794.04 782.58 794.04 778.65 794.04 774.73 794.1 770.82 794.17 767.3 794.32 763.79 794.48 761.07 794.6 758.35 794.72 756.47 794.75 754.6 794.78 754.19 794.78 753.77 794.78 753.42 794.73 753.08 794.67 752.76 794.52 752.45 794.36 752.2 794.11 751.95 793.86 751.79 793.55 751.64 793.23 751.58 792.89 751.53 792.54 751.58 792.19 751.64 791.85 751.79 791.53 751.95 791.22 752.2 790.97 752.45 790.72 752.76 790.56 753.08 790.41 753.42 790.35 753.77 790.3 754.19 790.3 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-5a6a1e" data-block-id="aca1d5e7c852c7278b9f383ded794bde"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 630.997px 370.23px; z-index: 30;" data-fragment-index="9">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-f325eb" data-block-id="dcd2144911bce3dda966a361d61cf3ba" style="width: 4.54333px; height: 52.5084px; left: 589.527px; top: 343.185px;"><div class="sl-block-content" data-points="727.77 489.87,727.77 495.11,727.77 499.66,727.77 504.86,727.77 509.57,727.77 513.11,727.77 515.96,727.77 519.09,727.77 522.41,727.77 525.05,727.77 527.92,727.77 530.08,727.77 532.17,727.77 534.3,727.77 536.87,727.77 539.81,727.77 542.01" data-timestamp="1646301282579" style="z-index: 31;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="725.5267944335938 487.68499755859375 4.5433349609375 52.50836181640625"><path fill="rgb(255, 0, 0)" d="M 729.9821498697917 491.01625 Q 729.98 491.02 729.91 493.3 729.85 495.59 729.8 497.94 729.75 500.29 729.7 502.8 729.65 505.32 729.65 507.57 729.64 509.81 729.69 511.96 729.73 514.1 729.78 516.78 729.84 519.47 729.86 521.4 729.89 523.33 729.93 525.97 729.97 528.6 730.01 530.82 730.05 533.03 730.07 535.7 730.08 538.38 729.11 539.52 728.13 540.66 726.85 539.87 725.57 539.09 726.15 537.71 726.72 536.32 728.18 536.67 729.64 537.02 729.52 538.52 729.4 540.01 727.91 540.13 726.41 540.25 725.95 536.64 725.49 533.03 725.53 530.82 725.57 528.6 725.61 525.97 725.65 523.33 725.68 521.4 725.7 519.47 725.76 516.78 725.81 514.1 725.85 511.96 725.9 509.81 725.89 507.57 725.89 505.32 725.84 502.8 725.79 500.29 725.74 497.94 725.69 495.59 725.63 493.3 725.56 491.02 725.56 490.44 725.56 489.87 725.61 489.53 725.67 489.19 725.82 488.88 725.98 488.57 726.23 488.33 726.47 488.08 726.78 487.92 727.09 487.77 727.43 487.71 727.77 487.66 728.11 487.71 728.45 487.77 728.76 487.92 729.07 488.08 729.31 488.33 729.56 488.57 729.72 488.88 729.87 489.19 729.93 489.53 729.98 489.87 729.98 490.44 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-4b2a72" data-block-id="18f66eb1ad06cb5e8980f4a99e61814e" style="width: 94.965px; height: 4.24005px; left: 583.515px; top: 390.91px;"><div class="sl-block-content" data-points="721.61 537.53,729.88 537.53,741.51 537.53,756 537.53,770.35 537.53,780.51 537.53,790.38 537.53,794.94 537.53,797.44 537.53,799.79 537.53,803.84 537.53,807.5 537.53,810.4 537.53,812.95 537.53,810.62 537.53,809.32 537.53,808.68 537.53,808.54 537.53,808.31 537.53,808.2 537.53" data-timestamp="1646301284720" style="z-index: 32;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="719.5150146484375 535.4099731445312 94.9649658203125 4.24005126953125"><path fill="rgb(255, 0, 0)" d="M 723.4190625 535.4123828125 Q 723.42 535.41 727.52 535.64 731.62 535.86 737.53 535.95 743.44 536.03 750.51 536.03 757.57 536.03 764.27 536.03 770.97 536.03 776.23 536.03 781.48 536.03 785.87 536.03 790.26 536.03 792.88 536.03 795.51 536.03 797.96 536.01 800.41 535.99 802.31 535.92 804.21 535.85 805.97 535.78 807.72 535.72 810.15 535.63 812.58 535.53 813.16 535.72 813.75 535.92 814.11 536.41 814.48 536.91 814.48 537.53 814.48 538.15 814.11 538.65 813.75 539.14 813.22 539.2 812.69 539.26 811.31 539.47 809.93 539.68 808.87 538.77 807.81 537.87 808.54 536.68 809.26 535.49 810.55 536.02 811.84 536.56 811.51 537.91 811.19 539.27 809.8 539.16 808.41 539.05 808.3 537.66 808.19 536.27 810.44 536.04 812.69 535.8 813.22 535.86 813.75 535.92 814.11 536.41 814.48 536.91 814.48 537.53 814.48 538.15 814.11 538.65 813.75 539.14 813.16 539.34 812.58 539.53 810.15 539.43 807.72 539.34 805.97 539.28 804.21 539.21 802.31 539.14 800.41 539.07 797.96 539.05 795.51 539.03 792.88 539.03 790.26 539.03 785.87 539.03 781.48 539.03 776.23 539.03 770.97 539.03 764.27 539.03 757.57 539.03 750.51 539.03 743.44 539.03 737.53 539.11 731.62 539.2 727.52 539.42 723.42 539.65 722.51 539.65 721.61 539.65 721.28 539.6 720.96 539.54 720.66 539.39 720.37 539.24 720.13 539.01 719.9 538.77 719.75 538.48 719.6 538.18 719.54 537.86 719.49 537.53 719.54 537.2 719.6 536.88 719.75 536.58 719.9 536.29 720.13 536.05 720.37 535.82 720.66 535.67 720.96 535.52 721.28 535.46 721.61 535.41 722.51 535.41 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-2d1336" data-block-id="e5baa2236f5e48a2d02fee8a4a1ed850" style="width: 4.46295px; height: 47.4131px; left: 669.967px; top: 349.862px;"><div class="sl-block-content" data-points="808.2 539.57,808.2 535.17,808.2 525.84,808.2 512.75,808.2 501.7,808.2 494.95,808.2 491.28" data-timestamp="1646301285754" style="z-index: 33;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="805.967041015625 494.3619079589844 4.46295166015625 47.413116455078125"><path fill="rgb(255, 0, 0)" d="M 805.9670442708334 538.6075000000001 Q 805.97 538.61 806.08 536.08 806.19 533.56 806.44 528.75 806.69 523.94 806.7 517.84 806.7 511.73 806.7 506.6 806.7 501.48 806.7 498.51 806.7 495.54 807.33 494.8 807.97 494.06 808.8 494.57 809.63 495.08 809.25 495.98 808.88 496.88 807.93 496.65 806.99 496.42 807.06 495.45 807.14 494.48 808.11 494.4 809.08 494.33 809.39 497.9 809.7 501.48 809.7 506.6 809.7 511.73 809.7 517.84 809.71 523.94 809.96 528.75 810.21 533.56 810.32 536.08 810.43 538.61 810.43 539.09 810.43 539.57 810.38 539.92 810.32 540.26 810.17 540.57 810.01 540.88 809.76 541.13 809.51 541.38 809.2 541.54 808.89 541.69 808.55 541.75 808.2 541.8 807.85 541.75 807.51 541.69 807.2 541.54 806.89 541.38 806.64 541.13 806.39 540.88 806.23 540.57 806.08 540.26 806.02 539.92 805.97 539.57 805.97 539.09 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-67a0a0" data-block-id="e0396487c31c527ce5a67efe451beeed" style="width: 82.1947px; height: 4.52036px; left: 589.385px; top: 345.24px;"><div class="sl-block-content" data-points="727.62 492,729.92 492,737.21 492,749.77 492,763.34 492,774.14 492,782.11 492,786.22 492,789.71 492,791.71 492,793.81 492,798.16 492,801.51 492,803.96 492,806.39 492,808.52 492" data-timestamp="1646301292750" style="z-index: 34;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="725.385009765625 489.7396545410156 82.1947021484375 4.520355224609375"><path fill="rgb(255, 0, 0)" d="M 728.123125 489.73964925130207 Q 728.12 489.74 729.71 489.78 731.29 489.83 735.25 490.04 739.22 490.26 745.32 490.38 751.42 490.5 757.82 490.5 764.21 490.5 769.43 490.5 774.64 490.5 778.36 490.5 782.08 490.5 784.27 490.5 786.47 490.5 788.37 490.47 790.27 490.44 792.4 490.34 794.53 490.25 796.48 490.2 798.44 490.16 800.36 490.1 802.27 490.05 804.11 489.98 805.94 489.92 806.97 490.8 808 491.67 807.29 492.83 806.59 493.98 805.34 493.46 804.09 492.95 804.4 491.63 804.72 490.31 806.07 490.42 807.42 490.53 807.52 491.88 807.63 493.22 804.95 493.59 802.27 493.95 800.36 493.9 798.44 493.84 796.48 493.8 794.53 493.75 792.4 493.66 790.27 493.56 788.37 493.53 786.47 493.5 784.27 493.5 782.08 493.5 778.36 493.5 774.64 493.5 769.43 493.5 764.21 493.5 757.82 493.5 751.42 493.5 745.32 493.62 739.22 493.74 735.25 493.96 731.29 494.17 729.71 494.22 728.12 494.26 727.87 494.26 727.62 494.26 727.27 494.21 726.92 494.15 726.61 493.99 726.29 493.83 726.04 493.58 725.79 493.33 725.63 493.01 725.47 492.7 725.41 492.35 725.36 492 725.41 491.65 725.47 491.3 725.63 490.99 725.79 490.67 726.04 490.42 726.29 490.17 726.61 490.01 726.92 489.85 727.27 489.79 727.62 489.74 727.87 489.74 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-0af9d9" data-block-id="81443227270a35fb86993e8aa31b40e2"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 737.153px 348.324px; z-index: 35;" data-fragment-index="10">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-aef7cb" data-block-id="01d34579a976788ca2f623a24cd3619a" style="width: 4.6145px; height: 40.3243px; left: 700.04px; top: 325.195px;"><div class="sl-block-content" data-points="838.29 471.92,838.29 475.12,838.29 478.66,838.29 483.75,838.29 488.97,838.29 493.82,838.29 498.33,838.29 498.82,838.29 499.91,838.29 501.19,838.29 502.58,838.29 504.03,838.29 505.47,838.29 506.46,838.29 507.28,838.29 507.38,838.29 507.55,838.29 507.68,838.29 507.86,838.29 508.1,838.29 508.28,838.29 508.47,838.29 508.66,838.29 508.84,838.29 509.07,838.29 509.27,838.29 509.39" data-timestamp="1646301306467" style="z-index: 36;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="836.0399780273438 469.69500732421875 4.614501953125 40.3243408203125"><path fill="rgb(255, 0, 0)" d="M 840.5429166666667 472.62 Q 840.54 472.62 840.54 474.1 840.54 475.58 840.51 477.49 840.47 479.39 840.38 481.87 840.3 484.35 840.24 486.9 840.18 489.45 840.16 491.86 840.14 494.26 840.17 496.39 840.2 498.51 840.3 500.29 840.41 502.07 840.49 504.07 840.58 506.06 840.65 507.08 840.72 508.11 839.69 509.31 838.67 510.51 837.32 509.68 835.98 508.86 836.58 507.4 837.19 505.94 838.72 506.31 840.26 506.68 840.13 508.25 840.01 509.82 838.43 509.95 836.86 510.07 836.43 508.07 836 506.06 836.09 504.07 836.17 502.07 836.28 500.29 836.38 498.51 836.41 496.39 836.44 494.26 836.42 491.86 836.4 489.45 836.34 486.9 836.28 484.35 836.2 481.87 836.11 479.39 836.07 477.49 836.04 475.58 836.04 474.1 836.04 472.62 836.04 472.27 836.04 471.92 836.09 471.57 836.15 471.22 836.31 470.91 836.47 470.6 836.72 470.35 836.97 470.1 837.28 469.94 837.59 469.78 837.94 469.72 838.29 469.67 838.64 469.72 838.99 469.78 839.3 469.94 839.61 470.1 839.86 470.35 840.11 470.6 840.27 470.91 840.43 471.22 840.49 471.57 840.54 471.92 840.54 472.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-b0eb3f" data-block-id="cc6e111ad1d627bc0c0343b40e82d994" style="width: 73.5958px; height: 4.51999px; left: 698.48px; top: 325.64px;"><div class="sl-block-content" data-points="836.71 472.4,839.25 472.4,845.47 472.4,855.26 472.4,863.32 472.4,869.56 472.4,876.53 472.4,878.57 472.4,881.46 472.4,883.86 472.4,886.08 472.4,888.78 472.4,890.95 472.4,894.74 472.4,898.31 472.4,901.79 472.4,904.4 472.4,906.89 472.4,908.96 472.4" data-timestamp="1646301308538" style="z-index: 37;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="834.47998046875 470.1400146484375 73.59576416015625 4.519989013671875"><path fill="rgb(255, 0, 0)" d="M 837.265625 470.14100003255203 Q 837.27 470.14 838.81 470.17 840.36 470.2 843.67 470.38 846.97 470.57 851.48 470.73 855.99 470.9 859.88 470.9 863.77 470.9 867.06 470.9 870.36 470.9 873.64 470.88 876.92 470.85 879.57 470.75 882.23 470.65 884.6 470.53 886.98 470.41 889.25 470.35 891.53 470.29 893.32 470.29 895.12 470.29 896.9 470.29 898.67 470.29 900.64 470.28 902.6 470.26 904.47 470.23 906.34 470.2 907.43 471.13 908.52 472.06 907.77 473.28 907.02 474.5 905.7 473.95 904.38 473.4 904.71 472.01 905.05 470.62 906.47 470.73 907.9 470.84 908.01 472.27 908.13 473.7 905.36 474.12 902.6 474.54 900.64 474.52 898.67 474.51 896.9 474.51 895.12 474.51 893.32 474.51 891.53 474.51 889.25 474.45 886.98 474.39 884.6 474.27 882.23 474.15 879.57 474.05 876.92 473.95 873.64 473.92 870.36 473.9 867.06 473.9 863.77 473.9 859.88 473.9 855.99 473.9 851.48 474.07 846.97 474.23 843.67 474.42 840.36 474.6 838.81 474.63 837.27 474.66 836.99 474.66 836.71 474.66 836.36 474.6 836.01 474.55 835.7 474.39 835.38 474.23 835.13 473.98 834.88 473.73 834.72 473.41 834.56 473.1 834.51 472.75 834.45 472.4 834.51 472.05 834.56 471.7 834.72 471.39 834.88 471.07 835.13 470.82 835.38 470.57 835.7 470.41 836.01 470.25 836.36 470.2 836.71 470.14 836.99 470.14 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-eecc43" data-block-id="562eb0a4ebedfda814b3e50cea491571" style="width: 76.4265px; height: 4.55344px; left: 699.4px; top: 365.707px;"><div class="sl-block-content" data-points="837.63 512.5,840.28 512.5,848.73 512.5,859.01 512.5,867.62 512.5,874.49 512.5,879.03 512.5,881.04 512.5,883.03 512.5,886.05 512.5,890.85 512.5,897.55 512.5,898.33 512.5,900.44 512.5,902.57 512.5,904.11 512.5,905.6 512.5,907.33 512.5,909.03 512.5,910.01 512.5,910.59 512.5,911.06 512.5,911.28 512.5" data-timestamp="1646301310966" style="z-index: 38;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="835.4000244140625 510.2065734863281 76.426513671875 4.553436279296875"><path fill="rgb(255, 0, 0)" d="M 838.2096875 510.241772664388 Q 838.21 510.24 840.04 510.3 841.87 510.37 846 510.62 850.12 510.86 854.95 510.93 859.78 511 863.96 511 868.14 511 871.42 511 874.69 511 877.06 510.97 879.44 510.94 882.02 510.84 884.6 510.74 888.21 510.72 891.81 510.7 894.66 510.75 897.51 510.81 899.3 510.69 901.08 510.58 902.88 510.49 904.68 510.4 906.31 510.34 907.94 510.27 908.96 510.21 909.98 510.15 911.14 511.14 912.3 512.13 911.5 513.43 910.71 514.73 909.3 514.15 907.89 513.56 908.25 512.08 908.6 510.6 910.12 510.72 911.64 510.84 911.76 512.36 911.88 513.88 909.91 514.3 907.94 514.73 906.31 514.66 904.68 514.6 902.88 514.51 901.08 514.42 899.3 514.31 897.51 514.19 894.66 514.25 891.81 514.3 888.21 514.28 884.6 514.26 882.02 514.16 879.44 514.06 877.06 514.03 874.69 514 871.42 514 868.14 514 863.96 514 859.78 514 854.95 514.07 850.12 514.14 846 514.38 841.87 514.63 840.04 514.7 838.21 514.76 837.92 514.76 837.63 514.76 837.28 514.7 836.93 514.65 836.62 514.49 836.3 514.33 836.05 514.08 835.8 513.83 835.64 513.51 835.48 513.2 835.43 512.85 835.37 512.5 835.43 512.15 835.48 511.8 835.64 511.49 835.8 511.17 836.05 510.92 836.3 510.67 836.62 510.51 836.93 510.35 837.28 510.3 837.63 510.24 837.92 510.24 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-404138" data-block-id="002c6468d57c1b4a65ffb94b868d678c" style="width: 4.70331px; height: 48.0375px; left: 766.38px; top: 324.305px;"><div class="sl-block-content" data-points="904.68 471.04,904.68 473.12,904.68 475.66,904.68 477.86,904.68 481.52,904.68 486.41,904.68 491.27,904.68 494.81,904.68 496.92,904.68 498.24,904.68 499.74,904.68 502.2,904.68 505.75,904.68 509.12,904.68 511.15,904.68 512.38,904.68 513.16,904.68 513.56,904.68 513.8,904.68 514.1,904.68 514.45,904.68 514.66,904.68 514.82,904.68 515.04,904.68 515.22,904.68 515.4,904.68 515.62,904.68 515.83,904.68 516.02,904.68 516.14" data-timestamp="1646301313632" style="z-index: 39;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="902.3800048828125 468.80499267578125 4.70330810546875 48.03753662109375"><path fill="rgb(255, 0, 0)" d="M 906.9411854166666 471.495 Q 906.94 471.5 906.96 472.48 906.98 473.47 906.98 475.11 906.98 476.74 906.95 479.47 906.91 482.2 906.83 484.57 906.75 486.95 906.7 489.23 906.66 491.5 906.69 493.36 906.72 495.22 906.79 497.11 906.86 498.99 906.89 500.85 906.92 502.72 906.91 504.41 906.9 506.11 906.9 507.82 906.91 509.53 906.96 511.23 907.01 512.94 907.08 513.92 907.14 514.91 906.1 516.12 905.07 517.34 903.7 516.5 902.34 515.67 902.95 514.19 903.56 512.71 905.12 513.08 906.67 513.46 906.55 515.05 906.42 516.65 904.83 516.77 903.23 516.9 902.79 514.92 902.35 512.94 902.4 511.23 902.45 509.53 902.46 507.82 902.46 506.11 902.45 504.41 902.44 502.72 902.47 500.85 902.5 498.99 902.57 497.11 902.64 495.22 902.67 493.36 902.7 491.5 902.66 489.23 902.61 486.95 902.53 484.57 902.45 482.2 902.41 479.47 902.38 476.74 902.38 475.11 902.38 473.47 902.4 472.48 902.42 471.5 902.42 471.27 902.42 471.04 902.47 470.69 902.53 470.34 902.69 470.03 902.85 469.71 903.1 469.46 903.35 469.21 903.67 469.05 903.98 468.89 904.33 468.83 904.68 468.78 905.03 468.83 905.38 468.89 905.69 469.05 906.01 469.21 906.26 469.46 906.51 469.71 906.67 470.03 906.83 470.34 906.89 470.69 906.94 471.04 906.94 471.27 Z"></path></svg></div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="775d077e91eb6c8efa854ab2bd3bc7ac"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="4687ecc7580bceff5779b46ced791170"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 103px;" data-name="text-a73f1f" data-block-id="68f15fe4d6129dff3016613fad8a34c0"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="0">
+<p class="visible">\(1.\) Is the opening polynomial enough?</p>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-d01dda" data-block-id="83c8a6dcdbf32fc14805679473efc3a6" style="width: auto; height: auto; left: 160px; top: 265px;"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%;" data-fragment-index="2"><div class="math-input">\begin{aligned}
+f(X)-f(z) &amp;= (c_0 + c_1X + \dots + c_{n-1}X^{n-1}) - (c_0 + c_1z + \dots + c_{n-1}z^{n-1}) \\[5pt]
+&amp;= c_1(X-z) + c_2(X^2-z^2) \dots + c_{n-1}(X^{n-1}-z^{n-1}) \\[5pt]
+&amp;= c_1\textcolor{orange}{(X-z)} + c_2\textcolor{orange}{(X-z)}(X+z) \dots + c_{n-1}\textcolor{orange}{(X-z)}(X^{n-2} + \dots + z^{n-2}) \\[5pt]
+&amp;= \textcolor{orange}{(X-z)}\Big\{c_1 + c_2(X+z) + \dots c_{n-1}(X^{n-2} + zX^{n-3} + \dots + z^{n-2})\Big\}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 483px; top: 164px;" data-block-id="5bb1d72b09a1024a0af14a213581ca82" data-name="math-d239af"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 65%;" data-fragment-index="1"><div class="math-input">\begin{aligned}
+w(X) &amp;:= \frac{f(X)-f(z)}{X-z}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 604px;" data-block-id="8ccf3e03284c778a033ec07c9774a737" data-name="text-ae466e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="8">If the prover doesn't know the polynomial, its not possible to compute a correct \(w(X)\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 118px; top: 510px;" data-block-id="e5f691af664ca6b6d512a7e96d0a3526" data-name="math-0bb7d8"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 60%;" data-fragment-index="7"><div class="math-input">\begin{aligned}
+\therefore \ \frac{f(X)-f(z)}{\textcolor{orange}{(X-z)}} = \big(c_1 + c_2(X+z) + \dots c_{n-1}(X^{n-2} + zX^{n-3} + \dots + z^{n-2})\big)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-002d88" data-block-id="579bda1c2908c81b5abb46e1eab9a35b" style="width: 924px; height: 57px; left: 330px; top: 318px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 16;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 924px; height: 57px; left: 330px; top: 381px;" data-block-id="48ddf3b32672ede8311dd0e0c446afe1" data-name="shape-febdbd"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 17;" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 924px; height: 57px; left: 330px; top: 447px;" data-block-id="a78c9dcac2abd83345891ae3005de338" data-name="shape-ab857a"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 18;" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 924 57"><rect width="924" height="57" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-a39a65" data-block-id="39951dd4a80e8f9ed4c5833eeb3f4d3c"><div class="sl-block-content sl-block-group-content" style="transform-origin: 581.821px 288.685px; z-index: 19;">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-7fb5e7" data-block-id="8ede05c895d0c96b111c0b714b746a72" style="width: 33.8745px; height: 44.5503px; left: 365.682px; top: 266.808px;"><div class="sl-block-content fragment" data-points="503.87 453.67,505.76 448.85,508.24 445.2,510.39 442.78,514.23 438.42,518.56 433.5,520.82 430.47,522.53 427.87,523.69 426.17,525.09 424.51,527.73 420.6,530.65 416.63,532.96 413.9,534.59 411.93,536.14 410.51" data-timestamp="1646300656289" style="z-index: 20;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="501.68182373046875 411.3078918457031 33.87445068359375 44.55029296875"><path fill="rgb(255, 0, 0)" d="M 502.22320800296455 451.80570787401643 Q 502.22 451.81 503.22 449.74 504.22 447.67 505.5 445.8 506.77 443.93 508.11 442.37 509.45 440.81 511.44 438.71 513.42 436.62 515.37 434.46 517.32 432.3 518.4 430.75 519.49 429.2 520.43 427.74 521.37 426.27 522.64 424.42 523.91 422.58 525.19 420.79 526.47 419.01 527.88 417.16 529.3 415.31 530.87 413.44 532.44 411.57 533.76 411.38 535.07 411.2 535.46 412.47 535.85 413.73 534.66 414.32 533.46 414.9 532.7 413.81 531.94 412.72 532.9 411.8 533.85 410.88 534.91 411.68 535.97 412.48 534.17 415.05 532.37 417.63 531.05 419.45 529.72 421.27 528.42 423.19 527.12 425.11 525.8 426.8 524.49 428.49 523.41 429.91 522.34 431.32 521.09 432.89 519.84 434.45 517.99 436.72 516.13 439 514.32 441.21 512.52 443.42 511.32 444.83 510.12 446.24 509.07 447.81 508.01 449.38 507.18 451.4 506.34 453.43 506.14 453.95 505.93 454.48 505.75 454.78 505.58 455.08 505.32 455.31 505.06 455.54 504.74 455.67 504.43 455.81 504.08 455.85 503.74 455.88 503.4 455.8 503.06 455.73 502.76 455.55 502.46 455.38 502.23 455.12 502 454.86 501.87 454.54 501.73 454.23 501.69 453.88 501.66 453.54 501.74 453.2 501.81 452.86 502.02 452.33 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-02057d" data-block-id="7bfa5f89cd19315f6f029ad5d5ed1146" style="width: 28.1215px; height: 43.3097px; left: 769.839px; top: 266.011px;"><div class="sl-block-content fragment" data-points="908.07 451.59,908.5 449.23,911.65 442.93,916.65 435.75,920.24 430.62,922.13 427.43,923.04 425.39,923.93 423.57,926.35 420.12,929.59 416.01,931.79 413.22,933.34 411.56,934.18 409.48" data-timestamp="1646300671039" style="z-index: 21;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="905.839111328125 410.5111999511719 28.1214599609375 43.309722900390625"><path fill="rgb(255, 0, 0)" d="M 905.9425890252336 450.66324475042154 Q 905.94 450.66 906.5 449.11 907.05 447.56 908.96 444.37 910.88 441.19 913.27 437.88 915.67 434.57 917.32 432.12 918.98 429.67 919.94 427.88 920.89 426.08 921.8 424.11 922.7 422.14 923.98 420.31 925.26 418.49 926.76 416.6 928.26 414.7 929.51 412.82 930.76 410.93 932.02 410.61 933.29 410.3 933.8 411.49 934.31 412.69 933.2 413.39 932.1 414.08 931.24 413.1 930.39 412.11 931.22 411.11 932.06 410.11 933.18 410.78 934.3 411.45 932.74 414.22 931.19 416.99 929.77 418.83 928.36 420.68 927.18 422.3 926.01 423.91 924.88 425.82 923.75 427.72 922.62 429.55 921.5 431.37 919.82 433.81 918.15 436.25 916.07 439.54 913.98 442.82 912.61 445.71 911.25 448.61 910.82 450.05 910.39 451.48 910.34 451.74 910.29 452 910.17 452.33 910.06 452.67 909.84 452.95 909.63 453.23 909.33 453.43 909.04 453.63 908.7 453.73 908.37 453.83 908.01 453.82 907.66 453.81 907.33 453.69 906.99 453.58 906.71 453.36 906.43 453.15 906.23 452.85 906.03 452.56 905.93 452.22 905.83 451.89 905.84 451.53 905.85 451.18 905.9 450.92 Z"></path></svg></div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="e336c1e92427b52c91183a546a9fef86"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="bee9a97a9f24cd0d943925684c498240"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 105px;" data-name="text-a73f1f" data-block-id="95b01f345720672ddf2f9c7ef8290110"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="0">
+<p>\(2.\) Could a malicious prover find \(g(X)\neq f(X)\) s.t. \(g(s)=f(s)\)?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 374px;" data-name="text-ae466e" data-block-id="7c687f8a3d3231e93a41213f8ee17add"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="6">For the commitments to match: \(g(s)=f(s) \implies f(s)-g(s)=0\)</li>
+	<li class="fragment" data-fragment-index="7">So the polynomial \((f-g)(X)\) must be \(0\) at \(s\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-34a53c" data-block-id="b0b36f4b68a65ac99f22a08235841d21" style="width: auto; height: auto; left: 340px; top: 176px;"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 65%;" data-fragment-index="1"><div class="math-input">f(X) = c_0 + c_1X + c_2X^2 + \dots + c_{n-1}X^{n-1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 340px; top: 235px;" data-block-id="b4350059d14392351f6f859628aa519a" data-name="math-5e19b0"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 65%;" data-fragment-index="2"><div class="math-input">g(X) = b_0 + b_1X + b_2X^2 + \dots + b_{n-1}X^{n-1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 288px; top: 236px;" data-block-id="e3cb0c8e6466b7d919c1935077c021a6" data-name="math-b22ad8"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 65%;" data-fragment-index="3"><div class="math-input">-</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-35b9db" data-block-id="68645fefd41fdd31fe0fd1dcf971de26" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 240px; top: 288px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="720" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="720" height="1" viewbox="0 0 720 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="720.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="720.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 228px; top: 298px;" data-block-id="b2a574a99e084b92cb914991ca148f02" data-name="math-2d5028"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 65%;" data-fragment-index="5"><div class="math-input">f(X)-g(X) = (c_0-b_0) + (c_1-b_1)X + \dots + (c_{n-1}-b_{n-1})X^{n-1}</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-7352bc" data-block-id="27b508efc0463c57aef8caee380ec57e"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 468.748px 233.728px; z-index: 18;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-d52ab5" data-block-id="9a8f68db12331f21050be694e52c8ba0" style="width: 4.50574px; height: 103.755px; left: 449.667px; top: 182.175px;"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-5bd3b3" data-block-id="430b68ce2e3a2c08d59c7cb81a07bc9b" style="width: 35.7281px; height: 4.78998px; left: 450.98px; top: 280.51px;"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-f1b049" data-block-id="aa9f67f94a32533ccb6958bf55711f07" style="width: 4.49091px; height: 102.317px; left: 484.36px; top: 181.525px;"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 21;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-62193c" data-block-id="dff850fa46aedf4104e1b3230cb78ff6" style="width: 39.9279px; height: 4.46317px; left: 448.645px; top: 181.967px;"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 22;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="c42fbdc77164a48c8604c0e0eccb3b9b" data-name="group-c3830d"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 536.748px 233.728px; z-index: 23;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" style="width: 4.50574px; height: 103.755px; left: 517.667px; top: 182.175px;" data-origin-id="9a8f68db12331f21050be694e52c8ba0" data-block-id="7e3c95ce74222150fa960bdf5f0372c7" data-name="drawing-849ee8"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 24;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 35.7281px; height: 4.78998px; left: 518.98px; top: 280.51px;" data-origin-id="430b68ce2e3a2c08d59c7cb81a07bc9b" data-block-id="409a04a8042b96d4e03214fbf9e58429" data-name="drawing-b3b31d"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 25;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 4.49091px; height: 102.317px; left: 552.36px; top: 181.525px;" data-origin-id="aa9f67f94a32533ccb6958bf55711f07" data-block-id="dadbdbb1b4690996b657e766f104e349" data-name="drawing-9c8916"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 26;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 39.9279px; height: 4.46317px; left: 516.645px; top: 181.967px;" data-origin-id="dff850fa46aedf4104e1b3230cb78ff6" data-block-id="09f5e48165cbe53e8f72b9307916ff2c" data-name="drawing-d248bb"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 27;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="e6eb83616fc67269b0d73a5a3f8186ee" data-name="group-6f19bc"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 633.748px 233.728px; z-index: 28;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" style="width: 4.50574px; height: 103.755px; left: 614.667px; top: 182.175px;" data-origin-id="7e3c95ce74222150fa960bdf5f0372c7" data-block-id="456c2e02c2140a294bc6f0fc36869580" data-name="drawing-8fe20a"><div class="sl-block-content" data-points="587.92 328.9,587.92 332.31,587.92 339.15,587.92 349.38,587.92 358.76,587.92 365.9,587.92 373.5,587.92 387.25,587.92 392.4,587.92 399.42,587.92 405.28,587.92 409.42,587.92 411.78,587.92 413.58,587.92 415.26,587.92 418.52,587.92 421.42,587.92 423.42,587.92 425.62,587.92 427.12,587.92 428.43,587.92 427.41" data-timestamp="1646302740040" style="z-index: 29;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="585.6671142578125 326.67498779296875 4.5057373046875 103.7550048828125"><path fill="rgb(255, 197, 84)" d="M 590.1702525309245 329.6459375 Q 590.17 329.65 590.12 331.56 590.07 333.47 589.87 337.08 589.67 340.68 589.54 345.51 589.42 350.34 589.42 354.81 589.42 359.27 589.42 363 589.42 366.73 589.42 371.2 589.42 375.66 589.42 381.3 589.42 386.93 589.42 390.09 589.42 393.25 589.42 396.59 589.42 399.93 589.42 402.72 589.43 405.52 589.47 407.72 589.52 409.92 589.66 412.21 589.8 414.5 589.88 416.92 589.97 419.34 590.03 421.7 590.09 424.06 590.16 426.15 590.22 428.24 590 428.91 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.95 585.62 428.31 586.59 427.17 587.56 426.03 588.83 426.82 590.11 427.6 589.54 428.98 588.96 430.36 587.51 430.01 586.06 429.66 586.18 428.17 586.29 426.68 587.78 426.56 589.27 426.45 589.53 428.02 589.78 429.59 589.21 430.01 588.63 430.43 587.92 430.43 587.21 430.43 586.63 430.01 586.06 429.59 585.84 428.91 585.62 428.24 585.68 426.15 585.75 424.06 585.81 421.7 585.87 419.34 585.96 416.92 586.04 414.5 586.18 412.21 586.32 409.92 586.37 407.72 586.41 405.52 586.42 402.72 586.42 399.93 586.42 396.59 586.42 393.25 586.42 390.09 586.42 386.93 586.42 381.3 586.42 375.66 586.42 371.2 586.42 366.73 586.42 363 586.42 359.27 586.42 354.81 586.42 350.34 586.3 345.51 586.17 340.68 585.97 337.08 585.77 333.47 585.72 331.56 585.67 329.65 585.67 329.27 585.67 328.9 585.72 328.55 585.78 328.2 585.94 327.89 586.1 327.58 586.35 327.33 586.6 327.08 586.91 326.92 587.22 326.76 587.57 326.7 587.92 326.65 588.27 326.7 588.62 326.76 588.93 326.92 589.24 327.08 589.49 327.33 589.74 327.58 589.9 327.89 590.06 328.2 590.12 328.55 590.17 328.9 590.17 329.27 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 35.7281px; height: 4.78998px; left: 615.98px; top: 280.51px;" data-origin-id="409a04a8042b96d4e03214fbf9e58429" data-block-id="d3d9f22e7fd7f663c53bfe1f7d4d2fe8" data-name="drawing-54f0a0"><div class="sl-block-content" data-points="589.21 427.41,592.12 427.41,595.04 427.41,598.4 427.41,600.68 427.41,602.79 427.41,604.79 427.41,607.43 427.41,609.46 427.41,611.76 427.41,614.28 427.41,616.59 427.41,619.09 427.41,621.02 427.41,623.26 427.41" data-timestamp="1646302742019" style="z-index: 30;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="586.97998046875 425.010009765625 35.72808837890625 4.78997802734375"><path fill="rgb(255, 197, 84)" d="M 589.8465625 425.15398249511725 Q 589.85 425.15 591.16 425.14 592.47 425.14 593.96 425.14 595.45 425.14 597.26 425.14 599.07 425.15 601.35 425.12 603.63 425.09 605.89 425.07 608.16 425.06 610.4 425.04 612.64 425.03 615.01 425.02 617.38 425.02 619.1 425.01 620.82 425.01 622 426.02 623.19 427.03 622.38 428.37 621.56 429.7 620.12 429.1 618.67 428.5 619.04 426.98 619.4 425.46 620.96 425.59 622.52 425.71 622.64 427.27 622.76 428.82 620.07 429.31 617.38 429.8 615.01 429.8 612.64 429.79 610.4 429.78 608.16 429.76 605.89 429.75 603.63 429.73 601.35 429.7 599.07 429.67 597.26 429.68 595.45 429.68 593.96 429.68 592.47 429.68 591.16 429.68 589.85 429.67 589.53 429.67 589.21 429.67 588.86 429.61 588.51 429.56 588.2 429.4 587.88 429.24 587.63 428.99 587.38 428.74 587.22 428.42 587.06 428.11 587.01 427.76 586.95 427.41 587.01 427.06 587.06 426.71 587.22 426.4 587.38 426.08 587.63 425.83 587.88 425.58 588.2 425.42 588.51 425.26 588.86 425.21 589.21 425.15 589.53 425.15 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 4.49091px; height: 102.317px; left: 649.36px; top: 181.525px;" data-origin-id="dadbdbb1b4690996b657e766f104e349" data-block-id="80b1ab36a17492887459d3915bd39dd6" data-name="drawing-c77176"><div class="sl-block-content" data-points="622.58 328.22,622.58 333.01,622.58 337.63,622.58 343.07,622.58 348.81,622.58 354.71,622.58 357.4,622.58 361.58,622.58 367,622.58 372.65,622.58 377.48,622.58 381.5,622.58 385.99,622.58 391.14,622.58 396.74,622.58 401.54,622.58 404.27,622.58 406.73,622.58 410.14,622.58 412.7,622.58 415.85,622.58 418.7,622.58 420.78,622.58 422.79,622.58 425.2,622.58 428.04,622.58 429.89" data-timestamp="1646302748913" style="z-index: 31;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="620.3599853515625 326.0249938964844 4.49090576171875 102.31704711914062"><path fill="rgb(255, 197, 84)" d="M 624.803995694987 329.2678125 Q 624.8 329.27 624.75 331.41 624.7 333.55 624.64 335.93 624.58 338.31 624.5 341.02 624.42 343.73 624.35 346.6 624.29 349.47 624.27 352.05 624.25 354.64 624.32 356.31 624.38 357.97 624.4 360.14 624.42 362.31 624.38 364.98 624.34 367.65 624.31 370.37 624.28 373.08 624.31 375.45 624.33 377.81 624.36 379.92 624.4 382.02 624.4 384.32 624.41 386.62 624.38 389.21 624.35 391.8 624.33 394.49 624.3 397.17 624.33 399.38 624.35 401.59 624.42 403.44 624.49 405.3 624.56 408.2 624.63 411.1 624.68 413.89 624.73 416.67 624.77 419.12 624.82 421.57 624.85 424.05 624.88 426.54 623.91 427.67 622.94 428.8 621.67 428.03 620.4 427.25 620.97 425.87 621.54 424.49 622.99 424.84 624.44 425.19 624.32 426.67 624.2 428.16 622.72 428.28 621.23 428.39 620.79 424.98 620.34 421.57 620.39 419.12 620.43 416.67 620.48 413.89 620.53 411.1 620.6 408.2 620.67 405.3 620.74 403.44 620.81 401.59 620.83 399.38 620.86 397.17 620.83 394.49 620.81 391.8 620.78 389.21 620.75 386.62 620.76 384.32 620.76 382.02 620.8 379.92 620.83 377.81 620.85 375.45 620.88 373.08 620.85 370.37 620.82 367.65 620.78 364.98 620.74 362.31 620.76 360.14 620.78 357.97 620.84 356.31 620.91 354.64 620.89 352.05 620.87 349.47 620.81 346.6 620.74 343.73 620.66 341.02 620.58 338.31 620.52 335.93 620.46 333.55 620.41 331.41 620.36 329.27 620.36 328.74 620.36 328.22 620.41 327.88 620.46 327.53 620.62 327.22 620.78 326.91 621.03 326.67 621.27 326.42 621.58 326.26 621.89 326.1 622.24 326.05 622.58 326 622.92 326.05 623.27 326.1 623.58 326.26 623.89 326.42 624.13 326.67 624.38 326.91 624.54 327.22 624.7 327.53 624.75 327.88 624.8 328.22 624.8 328.74 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 39.9279px; height: 4.46317px; left: 613.645px; top: 181.967px;" data-origin-id="09f5e48165cbe53e8f72b9307916ff2c" data-block-id="3cece7b69d91640333c08509f9bafc68" data-name="drawing-69bdb3"><div class="sl-block-content" data-points="586.85 328.7,591.24 328.7,596.04 328.7,600.96 328.7,606.59 328.7,609.18 328.7,611.39 328.7,614.18 328.7,616.81 328.7,621.35 328.7,623.73 328.7,626.65 328.7" data-timestamp="1646302751230" style="z-index: 32;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="584.64501953125 326.4668273925781 39.9278564453125 4.463165283203125"><path fill="rgb(255, 197, 84)" d="M 587.8103125 326.466830476888 Q 587.81 326.47 589.84 326.51 591.86 326.55 594.23 326.62 596.59 326.68 599.12 326.74 601.65 326.8 604.38 326.83 607.11 326.86 609.76 326.76 612.4 326.66 614.96 326.62 617.51 326.59 620.21 326.58 622.9 326.58 623.95 327.47 625 328.37 624.28 329.54 623.56 330.72 622.29 330.19 621.01 329.66 621.33 328.32 621.66 326.98 623.03 327.09 624.4 327.2 624.51 328.57 624.62 329.95 621.06 330.38 617.51 330.81 614.96 330.78 612.4 330.74 609.76 330.64 607.11 330.54 604.38 330.57 601.65 330.6 599.12 330.66 596.59 330.72 594.23 330.78 591.86 330.85 589.84 330.89 587.81 330.93 587.33 330.93 586.85 330.93 586.5 330.88 586.16 330.82 585.85 330.67 585.54 330.51 585.29 330.26 585.04 330.01 584.88 329.7 584.73 329.39 584.67 329.05 584.62 328.7 584.67 328.35 584.73 328.01 584.88 327.7 585.04 327.39 585.29 327.14 585.54 326.89 585.85 326.73 586.16 326.58 586.5 326.52 586.85 326.47 587.33 326.47 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-af1920" data-block-id="7e7a9a3bcac8e01b11ffebd2fc2abfc9"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 833.66px 238.647px; z-index: 33;" data-fragment-index="4">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-43e18e" data-block-id="8567acdca23adfbde327d92ad0b6326f" style="width: 4.51996px; height: 100.511px; left: 798.27px; top: 180.37px;"><div class="sl-block-content" data-points="936.53 327.1,936.53 329.59,936.53 334.83,936.53 341.66,936.53 350.09,936.53 358.28,936.53 366.68,936.53 378.29,936.53 388.17,936.53 395.01,936.53 401.16,936.53 405.21,936.53 408.47,936.53 411.8,936.53 415.44,936.53 418.63,936.53 420.66,936.53 422.48,936.53 424.52,936.53 426.75" data-timestamp="1646302796208" style="z-index: 34;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="934.27001953125 324.8699951171875 4.51995849609375 100.51089477539062"><path fill="rgb(255, 197, 84)" d="M 938.7893192626952 327.64468750000003 Q 938.79 327.64 938.78 329.07 938.77 330.49 938.64 333.14 938.52 335.78 938.36 339.28 938.19 342.77 938.11 346.87 938.03 350.97 938.03 355.08 938.03 359.2 938.03 363.74 938.03 368.29 938.03 373.74 938.03 379.2 938.03 383.87 938.03 388.55 938.03 392.05 938.03 395.55 938.03 398.45 938.03 401.34 938.05 403.39 938.06 405.44 938.13 407.13 938.2 408.82 938.27 410.52 938.33 412.22 938.38 413.98 938.43 415.74 938.48 417.46 938.53 419.18 938.62 421.42 938.72 423.66 937.8 424.74 936.87 425.82 935.66 425.08 934.45 424.34 934.99 423.03 935.54 421.71 936.92 422.05 938.3 422.38 938.19 423.79 938.08 425.21 936.66 425.32 935.24 425.43 934.89 422.31 934.53 419.18 934.58 417.46 934.63 415.74 934.68 413.98 934.73 412.22 934.79 410.52 934.86 408.82 934.93 407.13 935 405.44 935.01 403.39 935.03 401.34 935.03 398.45 935.03 395.55 935.03 392.05 935.03 388.55 935.03 383.87 935.03 379.2 935.03 373.74 935.03 368.29 935.03 363.74 935.03 359.2 935.03 355.08 935.03 350.97 934.95 346.87 934.87 342.77 934.7 339.28 934.54 335.78 934.42 333.14 934.29 330.49 934.28 329.07 934.27 327.64 934.27 327.37 934.27 327.1 934.33 326.75 934.38 326.4 934.54 326.09 934.7 325.77 934.95 325.52 935.2 325.27 935.52 325.11 935.83 324.95 936.18 324.9 936.53 324.84 936.88 324.9 937.23 324.95 937.54 325.11 937.86 325.27 938.11 325.52 938.36 325.77 938.52 326.09 938.68 326.4 938.73 326.75 938.79 327.1 938.79 327.37 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-c6ea37" data-block-id="1a6a3fba36a82d32b419bad26b9ecc19" style="width: 73.7545px; height: 4.51999px; left: 796.51px; top: 279.94px;"><div class="sl-block-content" data-points="934.7 426.7,939.75 426.7,946.44 426.7,953.95 426.7,960.53 426.7,967.13 426.7,969.61 426.7,971.64 426.7,974.13 426.7,976.15 426.7,978.19 426.7,980.21 426.7,983.07 426.7,986.41 426.7,988.72 426.7,991.09 426.7,993.54 426.7,996.7 426.7,1000.8 426.7,1004.94 426.7,1007 426.7" data-timestamp="1646302798175" style="z-index: 35;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="932.510009765625 424.44000244140625 73.7545166015625 4.519989013671875"><path fill="rgb(255, 197, 84)" d="M 935.8046875 424.48265157063804 Q 935.8 424.48 938.26 424.58 940.72 424.67 944.04 424.84 947.37 425.01 950.97 425.1 954.57 425.2 957.9 425.2 961.23 425.2 964.35 425.17 967.47 425.14 969.97 425.02 972.46 424.89 974.67 424.79 976.87 424.68 979.15 424.61 981.43 424.55 984.29 424.52 987.15 424.5 989.64 424.47 992.13 424.44 994.69 424.44 997.25 424.45 999.26 424.49 1001.26 424.53 1002.93 424.56 1004.6 424.59 1005.65 425.48 1006.69 426.37 1005.97 427.54 1005.26 428.71 1003.99 428.18 1002.72 427.66 1003.04 426.33 1003.36 424.99 1004.73 425.1 1006.1 425.21 1006.2 426.57 1006.31 427.94 1003.79 428.4 1001.26 428.87 999.26 428.91 997.25 428.95 994.69 428.96 992.13 428.96 989.64 428.93 987.15 428.9 984.29 428.88 981.43 428.85 979.15 428.79 976.87 428.72 974.67 428.61 972.46 428.51 969.97 428.38 967.47 428.26 964.35 428.23 961.23 428.2 957.9 428.2 954.57 428.2 950.97 428.3 947.37 428.39 944.04 428.56 940.72 428.73 938.26 428.82 935.8 428.92 935.25 428.92 934.7 428.92 934.36 428.86 934.01 428.81 933.71 428.65 933.4 428.49 933.15 428.25 932.91 428 932.75 427.69 932.59 427.39 932.54 427.04 932.48 426.7 932.54 426.36 932.59 426.01 932.75 425.71 932.91 425.4 933.15 425.15 933.4 424.91 933.71 424.75 934.01 424.59 934.36 424.54 934.7 424.48 935.25 424.48 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-454acb" data-block-id="eb1ace9af14726570f9601e193e63da5" style="width: 76.4291px; height: 4.32419px; left: 795.445px; top: 181.396px;"><div class="sl-block-content" data-points="933.58 328.06,940.24 328.06,952.72 328.06,967.54 328.06,985.07 328.06,993.3 328.06,998.94 328.06,1001.64 328.06,1004.29 328.06,1006.8 328.06,1009.53 328.06" data-timestamp="1646302800266" style="z-index: 36;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="931.4449462890625 325.89581298828125 76.42913818359375 4.324188232421875"><path fill="rgb(255, 197, 84)" d="M 935.036875 325.89581904296875 Q 935.04 325.9 938.68 326.08 942.32 326.25 948.49 326.41 954.66 326.56 962.21 326.56 969.76 326.56 977.36 326.56 984.96 326.56 989.22 326.56 993.49 326.56 996.17 326.56 998.85 326.56 1000.68 326.55 1002.5 326.53 1004.56 326.49 1006.61 326.45 1007.4 327.13 1008.2 327.81 1007.65 328.7 1007.11 329.59 1006.14 329.19 1005.17 328.79 1005.41 327.77 1005.66 326.76 1006.7 326.84 1007.75 326.92 1007.83 327.96 1007.91 329.01 1005.21 329.3 1002.5 329.59 1000.68 329.57 998.85 329.56 996.17 329.56 993.49 329.56 989.22 329.56 984.96 329.56 977.36 329.56 969.76 329.56 962.21 329.56 954.66 329.56 948.49 329.71 942.32 329.87 938.68 330.04 935.04 330.22 934.31 330.22 933.58 330.22 933.25 330.17 932.91 330.12 932.61 329.96 932.31 329.81 932.07 329.57 931.83 329.33 931.68 329.03 931.52 328.73 931.47 328.39 931.42 328.06 931.47 327.73 931.52 327.39 931.68 327.09 931.83 326.79 932.07 326.55 932.31 326.31 932.61 326.16 932.91 326 933.25 325.95 933.58 325.9 934.31 325.9 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-642164" data-block-id="1f24f776fb7453f408377369c7be298e" style="width: 4.51996px; height: 115.413px; left: 863.96px; top: 181.51px;"><div class="sl-block-content" data-points="1002.22 328.24,1002.22 330.96,1002.22 335.4,1002.22 342.22,1002.22 352.81,1002.22 377.19,1002.22 387.87,1002.22 399.24,1002.22 407.83,1002.22 411.76,1002.22 413.08,1002.22 413.66,1002.22 414.25,1002.22 415.47,1002.22 417.62,1002.22 419.65,1002.22 420.93,1002.22 421.92,1002.22 423.99,1002.22 427.62,1002.22 432.19,1002.22 436.59,1002.22 439.41,1002.22 440.79,1002.22 441.69,1002.22 441.58" data-timestamp="1646302802342" style="z-index: 37;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="999.9600219726562 326.010009765625 4.51995849609375 115.41253662109375"><path fill="rgb(255, 197, 84)" d="M 1004.4776854166666 328.83500000000004 Q 1004.48 328.84 1004.47 330.25 1004.47 331.67 1004.38 334.05 1004.29 336.43 1004.11 340.12 1003.92 343.81 1003.82 350.42 1003.72 357.02 1003.72 367.01 1003.72 377 1003.72 383 1003.72 389 1003.72 394.42 1003.72 399.84 1003.72 403.76 1003.72 407.69 1003.72 409.78 1003.72 411.87 1003.74 413.41 1003.75 414.96 1003.83 416.57 1003.91 418.18 1004.03 420.26 1004.15 422.33 1004.21 425.29 1004.28 428.24 1004.25 430.45 1004.22 432.66 1004.21 434.69 1004.2 436.72 1004.29 438.22 1004.38 439.72 1003.47 440.79 1002.56 441.86 1001.36 441.12 1000.16 440.39 1000.7 439.09 1001.24 437.79 1002.6 438.12 1003.97 438.45 1003.86 439.85 1003.75 441.25 1002.35 441.36 1000.95 441.47 1000.59 439.09 1000.24 436.72 1000.23 434.69 1000.22 432.66 1000.19 430.45 1000.16 428.24 1000.23 425.29 1000.29 422.33 1000.41 420.26 1000.53 418.18 1000.61 416.57 1000.69 414.96 1000.7 413.41 1000.72 411.87 1000.72 409.78 1000.72 407.69 1000.72 403.76 1000.72 399.84 1000.72 394.42 1000.72 389 1000.72 383 1000.72 377 1000.72 367.01 1000.72 357.02 1000.62 350.42 1000.52 343.81 1000.33 340.12 1000.15 336.43 1000.06 334.05 999.97 331.67 999.97 330.25 999.96 328.84 999.96 328.54 999.96 328.24 1000.02 327.89 1000.07 327.54 1000.23 327.23 1000.39 326.91 1000.64 326.66 1000.89 326.41 1001.21 326.25 1001.52 326.09 1001.87 326.04 1002.22 325.98 1002.57 326.04 1002.92 326.09 1003.23 326.25 1003.55 326.41 1003.8 326.66 1004.05 326.91 1004.21 327.23 1004.37 327.54 1004.42 327.89 1004.48 328.24 1004.48 328.54 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 196px; top: 504px;" data-block-id="a0f26e4801f9a79a0f362b17c5e1e23f" data-name="math-51c3a8"><div class="sl-block-content notranslate fragment" style="z-index: 38; font-size: 65%;" data-fragment-index="8"><div class="math-input">\text{deg}((f-g)(X)) \le (n-1)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 589.72px; top: 504px;" data-block-id="ea6d336107ddb41f86f63d176fbddf2c" data-name="math-6d0c11"><div class="sl-block-content notranslate fragment" style="z-index: 39; font-size: 65%;" data-fragment-index="9"><div class="math-input">\implies \ \text{Roots: }\big|\{x \ | \ (f-g)(x)=0\}\big| \le n</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 407.5px; top: 572px;" data-block-id="f8e239b329750a73d77d74cfcd8ca4ac" data-name="math-b000ec"><div class="sl-block-content notranslate fragment" style="z-index: 40; font-size: 65%;" data-fragment-index="10"><div class="math-input">\mathbb{P}\left((f-g)(s) = 0\right) = \frac{n}{q} \approx 0 \text{ since } q \gg n</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 635px;" data-block-id="28811bd357f5217244932e9fa3465dd8" data-name="text-f22152"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 41; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="11">For largest possible \(n=2^{28}\) and \(q \approx 2^{254}\), its still very unlikely: \(2^{-226}\)</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="afb931370d5720d74d80adbf67450e94" data-auto-animate=""><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="a6d7d8752c429a4269ced6cdcd44b044"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 105px;" data-name="text-a73f1f" data-block-id="429ebea1c95ff18c1e13dc825cecdccf"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="" data-fragment-index="0">
+<p>\(3.\) How can the secret \(s\) be universally accepted?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 267px;" data-name="text-ae466e" data-block-id="b6ee207ecd28d3638aec51c86c405f09"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="4">Given \(\textsf{srs}_1\), its impossible to find \(s\). How do we commit then?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 369px; top: 177.5px;" data-name="math-2d5028" data-block-id="46eb0f0dd36dc8f7bde449f27b5db26d"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 65%;" data-fragment-index="1"><div class="math-input">\textsf{srs}_1 = \{G_1, sG_1, s^2G_1, s^3G_1, \dots, s^DG_1\}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 144.5px; top: 346px;" data-name="math-51c3a8" data-block-id="03cfe5967c69eeec87110356a82b8ac4"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 65%;" data-fragment-index="5"><div class="math-input">\textsf{com}(\textcolor{lightgreen}{f}) := 
+\textcolor{lightgreen}{c_0}(G_1) + 
+\textcolor{lightgreen}{c_1}(sG_1) + 
+\textcolor{lightgreen}{c_2}(s^2G_1) + \dots + 
+\textcolor{lightgreen}{c_{n-1}}(s^{n-1}G_1)
+= \textcolor{lightgreen}{f(s)}G_1</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-704645" style="height: auto;" data-block-id="260ff0fcf4828221dfba046dc396f76e"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 993.5px 237.75px; z-index: 15;" data-fragment-index="2">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 826px; top: 216px;" data-name="line-40183b" data-origin-id="7e5f30f297a8a6d050752325ce9e7fa5" data-block-id="01e4babff8f4ff0f3a017eda09d1f0aa"><div class="sl-block-content" data-line-x1="23" data-line-y1="28" data-line-x2="0" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="23" height="28" viewbox="0 0 23 28"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="23.5" y1="28.5" x2="3.0389576934400555" y2="3.590905018100937"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="23.5" y1="28.5" x2="3.0389576934400555" y2="3.590905018100937"></line><polygon fill="#aaaaaa" transform="translate(2.5389576934400555,3.090905018100937) rotate(-39.401)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 849px; top: 244px;" data-name="line-f9c362" data-origin-id="ebaf93b74e9dea74b9bb4d2f22c38f98" data-block-id="496f1f411940da0397aecd55d8d9c1b2"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 971px; top: 228.5px;" data-name="text-7a4fbf" data-origin-id="fb4430430e0270a62baf16b042f1f9d2" data-block-id="0a535cbd6d5ddea6b235cece9bfc8633"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; font-size: 80%; text-align: left; color: rgb(255, 229, 153);">
+<p>unknown</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-block-id="87e14f4c65902370c07fe9d6e6555fce" data-name="group-9591b2"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1033.5px 154px; z-index: 19;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 849px; top: 144px;" data-origin-id="01e4babff8f4ff0f3a017eda09d1f0aa" data-block-id="c88c5cef4ee83493262ed965c1ecd761" data-name="line-307926"><div class="sl-block-content" data-line-x1="62" data-line-y1="0" data-line-x2="0" data-line-y2="33.5" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 20;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="62" height="33.5" viewbox="0 0 62 33.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="62.5" y1="0.5" x2="4.019146865929564" y2="32.098525483731606"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="62.5" y1="0.5" x2="4.019146865929564" y2="32.098525483731606"></line><polygon fill="#aaaaaa" transform="translate(3.519146865929564,31.598525483731606) rotate(241.617)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 911px; top: 143.5px;" data-origin-id="496f1f411940da0397aecd55d8d9c1b2" data-block-id="5fdb0a10c918a32653317eede361f8b3" data-name="line-6263f8"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="105.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 1028px; top: 130px;" data-origin-id="0a535cbd6d5ddea6b235cece9bfc8633" data-block-id="16bf62e92258208d558cf7b76e92af51" data-name="text-0c669b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; font-size: 80%; text-align: left; color: rgb(255, 229, 153);">
+<p>\(D \approx 100M\)</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 422px;" data-block-id="c1a05b201397aba14bd3c324cc611375" data-name="text-7fd9d7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="6">Linear combination of coefficients and the SRS!</li>
+	<li class="fragment" data-fragment-index="7">How does verification work?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-ec41dc" style="width: auto; height: auto; left: 333.5px; top: 531px;" data-block-id="1147fa0c65d1a6b2f38548d65f5ba87f"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 65%;" data-fragment-index="8"><div class="math-input">\textsf{verify}\left(\pi, z\right) \equiv \textcolor{pink}{w(s)}\cdot (s-z) \stackrel{?}{=} (\textcolor{pink}{f(s)}-\textcolor{pink}{f(z)})</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-ebeb7d" data-block-id="26732baf59fecb19ee48825f9826a45c"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 638px 557.623px; z-index: 26;" data-fragment-index="9">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-ac5d47" style="width: 4.45996px; height: 34.9168px; left: 617.631px; top: 538.9px;" data-origin-id="57f8edf7bc2ae779cdab1bc36e23f2bd" data-block-id="7454602c661c22e187d0df1eeddf7018"><div class="sl-block-content" data-points="755.75 756.88,755.75 761.53,755.75 767.74,755.75 774.82,755.75 781.14,755.75 784.88,755.75 787.15,755.75 788.12,755.75 789.29,755.75 789.39,755.75 789.5,755.75 789.62,755.75 789.73,755.75 789.74,755.75 789.74" data-timestamp="1646299173678" style="z-index: 27;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="753.52001953125 754.6800537109375 4.4599609375 34.91680908203125"><path fill="rgb(255, 0, 0)" d="M 757.9773516845703 757.8971875 Q 757.98 757.9 757.9 760.17 757.83 762.43 757.67 765.53 757.52 768.63 757.4 772.03 757.29 775.43 757.29 778.34 757.29 781.24 757.37 783.23 757.46 785.21 757.61 786.61 757.77 788.01 756.92 789.01 756.07 790 754.95 789.32 753.83 788.63 754.33 787.42 754.83 786.21 756.11 786.52 757.38 786.82 757.28 788.13 757.18 789.44 755.87 789.54 754.56 789.64 754.3 787.43 754.04 785.21 754.13 783.23 754.21 781.24 754.21 778.34 754.21 775.43 754.1 772.03 753.98 768.63 753.83 765.53 753.67 762.43 753.6 760.17 753.52 757.9 753.52 757.39 753.52 756.88 753.58 756.54 753.63 756.19 753.79 755.88 753.95 755.57 754.19 755.32 754.44 755.08 754.75 754.92 755.06 754.76 755.41 754.71 755.75 754.65 756.09 754.71 756.44 754.76 756.75 754.92 757.06 755.08 757.31 755.32 757.55 755.57 757.71 755.88 757.87 756.19 757.92 756.54 757.98 756.88 757.98 757.39 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-e34a7d" style="width: 43.9546px; height: 4.56995px; left: 613.691px; top: 539.755px;" data-origin-id="618105b351d5fb8567dff38b9e9e0f0a" data-block-id="a59fcb28d1650f0f89ee43f9825531e9"><div class="sl-block-content" data-points="751.81 757.82,754.23 757.82,756.9 757.82,761.53 757.82,767.48 757.82,774.19 757.82,780.4 757.82,783.5 757.82,786.51 757.82,788.79 757.82,790.87 757.82,793.05 757.82,795.05 757.82" data-timestamp="1646299176103" style="z-index: 28;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="749.5799560546875 755.5350341796875 43.95458984375 4.5699462890625"><path fill="rgb(255, 0, 0)" d="M 752.339375 755.5602672200521 Q 752.34 755.56 753.46 755.54 754.58 755.53 756.1 755.54 757.62 755.55 759.98 755.64 762.34 755.73 765.32 755.87 768.31 756.01 771.56 756.12 774.81 756.23 777.6 756.24 780.38 756.25 782.07 756.17 783.77 756.09 785.48 756.01 787.2 755.93 789.53 755.82 791.87 755.7 792.92 756.6 793.96 757.49 793.24 758.66 792.52 759.83 791.26 759.31 789.99 758.78 790.31 757.44 790.63 756.11 792 756.22 793.37 756.32 793.48 757.69 793.58 759.06 790.39 759.39 787.2 759.71 785.48 759.63 783.77 759.55 782.07 759.47 780.38 759.39 777.6 759.4 774.81 759.41 771.56 759.52 768.31 759.63 765.32 759.77 762.34 759.91 759.98 760 757.62 760.09 756.1 760.1 754.58 760.11 753.46 760.1 752.34 760.08 752.07 760.08 751.81 760.08 751.46 760.02 751.11 759.97 750.8 759.81 750.48 759.65 750.23 759.4 749.98 759.15 749.82 758.83 749.66 758.52 749.61 758.17 749.55 757.82 749.61 757.47 749.66 757.12 749.82 756.81 749.98 756.49 750.23 756.24 750.48 755.99 750.8 755.83 751.11 755.67 751.46 755.62 751.81 755.56 752.07 755.56 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-6b603a" style="width: 4.48267px; height: 39.7487px; left: 655.961px; top: 536.245px;" data-origin-id="287f05edd0f257f6574bcd4e2a0e402f" data-block-id="952bafc47ea9707b353daa772c98ab58"><div class="sl-block-content" data-points="794.09 754.24,794.09 758.14,794.09 762.12,794.09 766.35,794.09 771.14,794.09 775.34,794.09 779.29,794.09 781.35,794.09 783.89,794.09 786.41,794.09 788.51,794.09 790.96,794.09 793.65" data-timestamp="1646299178240" style="z-index: 29;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="791.8499755859375 752.0250244140625 4.482666015625 39.7486572265625"><path fill="rgb(255, 0, 0)" d="M 796.3326684570313 755.093125 Q 796.33 755.09 796.31 756.86 796.29 758.63 796.26 760.62 796.23 762.61 796.19 764.77 796.15 766.93 796.11 769.23 796.07 771.53 796.06 773.63 796.06 775.73 796.08 777.83 796.1 779.92 796.17 782.31 796.24 784.7 796.3 787.35 796.35 790 795.4 791.11 794.44 792.23 793.19 791.46 791.94 790.7 792.5 789.34 793.06 787.98 794.49 788.32 795.92 788.67 795.81 790.13 795.69 791.6 794.23 791.71 792.76 791.83 792.35 788.26 791.94 784.7 792.01 782.31 792.08 779.92 792.1 777.83 792.12 775.73 792.12 773.63 792.11 771.53 792.07 769.23 792.03 766.93 791.99 764.77 791.95 762.61 791.92 760.62 791.89 758.63 791.87 756.86 791.85 755.09 791.85 754.67 791.85 754.24 791.9 753.89 791.96 753.55 792.12 753.23 792.28 752.92 792.52 752.67 792.77 752.43 793.08 752.27 793.4 752.11 793.74 752.05 794.09 752 794.44 752.05 794.78 752.11 795.1 752.27 795.41 752.43 795.66 752.67 795.9 752.92 796.06 753.23 796.22 753.55 796.28 753.89 796.33 754.24 796.33 754.67 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-39158a" style="width: 46.643px; height: 4.48438px; left: 615.666px; top: 574.516px;" data-origin-id="4ee30a8d8ce26104bbd188000a7e6217" data-block-id="a2418287b4e23aedd4b4f4e572caa3ff"><div class="sl-block-content" data-points="753.77 792.54,757.57 792.54,762.81 792.54,769.82 792.54,777.82 792.54,785.63 792.54,793.66 792.54,797.22 792.54,799.52 792.54" data-timestamp="1646299180111" style="z-index: 30;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="751.5550537109375 790.295654296875 46.64300537109375 4.484375"><path fill="rgb(255, 0, 0)" d="M 754.6012499999999 790.2956282552083 Q 754.6 790.3 756.47 790.33 758.35 790.36 761.07 790.48 763.79 790.6 767.3 790.76 770.82 790.91 774.73 790.98 778.65 791.04 782.58 791.04 786.51 791.04 790.03 791.04 793.55 791.04 795.28 791.04 797.01 791.04 797.76 791.67 798.5 792.31 797.99 793.14 797.48 793.97 796.58 793.59 795.68 793.22 795.91 792.27 796.13 791.33 797.1 791.4 798.08 791.48 798.15 792.45 798.23 793.42 795.89 793.73 793.55 794.04 790.03 794.04 786.51 794.04 782.58 794.04 778.65 794.04 774.73 794.1 770.82 794.17 767.3 794.32 763.79 794.48 761.07 794.6 758.35 794.72 756.47 794.75 754.6 794.78 754.19 794.78 753.77 794.78 753.42 794.73 753.08 794.67 752.76 794.52 752.45 794.36 752.2 794.11 751.95 793.86 751.79 793.55 751.64 793.23 751.58 792.89 751.53 792.54 751.58 792.19 751.64 791.85 751.79 791.53 751.95 791.22 752.2 790.97 752.45 790.72 752.76 790.56 753.08 790.41 753.42 790.35 753.77 790.3 754.19 790.3 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 609px;" data-block-id="19247055e2f42cd9ea9c98e6d26b9e46" data-name="text-7399b5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 31; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="10">How do we handle multiplications?</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="73127cf5a2d3d6b27ee6d537f98066d8"><div class="sl-block" data-block-type="text" style="width: 1144.42px; left: 67.79px; top: 8.9356px; height: auto;" data-name="text-f028d3" data-block-id="57c75da9a0513d685679fea0c85b4266"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153); font-size: 85%;" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Kate Commitment Scheme</span></h2>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-ebeb7d" data-block-id="36ed34fb008493c877d37f829333372a"><div class="sl-block-content sl-block-group-content" style="transform-origin: 638px 136.623px; z-index: 11;">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-ac5d47" style="width: 4.45996px; height: 34.9168px; left: 617.631px; top: 117.9px;" data-block-id="4c08463e672e46a17f77f74667752311"><div class="sl-block-content" data-points="755.75 756.88,755.75 761.53,755.75 767.74,755.75 774.82,755.75 781.14,755.75 784.88,755.75 787.15,755.75 788.12,755.75 789.29,755.75 789.39,755.75 789.5,755.75 789.62,755.75 789.73,755.75 789.74,755.75 789.74" data-timestamp="1646299173678" style="z-index: 12;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="753.52001953125 754.6800537109375 4.4599609375 34.91680908203125"><path fill="rgb(255, 0, 0)" d="M 757.9773516845703 757.8971875 Q 757.98 757.9 757.9 760.17 757.83 762.43 757.67 765.53 757.52 768.63 757.4 772.03 757.29 775.43 757.29 778.34 757.29 781.24 757.37 783.23 757.46 785.21 757.61 786.61 757.77 788.01 756.92 789.01 756.07 790 754.95 789.32 753.83 788.63 754.33 787.42 754.83 786.21 756.11 786.52 757.38 786.82 757.28 788.13 757.18 789.44 755.87 789.54 754.56 789.64 754.3 787.43 754.04 785.21 754.13 783.23 754.21 781.24 754.21 778.34 754.21 775.43 754.1 772.03 753.98 768.63 753.83 765.53 753.67 762.43 753.6 760.17 753.52 757.9 753.52 757.39 753.52 756.88 753.58 756.54 753.63 756.19 753.79 755.88 753.95 755.57 754.19 755.32 754.44 755.08 754.75 754.92 755.06 754.76 755.41 754.71 755.75 754.65 756.09 754.71 756.44 754.76 756.75 754.92 757.06 755.08 757.31 755.32 757.55 755.57 757.71 755.88 757.87 756.19 757.92 756.54 757.98 756.88 757.98 757.39 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-e34a7d" style="width: 43.9546px; height: 4.56995px; left: 613.691px; top: 118.755px;" data-block-id="bf0d68e7cafd9d323c7017c84630cab4"><div class="sl-block-content" data-points="751.81 757.82,754.23 757.82,756.9 757.82,761.53 757.82,767.48 757.82,774.19 757.82,780.4 757.82,783.5 757.82,786.51 757.82,788.79 757.82,790.87 757.82,793.05 757.82,795.05 757.82" data-timestamp="1646299176103" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="749.5799560546875 755.5350341796875 43.95458984375 4.5699462890625"><path fill="rgb(255, 0, 0)" d="M 752.339375 755.5602672200521 Q 752.34 755.56 753.46 755.54 754.58 755.53 756.1 755.54 757.62 755.55 759.98 755.64 762.34 755.73 765.32 755.87 768.31 756.01 771.56 756.12 774.81 756.23 777.6 756.24 780.38 756.25 782.07 756.17 783.77 756.09 785.48 756.01 787.2 755.93 789.53 755.82 791.87 755.7 792.92 756.6 793.96 757.49 793.24 758.66 792.52 759.83 791.26 759.31 789.99 758.78 790.31 757.44 790.63 756.11 792 756.22 793.37 756.32 793.48 757.69 793.58 759.06 790.39 759.39 787.2 759.71 785.48 759.63 783.77 759.55 782.07 759.47 780.38 759.39 777.6 759.4 774.81 759.41 771.56 759.52 768.31 759.63 765.32 759.77 762.34 759.91 759.98 760 757.62 760.09 756.1 760.1 754.58 760.11 753.46 760.1 752.34 760.08 752.07 760.08 751.81 760.08 751.46 760.02 751.11 759.97 750.8 759.81 750.48 759.65 750.23 759.4 749.98 759.15 749.82 758.83 749.66 758.52 749.61 758.17 749.55 757.82 749.61 757.47 749.66 757.12 749.82 756.81 749.98 756.49 750.23 756.24 750.48 755.99 750.8 755.83 751.11 755.67 751.46 755.62 751.81 755.56 752.07 755.56 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-6b603a" style="width: 4.48267px; height: 39.7487px; left: 655.961px; top: 115.245px;" data-block-id="b8ee26697b9e31407df129da14678994"><div class="sl-block-content" data-points="794.09 754.24,794.09 758.14,794.09 762.12,794.09 766.35,794.09 771.14,794.09 775.34,794.09 779.29,794.09 781.35,794.09 783.89,794.09 786.41,794.09 788.51,794.09 790.96,794.09 793.65" data-timestamp="1646299178240" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="791.8499755859375 752.0250244140625 4.482666015625 39.7486572265625"><path fill="rgb(255, 0, 0)" d="M 796.3326684570313 755.093125 Q 796.33 755.09 796.31 756.86 796.29 758.63 796.26 760.62 796.23 762.61 796.19 764.77 796.15 766.93 796.11 769.23 796.07 771.53 796.06 773.63 796.06 775.73 796.08 777.83 796.1 779.92 796.17 782.31 796.24 784.7 796.3 787.35 796.35 790 795.4 791.11 794.44 792.23 793.19 791.46 791.94 790.7 792.5 789.34 793.06 787.98 794.49 788.32 795.92 788.67 795.81 790.13 795.69 791.6 794.23 791.71 792.76 791.83 792.35 788.26 791.94 784.7 792.01 782.31 792.08 779.92 792.1 777.83 792.12 775.73 792.12 773.63 792.11 771.53 792.07 769.23 792.03 766.93 791.99 764.77 791.95 762.61 791.92 760.62 791.89 758.63 791.87 756.86 791.85 755.09 791.85 754.67 791.85 754.24 791.9 753.89 791.96 753.55 792.12 753.23 792.28 752.92 792.52 752.67 792.77 752.43 793.08 752.27 793.4 752.11 793.74 752.05 794.09 752 794.44 752.05 794.78 752.11 795.1 752.27 795.41 752.43 795.66 752.67 795.9 752.92 796.06 753.23 796.22 753.55 796.28 753.89 796.33 754.24 796.33 754.67 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-39158a" style="width: 46.643px; height: 4.48438px; left: 615.666px; top: 153.516px;" data-block-id="d02627893263c61288605d8dd7e83cc9"><div class="sl-block-content" data-points="753.77 792.54,757.57 792.54,762.81 792.54,769.82 792.54,777.82 792.54,785.63 792.54,793.66 792.54,797.22 792.54,799.52 792.54" data-timestamp="1646299180111" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="751.5550537109375 790.295654296875 46.64300537109375 4.484375"><path fill="rgb(255, 0, 0)" d="M 754.6012499999999 790.2956282552083 Q 754.6 790.3 756.47 790.33 758.35 790.36 761.07 790.48 763.79 790.6 767.3 790.76 770.82 790.91 774.73 790.98 778.65 791.04 782.58 791.04 786.51 791.04 790.03 791.04 793.55 791.04 795.28 791.04 797.01 791.04 797.76 791.67 798.5 792.31 797.99 793.14 797.48 793.97 796.58 793.59 795.68 793.22 795.91 792.27 796.13 791.33 797.1 791.4 798.08 791.48 798.15 792.45 798.23 793.42 795.89 793.73 793.55 794.04 790.03 794.04 786.51 794.04 782.58 794.04 778.65 794.04 774.73 794.1 770.82 794.17 767.3 794.32 763.79 794.48 761.07 794.6 758.35 794.72 756.47 794.75 754.6 794.78 754.19 794.78 753.77 794.78 753.42 794.73 753.08 794.67 752.76 794.52 752.45 794.36 752.2 794.11 751.95 793.86 751.79 793.55 751.64 793.23 751.58 792.89 751.53 792.54 751.58 792.19 751.64 791.85 751.79 791.53 751.95 791.22 752.2 790.97 752.45 790.72 752.76 790.56 753.08 790.41 753.42 790.35 753.77 790.3 754.19 790.3 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 184px;" data-name="text-ae466e" data-block-id="87f3ddb686abbc31ee7e457369ec4cd4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Elliptic curve pairings:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-817741" style="width: auto; height: auto; left: 486.5px; top: 269px;" data-block-id="8e2a9386a941c9b6d65ae7e9f0bf6316"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 65%;" data-fragment-index="1"><div class="math-input">e(aG_1, bG_2) = (ab)G_T</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-name="group-02300a" data-block-id="66b1f00e5ef3dcaedd0809fdee602ebd"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 958px 297px; z-index: 18;" data-fragment-index="4">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 803px; top: 292.5px;" data-origin-id="990d1127fefe602c2271495d339adb03" data-name="line-3c7791" data-block-id="bdb2ab95348fefb7269df209a0e1b477"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="103" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="103" height="1" viewbox="0 0 103 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="103.5" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="4.5" y1="0.5" x2="103.5" y2="0.5"></line><polygon fill="#fec0cb" transform="translate(3.9999999999999996,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 923px; top: 277px;" data-origin-id="80ed60cc6a9c8d01dd2ec785beaaf1e6" data-name="text-8741d1" data-block-id="0f7072418b7c9d4eff43098995cc2ce8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; font-size: 80%; text-align: left; color: rgb(238, 238, 238);">
+<p>Generator of \(\mathbb{G}_T\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-name="group-272e64" data-block-id="cdb09a83125b5ebb4e6694d830a69b6e"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 317.278px 292.5px; z-index: 21;" data-fragment-index="2">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 358.555px; top: 292.5px;" data-origin-id="2bbbed29255baf8d0abe751350827c55" data-name="line-7940a7" data-block-id="06fd94aa2373753b4615c54e90a32be3"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="118.445" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 22;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="118.445" height="1" viewbox="0 0 118.445 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="114.945" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="0.5" x2="114.945" y2="0.5"></line><polygon fill="#fec0cb" transform="translate(114.445,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 157px; top: 277px;" data-origin-id="001dced2568141ba742e4820c19a34d5" data-name="text-695be5" data-block-id="7f674b7cfce30a4cbcec61f1f38a1d5b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; font-size: 80%; text-align: right; color: rgb(238, 238, 238);">
+<p>pairing</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-name="group-3cf739" data-block-id="c81812f2ae8d0bf65b7c345d74dc34b4"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 835.29px 243.5px; z-index: 24;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 616.58px; top: 231px;" data-origin-id="56e54ab3f558bb321dd2c860d823c6d6" data-name="line-23e782" data-block-id="959e99cfed4bbe8eebe9efc797d407dd"><div class="sl-block-content" data-line-x1="35" data-line-y1="0" data-line-x2="0" data-line-y2="38" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 25;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="35" height="38" viewbox="0 0 35 38"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="35.5" y1="0.5" x2="3.209903019007162" y2="35.55781957936365"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="35.5" y1="0.5" x2="3.209903019007162" y2="35.55781957936365"></line><polygon fill="#fec0cb" transform="translate(2.709903019007162,35.05781957936365) rotate(222.647)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 651.58px; top: 231px;" data-origin-id="be4322b1f423bcf83e18d893dd6e9423" data-name="line-496203" data-block-id="6428465c3b12a8770a536f501774bc61"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="204" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="none" style="z-index: 26;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="204" height="1" viewbox="0 0 204 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="204.5" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="0.5" x2="204.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 864px; top: 218px;" data-origin-id="e110cd4419aa890020ada52e4ec0f74d" data-name="text-29b06a" data-block-id="fc48428cbd5f0b6353f3a7b4fa43c79d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 27; font-size: 80%; text-align: left; color: rgb(238, 238, 238);">
+<p>Generator of \(\mathbb{G}_2\)</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 78.5573px; top: 343.5px;" data-name="text-395765" data-block-id="36be402b9584446116204188a059839b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="5">Verifier needs a different SRS: \(\textsf{srs}_2 = \{G_2, sG_2\}\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-2794b4" data-block-id="2c036b50e865a463076bafef6a8fd5de" style="width: auto; height: auto; left: 267.591px; top: 434.5px;"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 65%;" data-fragment-index="6"><div class="math-input">\begin{aligned}
+\textsf{LHS} \equiv \textcolor{pink}{w(s)}\cdot (s-z)G_T &amp;= e(\textcolor{pink}{w(s)}G_1, (s-z)G_2) \\[5pt]
+&amp;= e(W, \ sG_2 - zG_2)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 221.5px; top: 585px;" data-block-id="f9d0964684673fe91db84d27692922b8" data-name="math-3948bb"><div class="sl-block-content notranslate fragment" style="z-index: 30; font-size: 65%;" data-fragment-index="9"><div class="math-input">\begin{aligned}
+\textsf{RHS} \equiv (\textcolor{pink}{f(s)} - f(z)) \cdot 1 G_T &amp;= e((\textcolor{pink}{f(s)} - f(z))G_1, 1\cdot G_2) \\[5pt]
+&amp;= e(F - f(z)G_1, \ 1\cdot G_2) 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-ec41dc" style="width: auto; height: auto; left: 332.488px; top: 109.358px;" data-block-id="a7f45ba7272b8c269aa69ebdba5699f6"><div class="sl-block-content notranslate" style="z-index: 31; font-size: 65%;"><div class="math-input">\textsf{verify}\left(\pi, z\right) \equiv \textcolor{pink}{w(s)}\cdot (s-z) \stackrel{?}{=} (\textcolor{pink}{f(s)}-\textcolor{pink}{f(z)})</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-ce56d3" data-block-id="c4dbca9a2a78483262c872d1b4e6e6ae" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1112px 490px; z-index: 32;" data-fragment-index="12">
+<div class="sl-block" data-block-type="line" data-name="line-31dbd9" data-block-id="f9e0f0a03dc1cae9105d1e5ff0e7a708" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1046px; top: 490px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="131" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="none" style="z-index: 33;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="131" height="1" viewbox="0 0 131 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="131.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="131.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 967.5px; top: 460px;" data-block-id="eedfcbe60a19906c3267ecbcf33b54f0" data-name="math-95b0fc"><div class="sl-block-style" style="z-index: 34; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 34; font-size: 65%;"><div class="math-input">\underbrace{\hspace{1.2cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-155b19" data-block-id="7b217e3c45274030c45547bf819bdd0f" style="height: auto; width: 54px; left: 1177px; top: 465px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 35; color: rgb(167, 255, 167);">
+<p>\((1)\)</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="width: auto; height: auto;" data-block-id="581ebbbfb5525205942002fc2460c0b1" data-name="group-64cc2a"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1113.44px 643.5px; z-index: 36;" data-fragment-index="13">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1047.44px; top: 643.5px;" data-origin-id="98850fed88e5487d6ec9dea0444f9657" data-block-id="15a395f31d5f16a6a4e1e2e0adb0c7e5" data-name="line-20bc18"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="131" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="none" style="z-index: 37;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="131" height="1" viewbox="0 0 131 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="131.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="131.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 968.944px; top: 613.5px;" data-origin-id="4c5a9c357a2901854f4b7b6221008739" data-block-id="76eb4ee68448451e23b2c808a40cff7b" data-name="math-cdf2ab"><div class="sl-block-style" style="z-index: 38; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 38; font-size: 65%;"><div class="math-input">\underbrace{\hspace{1.2cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 54px; left: 1178.44px; top: 618.5px;" data-origin-id="67a356a0ba0a6f3d38ed175565432c34" data-block-id="84052461072c60a0637cf1f8348623c9" data-name="text-61c7f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 39; color: rgb(167, 255, 167);">
+<p>\((2)\)</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-1cb822" data-block-id="3b418ff2cf066bb19ddf6fc1debb2827" style="width: 381px; height: 64px; left: 592px; top: 481.5px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 40;" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 381 64"><rect width="381" height="64" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 372px; height: 64px; left: 601px; top: 642px;" data-block-id="11876e01490862d38205b90ab2a1f2bb" data-name="shape-d153f6"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 41;" data-fragment-index="11"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 372 64"><rect width="372" height="64" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="height: auto;" data-block-id="005643b38176d7e683b9d126043de96a" data-name="group-3dcae5"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 784.012px 224px; z-index: 42;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 543.58px; top: 199px;" data-origin-id="959e99cfed4bbe8eebe9efc797d407dd" data-block-id="432de264d2913f7b5509044c8abac68f" data-name="line-c3a437"><div class="sl-block-content" data-line-x1="72.08600000000001" data-line-y1="0" data-line-x2="0" data-line-y2="70" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 43;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="72.08600000000001" height="70" viewbox="0 0 72.08600000000001 70"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="72.58600000000001" y1="0.5" x2="3.3696427253107046" y2="67.7133980138758"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="72.58600000000001" y1="0.5" x2="3.3696427253107046" y2="67.7133980138758"></line><polygon fill="#fec0cb" transform="translate(2.8696427253107046,67.2133980138758) rotate(225.841)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 614.691px; top: 199px;" data-origin-id="6428465c3b12a8770a536f501774bc61" data-block-id="e78c3825a24dd53c6e513af477a3e1fa" data-name="line-c12b1e"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="204" data-line-y2="0" data-line-color="#fec0cb" data-line-start-type="none" data-line-end-type="none" style="z-index: 44;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="204" height="1" viewbox="0 0 204 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="204.5" y2="0.5"></line><line class="line-element" stroke="#fec0cb" stroke-width="1" x1="0.5" y1="0.5" x2="204.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 190px; left: 834.444px; top: 179px;" data-origin-id="fc48428cbd5f0b6353f3a7b4fa43c79d" data-block-id="0451640d4300143c11c780c2fe9e8b98" data-name="text-69ffd3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 45; font-size: 80%; text-align: left; color: rgb(238, 238, 238);">
+<p>Generator of \(\mathbb{G}_1\)</p>
+</div></div>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 353.591px; height: 49.5px; left: 603px; top: 432px;" data-block-id="93d724f4185c0fad93c8ec78dcd53019" data-name="shape-3727c4"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 46;" data-fragment-index="7"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 354 50"><rect width="353.591" height="49.5" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 397.5px; height: 54px; left: 601px; top: 578px;" data-block-id="b5da0c5a924aa1646ccf21b3dcb66152" data-name="shape-336a0a"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 47;" data-fragment-index="10"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 398 54"><rect width="397.5" height="54" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="96978d14028f71f0162cfb7be8d45276"><div class="sl-block" data-block-type="text" style="width: 854.42px; left: 212.79px; top: 0px; height: auto;" data-name="text-f028d3" data-block-id="7c09ffe197d70eaad04e4e77f3b02b4e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 229, 153);" data-has-custom-html="">
+<h2><span style="font-size:1.2em">Summary</span></h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 109px;" data-name="text-a73f1f" data-block-id="96d142ff5726ccc8716d4b153619f57f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; font-size: 110%; line-height: 1.43; letter-spacing: 0.03em;" data-has-line-height="" data-has-letter-spacing="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Recap of Schnorr signature
+	<ul>
+		<li class="fragment" data-fragment-index="1">Sigma protocol example</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="2">Forms of polynomials
+	<ul>
+		<li class="fragment" data-fragment-index="3">Lagrange basis polynomials</li>
+		<li class="fragment" data-fragment-index="4">FFT vs monomial form</li>
+		<li class="fragment" data-fragment-index="5">Tradeoffs</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="6">Kate commitment scheme
+	<ul>
+		<li class="fragment" data-fragment-index="7">How do you I prove the knowledge of a polynomial? </li>
+		<li class="fragment" data-fragment-index="8">Structured reference string</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="9">Up next:
+	<ul>
+		<li class="fragment" data-fragment-index="10">Holographic proof systems (fancy word for SNARKs)</li>
+	</ul>
+	</li>
+</ul>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2351395,"slug":"aztec-study-club-5-polynomials","title":"Magic of Polynomials","description":"Aztec Study Club's fifth presentation on basics of polynomial commitment schemes.","width":1280,"height":720,"margin":0.05,"visibility":"all","published_at":"2022-09-02T15:32:26.276Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/98fa3942ced509be68f96f58b320cbf7/thumb.jpg?1646240749","view_count":50,"user":{"id":1496266,"username":"suyashbagad_aztec","name":"Suyash Bagad","description":"Cryptography Engineer ","thumbnail_url":"https://media.slid.es/avatars/1496266/suyash-profile.jpg","account_type":"enterprise","team_id":2257,"settings":{"id":6852744,"present_controls":true,"present_upsizing":true,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null},"membership":{"role":"owner","manager":true,"activated":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-orange","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":false,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":12,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":null,"data_updated_at":1654698510562,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 1280,
+				height: 720,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				scrollActivationWidth: null,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+
+	</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "UltraPlonk: Part 2"}' />
+		<title>UltraPlonk: Part 2</title>
+
+		<meta name="description" content="High-level summary of how Aztec works.">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-mint">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="4e68b1d6b4de0325af7537773281bceb" data-background-color="#000000"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 249px; height: auto;" data-block-id="18a183c2ef7a0be0dca19d0432a3e075" data-name="text-77f26f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>UltraPlonk: Part II</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-862e92" data-block-id="73620fb028af4b9c1e1639c361d22c6c" style="height: auto; width: 692px; left: 294px; top: 360px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; letter-spacing: 0.03em; font-size: 110%;" data-has-letter-spacing="">
+<p>Crypto Study Club</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 692px; left: 294px; top: 419px;" data-block-id="3ffa67adf617d1de57732846c6975796" data-name="text-271494"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; letter-spacing: 0.03em; font-size: 80%;" data-has-letter-spacing="">
+<p>28th Sept 2022</p>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="8ffa70f3af86c089e068e6fb6ca64601" data-auto-animate=""><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="1e8ab530e33413f0ddf710754cfe7a40"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 10;">
+<h1>Blake2s Basics</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d6f642" data-block-id="b636fa1a093c94e84970876c0d7b8bd4" style="width: auto; height: auto; left: 136px; top: 233.75px;"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 60%;" data-fragment-index="2"><div class="math-input">\texttt{blake2s}(
+``
+\texttt{\textcolor{grey}{The quick brown fox jumps over the lazy dog}}
+"
+) = </div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-617423" data-block-id="74faeb384a123a8dd65d4a4c2b42b7a2" style="width: auto; height: auto; left: 136px; top: 283.25px;"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%;" data-fragment-index="3"><div class="math-input">\texttt{\textcolor{grey}{606beeec743ccbeff6cbcdf5d5302aa855c256c29b88c8ed331ea1a6bf3c8812}}</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 103px;" data-block-id="89d6b8e151a62c06747d4318330f9ccc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Blake2s hash function improves upon BLAKE (SHA-3 finalist)</li>
+	<li class="fragment" data-fragment-index="1">Input byte-length \(l \le 2^{64}\), fixed output byte-length \(L=32\)</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="1b1163c6ddbacd4005434e0448cc1226">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d6f642" style="width: auto; height: auto; left: 221px; top: 232.75px;" data-block-id="3e195c389100f3fc7fb6be3bd14b5055"><div class="sl-block-content notranslate" style="z-index: 10; font-size: 60%;"><div class="math-input">
+\texttt{\textcolor{grey}{The quick brown fox jumps over the lazy dog}}
+
+</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 103px;" data-block-id="4948fc0c62d2945907e756a03da4b2cc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="">Blake2s hash function improves upon BLAKE (SHA-3 finalist)</li>
+	<li class="">Input byte-length \(l \le 2^{64}\), fixed output byte-length \(L=32\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 221px; top: 349px;" data-name="math-8b1601" data-block-id="e398ef522fa900f4747d1d8c57df09b2"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 60%;" data-fragment-index="1"><div class="math-input">m^{0}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-3d38d8" data-block-id="65904bc0330581de683dff1826b2edda" style="width: 126.625px; height: 47.75px; left: 221px; top: 231.375px;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 13;" data-shape-stroke-color="#ffc475" data-shape-stroke-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 127 48"><defs><clippath id="shape-mask-14-1664354087966"><rect width="126.625" height="47.75" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2"></rect></clippath></defs><rect width="126.625" height="47.75" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2" clip-path="url(#shape-mask-14-1664354087966)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-e4f1d4" data-block-id="9266de23a036117c5e5313f74938f9e6" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 240px; top: 277.75px;"><div class="sl-block-content fragment" data-line-x1="44.3125" data-line-y1="0" data-line-x2="0" data-line-y2="68.25" data-line-color="#ffc475" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 14;" data-line-width="1px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="44.3125" height="68.25" viewbox="0 0 44.3125 68.25"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="44.8125" y1="0.5" x2="2.678225309877606" y2="65.39510290777666"></line><line class="line-element" stroke="#ffc475" stroke-width="1" x1="44.8125" y1="0.5" x2="2.678225309877606" y2="65.39510290777666"></line><polygon fill="#ffc475" transform="translate(2.178225309877606,64.89510290777666) rotate(212.994)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="503e690072922549c70148e409cfe60c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 15;">
+<h1>Blake2s Basics</h1>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="2e886aabaa0787a974046a32cf562046">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d6f642" style="width: auto; height: auto; left: 221px; top: 232.75px;" data-block-id="2af34bdbbe0e63843e92a4dd898f6295"><div class="sl-block-content notranslate" style="z-index: 10; font-size: 60%;"><div class="math-input">
+\texttt{\textcolor{grey}{The quick brown fox jumps over the lazy dog}}
+
+</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 103px;" data-block-id="ccd18dbbb3e73ef5402c9dec2f61d981"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="">Blake2s hash function improves upon BLAKE (SHA-3 finalist)</li>
+	<li class="">Input byte-length \(l \le 2^{64}\), fixed output byte-length \(L=32\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 221px; top: 349px;" data-name="math-8b1601" data-block-id="68aea35437197903b05f94094e4bed21"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 60%;"><div class="math-input">m^{0}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 381px; top: 349px;" data-name="math-4271d3" data-block-id="8aa145009adfb5cd939ff820afe0fbfb"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 60%;" data-fragment-index="0"><div class="math-input">m^{1}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-3d38d8" style="width: 129.625px; height: 47.75px; left: 346.375px; top: 231.375px;" data-block-id="f70e9736dea5edfa1d41ece30f918f5f"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 14;" data-shape-stroke-color="#ffc475" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 130 48"><defs><clippath id="shape-mask-22-1664354179774"><rect width="129.625" height="47.75" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2"></rect></clippath></defs><rect width="129.625" height="47.75" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2" clip-path="url(#shape-mask-22-1664354179774)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-56dfd3" data-block-id="881d7b0be5fd73849a4d334eb236d777" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 400px; top: 277.75px;"><div class="sl-block-content fragment" data-line-x1="18.6875" data-line-y1="0" data-line-x2="0" data-line-y2="68.25" data-line-color="#ffc475" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 15;" data-line-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="18.6875" height="68.25" viewbox="0 0 18.6875 68.25"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="19.1875" y1="0.5" x2="1.5563553466166784" y2="64.89200656018257"></line><line class="line-element" stroke="#ffc475" stroke-width="1" x1="19.1875" y1="0.5" x2="1.5563553466166784" y2="64.89200656018257"></line><polygon fill="#ffc475" transform="translate(1.0563553466166784,64.39200656018257) rotate(195.313)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="4e2fddee3ee1a807ebe2578219a46f58"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 16;">
+<h1>Blake2s Basics</h1>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="87d9758378cc499ba30cbd97355536f9">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d6f642" style="width: auto; height: auto; left: 221px; top: 232.75px;" data-block-id="d9c011bde202dfc61139109a079d5304"><div class="sl-block-content notranslate" style="z-index: 10; font-size: 60%;"><div class="math-input">
+\texttt{\textcolor{grey}{The quick brown fox jumps over the lazy dog}}
+
+</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 103px;" data-block-id="99169ef3d11154966f985a292e53775b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="">Blake2s hash function improves upon BLAKE (SHA-3 finalist)</li>
+	<li class="">Input byte-length \(l \le 2^{64}\), fixed output byte-length \(L=32\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 221px; top: 349px;" data-name="math-8b1601" data-block-id="98a0ccfd3427e64ae2b026889ea2c9d0"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 60%;"><div class="math-input">m^{0}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 381px; top: 349px;" data-name="math-4271d3" data-block-id="5cc239f6b5994c214d5700a374f6f5e0"><div class="sl-block-content notranslate" style="z-index: 13; font-size: 60%;"><div class="math-input">m^{1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 540px; top: 349px;" data-name="math-2050d3" data-block-id="954c5aecb6e0ba9dad7a3769ea172900"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 60%;" data-fragment-index="0"><div class="math-input">m^{2}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-3d38d8" style="width: 127.625px; height: 47.75px; left: 472.688px; top: 231.375px;" data-block-id="c93461eb8047f94c82060065c5761975"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#ffc475" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 128 48"><defs><clippath id="shape-mask-34-1664354297908"><rect width="127.625" height="47.75" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2"></rect></clippath></defs><rect width="127.625" height="47.75" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2" clip-path="url(#shape-mask-34-1664354297908)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-ecb162" data-block-id="f50c14bf2bbbf9aa4c8fc80abdad8a12" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 536.5px; top: 277.75px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="16.499500000000012" data-line-y2="71.25" data-line-color="#ffc475" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 16;" data-line-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="16.499500000000012" height="71.25" viewbox="0 0 16.499500000000012 71.25"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="16.097092372129634" y2="67.8531217015204"></line><line class="line-element" stroke="#ffc475" stroke-width="1" x1="0.5" y1="0.5" x2="16.097092372129634" y2="67.8531217015204"></line><polygon fill="#ffc475" transform="translate(15.597092372129634,67.3531217015204) rotate(166.962)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="9df7b1f8747b33594d34d1807b2e1c1a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 17;">
+<h1>Blake2s Basics</h1>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="680c062d77d1ba47480310e2425b2974">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" data-name="math-d6f642" style="width: auto; height: auto; left: 221px; top: 232.75px;" data-block-id="ffeda728415b1d96dacd9dc1b4ede8ae"><div class="sl-block-content notranslate" style="z-index: 10; font-size: 60%;"><div class="math-input">
+\texttt{\textcolor{grey}{The quick brown fox jumps over the lazy dog}}
+
+</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 103px;" data-block-id="2490dae055305fe4bc2bb4307db09c22"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="">Blake2s hash function improves upon BLAKE (SHA-3 finalist)</li>
+	<li class="">Input byte-length \(l \le 2^{64}\), fixed output byte-length \(L=32\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 221px; top: 349px;" data-name="math-8b1601" data-block-id="1aa1ef7e5a2088779532013131e0828c"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 60%;"><div class="math-input">m^{0}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 381px; top: 349px;" data-name="math-4271d3" data-block-id="3b196d05bd584356679dd27164624e41"><div class="sl-block-content notranslate" style="z-index: 20; font-size: 60%;"><div class="math-input">m^{1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 540px; top: 349px;" data-name="math-2050d3" data-block-id="9b7dc49837989fc325aec7b5552536c4"><div class="sl-block-content notranslate" style="z-index: 28; font-size: 60%;"><div class="math-input">m^{2}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-3d38d8" style="width: 127.625px; height: 47.75px; left: 848.688px; top: 231.375px;" data-block-id="7fea34ad398f62644d2347c0c3a34bf2"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 36;" data-shape-stroke-color="#ffc475" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 128 48"><defs><clippath id="shape-mask-57-1664354883061"><rect width="127.625" height="47.75" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2"></rect></clippath></defs><rect width="127.625" height="47.75" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#ffc475" stroke-width="2" clip-path="url(#shape-mask-57-1664354883061)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-c8f363" data-block-id="ca1acebf100262c50cee68bf5b3a831d" style="width: auto; height: auto; left: 941px; top: 349px;"><div class="sl-block-content notranslate fragment" style="z-index: 37; font-size: 60%;" data-fragment-index="2"><div class="math-input">m^7</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-3b856c" data-block-id="3d494d0bec8330cfe7a4baeac457fcca" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 912.5px; top: 277.75px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="39.49950000000001" data-line-y2="71.25" data-line-color="#ffc475" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 38;" data-line-width="1px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="39.49950000000001" height="71.25" viewbox="0 0 39.49950000000001 71.25"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="38.06007447222497" y2="68.2516248597078"></line><line class="line-element" stroke="#ffc475" stroke-width="1" x1="0.5" y1="0.5" x2="38.06007447222497" y2="68.2516248597078"></line><polygon fill="#ffc475" transform="translate(37.56007447222497,67.7516248597078) rotate(150.997)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 734px; top: 349px;" data-block-id="996e0a385985da073a77478ada375fed" data-name="math-eef355"><div class="sl-block-content notranslate fragment" style="z-index: 39; font-size: 60%;" data-fragment-index="0"><div class="math-input">\dots</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-c544fa" data-block-id="17692cf612a82a06e6296d767a37e576" style="width: auto; height: auto; left: 901px; top: 236.75px;"><div class="sl-block-content notranslate fragment" style="z-index: 40; font-size: 55%;" data-fragment-index="1"><div class="math-input">\textcolor{grey}{\texttt{00000}}</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-eb7fca" data-block-id="f89b685b65f49c0629b19169aa0a6fa7" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 152.75px 446.5px; z-index: 13;" data-fragment-index="3">
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-050858" style="width: auto; height: auto;" data-block-id="ee31721a67f764fb3474cd87ebbd63e8"><div class="sl-block-content sl-block-group-content" style="transform-origin: 237px 472.5px; z-index: 14;">
+<div class="sl-block" data-block-type="shape" data-name="shape-f44e7f" style="width: 55px; height: 55px; left: 209.5px; top: 445px;" data-block-id="d2e897ac3a019eff0116187aa7471445"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 15;" data-shape-stroke-color="#888888" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 55 55"><defs><clippath id="shape-mask-58-1664354883063"><rect width="55" height="55" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2"></rect></clippath></defs><rect width="55" height="55" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2" clip-path="url(#shape-mask-58-1664354883063)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-50bea4" style="width: auto; height: auto; left: 225px; top: 450.5px;" data-block-id="ef1e0378f3a9a94ba17e9120058fafe6"><div class="sl-block-content notranslate" style="z-index: 16; font-size: 60%;"><div class="math-input">f</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-ce7f5d" style="width: auto; height: auto; left: 41px; top: 450.5px;" data-block-id="ddb50d03a12d53d9a21529e9b14e1d30"><div class="sl-block-content notranslate" style="z-index: 17; font-size: 60%;"><div class="math-input">h^0 = \textsf{IV}</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-d3e96c" style="width: auto; height: auto; left: 237px; top: 393px;" data-block-id="f20d7a2d9d62ebda670a7800d27db100"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 18;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="52" viewbox="0 0 1 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><polygon fill="#888888" transform="translate(0,48) rotate(180)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 147px; top: 474px;" data-name="line-04f06f" data-block-id="cd5c285872d9a793bf621a80fbf4cfd9"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="62.5" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="62.5" height="1" viewbox="0 0 62.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="59" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="59" y2="0.5"></line><polygon fill="#888888" transform="translate(58.5,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-1575d1" data-block-id="b3f4f562fda06a25a3dd324670b87bf6" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 344.5px 451.25px; z-index: 21;" data-fragment-index="4">
+<div class="sl-block sl-block-group" data-block-type="group" style="width: auto; height: auto;" data-name="group-f234d3" data-block-id="1b41c1e90495a5da3477ade158172dd5"><div class="sl-block-content sl-block-group-content" style="transform-origin: 397px 472.5px; z-index: 22;">
+<div class="sl-block" data-block-type="shape" style="width: 55px; height: 55px; left: 369.5px; top: 445px;" data-name="shape-73855a" data-block-id="818a6f23f51b26ba9bf209a33d9b7423"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 23;" data-shape-stroke-color="#888888" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 55 55"><defs><clippath id="shape-mask-59-1664354883065"><rect width="55" height="55" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2"></rect></clippath></defs><rect width="55" height="55" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2" clip-path="url(#shape-mask-59-1664354883065)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 385px; top: 450.5px;" data-name="math-8af8a0" data-block-id="d45737d15e1d293ff08e9fa23fd58038"><div class="sl-block-content notranslate" style="z-index: 24; font-size: 60%;"><div class="math-input">f</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 397px; top: 393px;" data-name="line-7b5617" data-block-id="15b93849f194a51a1b88e22effad3120"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 25;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="52" viewbox="0 0 1 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><polygon fill="#888888" transform="translate(0,48) rotate(180)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 264.5px; top: 474px;" data-name="line-62665e" data-block-id="8b0ca558e575106af43dc26f7596fc0f"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 26;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><polygon fill="#888888" transform="translate(101,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 308px; top: 472.5px;" data-name="math-75d518" data-block-id="97769543938fd56d704b6bfd5449d181"><div class="sl-block-content notranslate" style="z-index: 27; font-size: 50%;"><div class="math-input">h^1</div></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-40874a" data-block-id="361960559d0b501400b9252f457b91ff" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 503.5px 451.25px; z-index: 29;" data-fragment-index="5">
+<div class="sl-block sl-block-group" data-block-type="group" style="width: auto; height: auto;" data-name="group-43602d" data-block-id="5c73effca2eb9f7a60f81ab13441f841"><div class="sl-block-content sl-block-group-content" style="transform-origin: 556px 472.5px; z-index: 30;">
+<div class="sl-block" data-block-type="shape" style="width: 55px; height: 55px; left: 528.5px; top: 445px;" data-name="shape-1bd272" data-block-id="904a43e522c3d4f7a4e209c50728d453"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 31;" data-shape-stroke-color="#888888" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 55 55"><defs><clippath id="shape-mask-60-1664354883067"><rect width="55" height="55" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2"></rect></clippath></defs><rect width="55" height="55" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2" clip-path="url(#shape-mask-60-1664354883067)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 544px; top: 450.5px;" data-name="math-ce6f00" data-block-id="e3cad7b4a2f586bf1c2e4d6aaf0a7805"><div class="sl-block-content notranslate" style="z-index: 32; font-size: 60%;"><div class="math-input">f</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 556px; top: 393px;" data-name="line-7c32d7" data-block-id="f5daef012c3b9fd067e933f11d0cbd6a"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 33;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="52" viewbox="0 0 1 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><polygon fill="#888888" transform="translate(0,48) rotate(180)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 423.5px; top: 474px;" data-name="line-6cb035" data-block-id="240b92d4eb6ba1424d3e35b484ac1235"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 34;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><polygon fill="#888888" transform="translate(101,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 467px; top: 472.5px;" data-name="math-1976cb" data-block-id="46cd1deae576de740dd0eb31193cdc25"><div class="sl-block-content notranslate" style="z-index: 35; font-size: 50%;"><div class="math-input">h^2</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="line" data-name="line-99982b" data-block-id="b44636844c31c8ec46df609627e5d527" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 583.5px; top: 474px;"><div class="sl-block-content fragment" data-line-x1="107.5" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#888888" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 41;" data-line-width="1px" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="107.5" height="1" viewbox="0 0 107.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="104" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="104" y1="0.5" x2="0.5" y2="0.5"></line><polygon fill="#888888" transform="translate(103.5,0) rotate(270)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 734px; top: 445px;" data-block-id="1a2e20e5abe29d614ff0b3bcf7624d05" data-name="math-95086e"><div class="sl-block-content notranslate fragment" style="z-index: 42; font-size: 60%;" data-fragment-index="6"><div class="math-input">\dots</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" style="width: auto; height: auto;" data-block-id="2be3c51b21f8e613c1ea8da477b21f49" data-name="group-e13bad"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 901px 451.25px; z-index: 43;" data-fragment-index="7">
+<div class="sl-block sl-block-group" data-block-type="group" style="width: auto; height: auto;" data-origin-id="5c73effca2eb9f7a60f81ab13441f841" data-block-id="dca101b692d11488c6a72c6cfac2d13f" data-name="group-88214f"><div class="sl-block-content sl-block-group-content" style="transform-origin: 953.5px 472.5px; z-index: 44;">
+<div class="sl-block" data-block-type="shape" style="width: 55px; height: 55px; left: 926px; top: 445px;" data-origin-id="904a43e522c3d4f7a4e209c50728d453" data-block-id="ac46b6af7471d46da96f83ce86679bf8" data-name="shape-bbf6c9"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 45;" data-shape-stroke-color="#888888" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 55 55"><defs><clippath id="shape-mask-61-1664354883070"><rect width="55" height="55" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2"></rect></clippath></defs><rect width="55" height="55" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2" clip-path="url(#shape-mask-61-1664354883070)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 941.5px; top: 450.5px;" data-origin-id="e3cad7b4a2f586bf1c2e4d6aaf0a7805" data-block-id="6d1928067cc24b74f6e69bbeb46c3a8a" data-name="math-59816f"><div class="sl-block-content notranslate" style="z-index: 46; font-size: 60%;"><div class="math-input">f</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 953.5px; top: 393px;" data-origin-id="f5daef012c3b9fd067e933f11d0cbd6a" data-block-id="9f8b6e86036cd5d7222c6bce97bb5c55" data-name="line-07dcf4"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 47;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="52" viewbox="0 0 1 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><polygon fill="#888888" transform="translate(0,48) rotate(180)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 821px; top: 474px;" data-origin-id="240b92d4eb6ba1424d3e35b484ac1235" data-block-id="fc19bc534da65727bb59b1c37a125adb" data-name="line-a8661b"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 48;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><polygon fill="#888888" transform="translate(101,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 864.5px; top: 472.5px;" data-origin-id="46cd1deae576de740dd0eb31193cdc25" data-block-id="0afb4b5c0d7ea3fe8af976bfcc1e767c" data-name="math-110696"><div class="sl-block-content notranslate" style="z-index: 49; font-size: 50%;"><div class="math-input">h^7</div></div></div>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 981px; top: 474px;" data-block-id="e1501cf8136180de2ab080115197412f" data-name="line-f494ac"><div class="sl-block-content fragment" data-line-x1="59" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#888888" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 50;" data-line-width="1px" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="59" height="1" viewbox="0 0 59 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="55.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="55.5" y1="0.5" x2="0.5" y2="0.5"></line><polygon fill="#888888" transform="translate(55,0) rotate(270)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-645478" data-block-id="98775cbbeef637497b21287d817cc2d3" style="width: auto; height: auto; left: 1055px; top: 452px;"><div class="sl-block-content notranslate fragment" style="z-index: 51; font-size: 60%;" data-fragment-index="8"><div class="math-input">H(s)</div></div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="cc86892965506758f7fd257d6969e9fa"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 52;">
+<h1>Blake2s Basics</h1>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="c2932421679ead0eee7e57257ca70689"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="f1cb5828701cbd3502f5b1a3e4a806ca"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 11;">
+<h1>Blake2s Compression</h1>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 116.5px; top: 40px;" data-name="math-2050d3" data-block-id="9f6b3a768a9f6a1199a705f66c3269d1"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 60%;"><div class="math-input">m^{i}</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 132.5px; top: 84px;" data-name="line-7c32d7" data-block-id="7be75a03ca8ff814409913a65415d70e"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 14;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="52" viewbox="0 0 1 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="48.5"></line><polygon fill="#888888" transform="translate(0,48) rotate(180)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 0px; top: 165px;" data-name="line-6cb035" data-block-id="2cb53b075d0ac0fed9f1a52805c5eaaf"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="105" data-line-y2="0" data-line-color="#888888" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 15;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="105" height="1" viewbox="0 0 105 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="101.5" y2="0.5"></line><polygon fill="#888888" transform="translate(101,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 43.5px; top: 163.5px;" data-name="math-1976cb" data-block-id="02b24d10a01538b1a367bcf197f78080"><div class="sl-block-content notranslate" style="z-index: 16; font-size: 50%;"><div class="math-input">h^i</div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 401px; height: 331px; left: 105px; top: 136px;" data-name="shape-1bd272" data-block-id="06a28fb74edde2b0fb528e968c57f27f"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 10;" data-shape-stroke-color="#888888" data-shape-stroke-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 401 331"><defs><clippath id="shape-mask-69-1664359271087"><rect width="401" height="331" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2"></rect></clippath></defs><rect width="401" height="331" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#888888" stroke-width="2" clip-path="url(#shape-mask-69-1664359271087)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 120.5px; top: 141.5px;" data-name="math-ce6f00" data-block-id="8c30002dd711cfafe6175dd5243d7aeb"><div class="sl-block-content notranslate" style="z-index: 13; font-size: 60%;"><div class="math-input">f</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-e6d37d" data-block-id="f8740059002906cb55e51e3300a717b5" style="width: auto; height: auto; left: 150px; top: 179px;"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 50%;" data-fragment-index="3"><div class="math-input">\textsf{round}_1</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 150px; top: 226px;" data-block-id="cbbefa5f3346cf540a6345afdfa2f8d1" data-name="math-54a0d9"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 50%;" data-fragment-index="4"><div class="math-input">\textsf{round}_2</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 150px; top: 273px;" data-block-id="877349b9c553876d4d4f405ce1f4710b" data-name="math-9ce4b6"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%;" data-fragment-index="5"><div class="math-input">\textsf{round}_3</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 150px; top: 380px;" data-block-id="880eb63eb3df34fc6dc4c3767a52c337" data-name="math-3553d6"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 50%;" data-fragment-index="7"><div class="math-input">\textsf{round}_{10}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 178px; top: 320px;" data-block-id="16223b5448aecd73fb5027d37ba4ae94" data-name="math-2adc16"><div class="sl-block-content notranslate fragment" style="z-index: 21; font-size: 50%;" data-fragment-index="6"><div class="math-input">\vdots</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 268px; top: 181px;" data-block-id="d6b550a90cdc88de8d944eaa2683cacf" data-name="math-1a832a"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 45%;" data-fragment-index="9"><div class="math-input">G(0), G(1), \dots, G(7)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 268px; top: 228px;" data-block-id="f59f507f995f42e2422c5624e215fe38" data-name="math-76ae58"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 45%;" data-fragment-index="10"><div class="math-input">G(0), G(1), \dots, G(7)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 268px; top: 275px;" data-block-id="5e99514988bc4738439e7dc3ab7ffa65" data-name="math-761598"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 45%;" data-fragment-index="10"><div class="math-input">G(0), G(1), \dots, G(7)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 268px; top: 382px;" data-block-id="9f308ca73ae31236d4f3199cbef984a6" data-name="math-ab5df6"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 45%;" data-fragment-index="10"><div class="math-input">G(0), G(1), \dots, G(7)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 361px; top: 320px;" data-block-id="c0a69c86c80f993e7d5da8c157e89545" data-name="math-2fad89"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 50%;" data-fragment-index="10"><div class="math-input">\vdots</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 698.05px; left: 530.975px; top: 321.5px;" data-block-id="321e8aafd72d1eec3c81a266debe0248"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 27; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="2">Each compression contains 10 rounds</li>
+	<li class="fragment" data-fragment-index="8">Each round contains 8 calls of function \(G\)</li>
+	<li class="fragment" data-fragment-index="11">A total of \(10\times 8 = 80\) calls to \(G(a,b,c,d | m^i)\):</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 698.05px; left: 530.975px; top: 103px;" data-block-id="98eadc264e7cf0ab99ff59ede75166ff" data-name="text-058c37"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Internal state \(V\) is initialised as:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1e3723" data-block-id="224f6b9c5fdef36f19b0fecfbeab3249" style="width: auto; height: auto; left: 555.025px; top: 186px;"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 44%;" data-fragment-index="1"><div class="math-input">V =
+\begin{pmatrix}
+v_0 &amp; v_1 &amp; v_2 &amp; v_3 \\
+v_4 &amp; v_5 &amp; v_6 &amp; v_7 \\
+v_8 &amp; v_9 &amp; v_{10} &amp; v_{11} \\
+v_{12} &amp; v_{13} &amp; v_{14} &amp; v_{15} \\
+\end{pmatrix}
+\leftarrow
+\begin{pmatrix}
+h_0^i &amp; h_1^i &amp; h_2^i &amp; h_3^i \\
+h_4^i &amp; h_5^i &amp; h_6^i &amp; h_7^i \\
+\text{IV}_0 &amp; \text{IV}_1 &amp; \text{IV}_2 &amp; \text{IV}_{3} \\
+t_0 \oplus \text{IV}_{4} &amp; t_1 \oplus \text{IV}_{5} &amp; f_0 \oplus  \text{IV}_{6} &amp; f_1 \oplus  \text{IV}_{7} \\
+\end{pmatrix}</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-c93e39" data-block-id="b6002ee915d1c0b73bb8e42fabd7250e" style="width: auto; height: auto; left: 659px; top: 499px;"><div class="sl-block-content notranslate fragment" style="z-index: 30; font-size: 50%;" data-fragment-index="12"><div class="math-input">\begin{aligned}
+a &amp;\leftarrow a + b + m_{\sigma_r[2i]} \\
+d &amp;\leftarrow \text{ROTR}^{16}(d \oplus a) \\
+c &amp;\leftarrow c+d \\
+b &amp;\leftarrow \text{ROTR}^{12}(b \oplus c)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 499px;" data-block-id="f6a56a6a6d0d482ee5ad2a85ec062f20" data-name="math-dcf12a"><div class="sl-block-content notranslate fragment" style="z-index: 31; font-size: 50%;" data-fragment-index="13"><div class="math-input">\begin{aligned}
+a &amp;\leftarrow a + b + m_{\sigma_r[2i+1]} \\
+d &amp;\leftarrow \text{ROTR}^{8}(d \oplus a) \\
+c &amp;\leftarrow c+d \\
+b &amp;\leftarrow \text{ROTR}^{7}(b \oplus c) \\
+\end{aligned}</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-72ec45" data-block-id="9613299dada46af8ade15ef4653345be"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 755.592px 549.769px; z-index: 32;" data-fragment-index="14">
+<div class="sl-block" data-block-type="drawing" data-name="drawing-2b8290" data-block-id="6ab855cb50cdff81bf78c83accfdb2a2" style="width: 2.77997px; height: 37.1683px; left: 703.13px; top: 530.575px;"><div class="sl-block-content" data-points="704.52 533.95,704.52 540.28,704.52 546.34,704.52 551.98,704.52 557.01,704.52 560.15,704.52 562.71,704.52 565.6,704.52 568.55,704.52 570.96" data-timestamp="1664359230707" style="z-index: 33;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="703.1300048828125 532.5750122070312 2.77996826171875 37.16827392578125"><path fill="rgb(145, 255, 207)" d="M 705.9094140625 535.3346875 Q 705.91 535.33 705.74 538.16 705.56 540.99 705.54 543.95 705.52 546.9 705.52 549.68 705.52 552.45 705.52 554.79 705.52 557.13 705.52 558.73 705.53 560.33 705.56 561.69 705.58 563.04 705.62 564.49 705.66 565.93 705.68 567.37 705.7 568.82 705.2 569.4 704.7 569.98 704.05 569.58 703.4 569.18 703.69 568.48 703.99 567.77 704.73 567.95 705.47 568.13 705.41 568.89 705.35 569.65 704.59 569.71 703.83 569.77 703.6 567.85 703.38 565.93 703.42 564.49 703.46 563.04 703.48 561.69 703.51 560.33 703.52 558.73 703.52 557.13 703.52 554.79 703.52 552.45 703.52 549.68 703.52 546.9 703.5 543.95 703.48 540.99 703.3 538.16 703.13 535.33 703.13 534.64 703.13 533.95 703.16 533.74 703.2 533.52 703.3 533.33 703.4 533.13 703.55 532.98 703.7 532.83 703.9 532.73 704.09 532.63 704.31 532.59 704.52 532.56 704.73 532.59 704.95 532.63 705.14 532.73 705.34 532.83 705.49 532.98 705.64 533.13 705.74 533.33 705.84 533.52 705.88 533.74 705.91 533.95 705.91 534.64 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-f273c6" data-block-id="5f8fb7af4b7e77da472eed6ebdd3d8e2" style="width: 117.045px; height: 3.20502px; left: 697.07px; top: 528.537px;"><div class="sl-block-content" data-points="698.49 532.14,703.06 532.14,707.96 532.14,713.32 532.14,719.11 532.14,723.29 532.14,726.52 532.14,729.47 532.14,732.08 532.14,734.57 532.14,737.36 532.14,740.46 532.14,743.27 532.14,746.16 532.14,749.02 532.14,752.05 532.14,754.18 532.14,756.75 532.14,759.07 532.14,761.2 532.14,763.47 532.14,766.27 532.14,769.82 532.14,773.82 532.14,777.49 532.14,780.36 532.14,782.65 532.14,784.94 532.14,787.47 532.14,789.43 532.14,790.79 532.14,791.73 532.14,793.24 532.14,794.52 532.14,796.22 532.14,797.79 532.14,798.84 532.14,799.93 532.14,801.02 532.14,802.38 532.14,804.74 532.14,807.47 532.14,810.44 532.14,812.61 532.14,813.69 532.14,814.57 532.14" data-timestamp="1664359240379" style="z-index: 34;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="697.0700073242188 530.5374755859375 117.04486083984375 3.20501708984375"><path fill="rgb(145, 255, 207)" d="M 699.4896875 530.702441418457 Q 699.49 530.7 701.59 530.82 703.69 530.95 706.14 531.03 708.6 531.12 711.3 531.13 714 531.14 716.69 531.14 719.39 531.14 721.45 531.14 723.51 531.14 725.15 531.13 726.79 531.12 728.25 531.09 729.71 531.05 731.02 531.01 732.33 530.97 733.61 530.94 734.9 530.91 736.32 530.9 737.73 530.89 739.23 530.89 740.73 530.89 742.16 530.88 743.59 530.88 745.02 530.87 746.46 530.87 747.91 530.87 749.36 530.87 750.77 530.87 752.18 530.86 753.34 530.84 754.49 530.82 755.73 530.81 756.98 530.8 758.12 530.79 759.27 530.78 760.36 530.77 761.46 530.75 762.64 530.75 763.83 530.75 765.29 530.77 766.74 530.79 768.53 530.85 770.31 530.9 772.25 530.95 774.18 531 775.94 531.01 777.7 531.01 779.12 530.98 780.53 530.96 781.71 530.92 782.89 530.89 784.06 530.87 785.24 530.84 786.43 530.83 787.62 530.81 788.69 530.78 789.75 530.75 791.01 530.71 792.27 530.67 793.71 530.64 795.14 530.61 796.63 530.6 798.12 530.58 799.25 530.56 800.38 530.54 801.56 530.54 802.75 530.53 803.92 530.56 805.09 530.59 806.46 530.63 807.82 530.67 809.2 530.7 810.59 530.73 811.78 530.71 812.97 530.68 813.69 531.3 814.41 531.91 813.91 532.72 813.42 533.53 812.54 533.16 811.67 532.8 811.89 531.88 812.11 530.96 813.05 531.03 814 531.11 814.07 532.05 814.15 533 812.37 533.27 810.59 533.55 809.2 533.58 807.82 533.61 806.46 533.65 805.09 533.69 803.92 533.72 802.75 533.75 801.56 533.74 800.38 533.74 799.25 533.72 798.12 533.7 796.63 533.68 795.14 533.67 793.71 533.64 792.27 533.61 791.01 533.57 789.75 533.53 788.69 533.5 787.62 533.47 786.43 533.45 785.24 533.44 784.06 533.41 782.89 533.39 781.71 533.36 780.53 533.32 779.12 533.3 777.7 533.27 775.94 533.27 774.18 533.28 772.25 533.33 770.31 533.38 768.53 533.43 766.74 533.49 765.29 533.51 763.83 533.53 762.64 533.53 761.46 533.53 760.36 533.51 759.27 533.5 758.12 533.49 756.98 533.48 755.73 533.47 754.49 533.46 753.34 533.44 752.18 533.42 750.77 533.41 749.36 533.41 747.91 533.41 746.46 533.41 745.02 533.41 743.59 533.4 742.16 533.4 740.73 533.39 739.23 533.39 737.73 533.39 736.32 533.38 734.9 533.37 733.61 533.34 732.33 533.31 731.02 533.27 729.71 533.23 728.25 533.19 726.79 533.16 725.15 533.15 723.51 533.14 721.45 533.14 719.39 533.14 716.69 533.14 714 533.14 711.3 533.15 708.6 533.16 706.14 533.25 703.69 533.33 701.59 533.46 699.49 533.58 698.99 533.58 698.49 533.58 698.27 533.54 698.05 533.51 697.85 533.41 697.65 533.3 697.49 533.14 697.33 532.98 697.22 532.78 697.12 532.58 697.09 532.36 697.05 532.14 697.09 531.92 697.12 531.7 697.22 531.5 697.33 531.3 697.49 531.14 697.65 530.98 697.85 530.87 698.05 530.77 698.27 530.74 698.49 530.7 698.99 530.7 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-b07868" data-block-id="4b39ab07b62fe4b939f0923e63730a1a" style="width: 2.8808px; height: 38.7394px; left: 805.42px; top: 530.635px;"><div class="sl-block-content" data-points="806.86 534.06,806.86 538.55,806.86 542.41,806.86 545.89,806.86 548.4,806.86 552.07,806.86 554.08,806.86 556.72,806.86 559.19,806.86 561.9,806.86 564.5,806.86 566.9,806.86 570.16,806.86 572.58" data-timestamp="1664359242696" style="z-index: 35;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="805.4199829101562 532.635009765625 2.88079833984375 38.73944091796875"><path fill="rgb(145, 255, 207)" d="M 808.3008001831055 535.0421875 Q 808.3 535.04 808.2 537 808.1 538.96 808.05 540.85 808.01 542.74 808.01 544.39 808.01 546.05 808.03 547.48 808.05 548.91 808.05 550.51 808.04 552.11 808.08 553.26 808.11 554.41 808.13 555.69 808.15 556.97 808.16 558.24 808.17 559.51 808.18 560.84 808.18 562.17 808.19 563.45 808.19 564.73 808.19 566.04 808.19 567.34 808.17 568.85 808.15 570.36 807.61 571 807.06 571.63 806.35 571.2 805.63 570.76 805.95 569.98 806.27 569.21 807.09 569.4 807.91 569.6 807.84 570.43 807.77 571.27 806.94 571.34 806.1 571.4 805.81 569.37 805.53 567.34 805.53 566.04 805.53 564.73 805.53 563.45 805.54 562.17 805.54 560.84 805.55 559.51 805.56 558.24 805.57 556.97 805.59 555.69 805.61 554.41 805.64 553.26 805.68 552.11 805.67 550.51 805.67 548.91 805.69 547.48 805.71 546.05 805.71 544.39 805.71 542.74 805.67 540.85 805.62 538.96 805.52 537 805.42 535.04 805.42 534.55 805.42 534.06 805.45 533.84 805.49 533.61 805.59 533.41 805.69 533.21 805.85 533.05 806.01 532.89 806.21 532.79 806.41 532.69 806.64 532.65 806.86 532.62 807.08 532.65 807.31 532.69 807.51 532.79 807.71 532.89 807.87 533.05 808.03 533.21 808.13 533.41 808.23 533.61 808.27 533.84 808.3 534.06 808.3 534.55 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" data-name="drawing-83710e" data-block-id="15239d2e72b4b35257ee4144709c9769" style="width: 106.494px; height: 3px; left: 701.9px; top: 568px;"><div class="sl-block-content" data-points="703.38 571.5,705.8 571.5,712.19 571.5,723.87 571.5,739.26 571.5,754.74 571.5,768.98 571.5,779.54 571.5,787.55 571.5,794.76 571.5,799.53 571.5,802.27 571.5,804.73 571.5,807.22 571.5,809.53 571.5" data-timestamp="1664359244779" style="z-index: 36;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="701.9000244140625 570 106.49407958984375 3"><path fill="rgb(145, 255, 207)" d="M 703.909375 570.0019437988282 Q 703.91 570 705.44 570.06 706.96 570.13 710.53 570.31 714.09 570.49 720.05 570.49 726.01 570.5 733.5 570.5 740.99 570.5 748.56 570.5 756.14 570.5 762.91 570.5 769.68 570.5 774.87 570.5 780.06 570.5 784.13 570.5 788.19 570.5 791.59 570.5 794.98 570.5 797.27 570.5 799.56 570.5 801.02 570.5 802.47 570.5 803.73 570.5 804.99 570.49 806.29 570.49 807.59 570.48 808.1 570.91 808.6 571.34 808.25 571.91 807.91 572.47 807.29 572.22 806.68 571.96 806.83 571.32 806.99 570.67 807.65 570.73 808.31 570.78 808.37 571.44 808.42 572.1 806.7 572.3 804.99 572.51 803.73 572.5 802.47 572.5 801.02 572.5 799.56 572.5 797.27 572.5 794.98 572.5 791.59 572.5 788.19 572.5 784.13 572.5 780.06 572.5 774.87 572.5 769.68 572.5 762.91 572.5 756.14 572.5 748.56 572.5 740.99 572.5 733.5 572.5 726.01 572.5 720.05 572.51 714.09 572.51 710.53 572.69 706.96 572.87 705.44 572.94 703.91 573 703.64 573 703.38 573 703.15 572.96 702.92 572.92 702.71 572.82 702.5 572.71 702.33 572.55 702.17 572.38 702.06 572.17 701.96 571.96 701.92 571.73 701.88 571.5 701.92 571.27 701.96 571.04 702.06 570.83 702.17 570.62 702.33 570.45 702.5 570.29 702.71 570.18 702.92 570.08 703.15 570.04 703.38 570 703.64 570 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="be841f9d0ae6ed9681868b72df96b0f8" data-name="group-a6d27c"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1050.59px 550.005px; z-index: 37;" data-fragment-index="14">
+<div class="sl-block" data-block-type="drawing" style="width: 2.77997px; height: 37.1683px; left: 998.13px; top: 530.811px;" data-origin-id="6ab855cb50cdff81bf78c83accfdb2a2" data-block-id="0cbe4476fea658de980b3c164b1df9a3" data-name="drawing-7d58b1"><div class="sl-block-content" data-points="704.52 533.95,704.52 540.28,704.52 546.34,704.52 551.98,704.52 557.01,704.52 560.15,704.52 562.71,704.52 565.6,704.52 568.55,704.52 570.96" data-timestamp="1664359230707" style="z-index: 38;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="703.1300048828125 532.5750122070312 2.77996826171875 37.16827392578125"><path fill="rgb(145, 255, 207)" d="M 705.9094140625 535.3346875 Q 705.91 535.33 705.74 538.16 705.56 540.99 705.54 543.95 705.52 546.9 705.52 549.68 705.52 552.45 705.52 554.79 705.52 557.13 705.52 558.73 705.53 560.33 705.56 561.69 705.58 563.04 705.62 564.49 705.66 565.93 705.68 567.37 705.7 568.82 705.2 569.4 704.7 569.98 704.05 569.58 703.4 569.18 703.69 568.48 703.99 567.77 704.73 567.95 705.47 568.13 705.41 568.89 705.35 569.65 704.59 569.71 703.83 569.77 703.6 567.85 703.38 565.93 703.42 564.49 703.46 563.04 703.48 561.69 703.51 560.33 703.52 558.73 703.52 557.13 703.52 554.79 703.52 552.45 703.52 549.68 703.52 546.9 703.5 543.95 703.48 540.99 703.3 538.16 703.13 535.33 703.13 534.64 703.13 533.95 703.16 533.74 703.2 533.52 703.3 533.33 703.4 533.13 703.55 532.98 703.7 532.83 703.9 532.73 704.09 532.63 704.31 532.59 704.52 532.56 704.73 532.59 704.95 532.63 705.14 532.73 705.34 532.83 705.49 532.98 705.64 533.13 705.74 533.33 705.84 533.52 705.88 533.74 705.91 533.95 705.91 534.64 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 117.045px; height: 3.20502px; left: 992.07px; top: 528.773px;" data-origin-id="5f8fb7af4b7e77da472eed6ebdd3d8e2" data-block-id="4319aff5bd560969f63d110331b0959e" data-name="drawing-20a15a"><div class="sl-block-content" data-points="698.49 532.14,703.06 532.14,707.96 532.14,713.32 532.14,719.11 532.14,723.29 532.14,726.52 532.14,729.47 532.14,732.08 532.14,734.57 532.14,737.36 532.14,740.46 532.14,743.27 532.14,746.16 532.14,749.02 532.14,752.05 532.14,754.18 532.14,756.75 532.14,759.07 532.14,761.2 532.14,763.47 532.14,766.27 532.14,769.82 532.14,773.82 532.14,777.49 532.14,780.36 532.14,782.65 532.14,784.94 532.14,787.47 532.14,789.43 532.14,790.79 532.14,791.73 532.14,793.24 532.14,794.52 532.14,796.22 532.14,797.79 532.14,798.84 532.14,799.93 532.14,801.02 532.14,802.38 532.14,804.74 532.14,807.47 532.14,810.44 532.14,812.61 532.14,813.69 532.14,814.57 532.14" data-timestamp="1664359240379" style="z-index: 39;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="697.0700073242188 530.5374755859375 117.04486083984375 3.20501708984375"><path fill="rgb(145, 255, 207)" d="M 699.4896875 530.702441418457 Q 699.49 530.7 701.59 530.82 703.69 530.95 706.14 531.03 708.6 531.12 711.3 531.13 714 531.14 716.69 531.14 719.39 531.14 721.45 531.14 723.51 531.14 725.15 531.13 726.79 531.12 728.25 531.09 729.71 531.05 731.02 531.01 732.33 530.97 733.61 530.94 734.9 530.91 736.32 530.9 737.73 530.89 739.23 530.89 740.73 530.89 742.16 530.88 743.59 530.88 745.02 530.87 746.46 530.87 747.91 530.87 749.36 530.87 750.77 530.87 752.18 530.86 753.34 530.84 754.49 530.82 755.73 530.81 756.98 530.8 758.12 530.79 759.27 530.78 760.36 530.77 761.46 530.75 762.64 530.75 763.83 530.75 765.29 530.77 766.74 530.79 768.53 530.85 770.31 530.9 772.25 530.95 774.18 531 775.94 531.01 777.7 531.01 779.12 530.98 780.53 530.96 781.71 530.92 782.89 530.89 784.06 530.87 785.24 530.84 786.43 530.83 787.62 530.81 788.69 530.78 789.75 530.75 791.01 530.71 792.27 530.67 793.71 530.64 795.14 530.61 796.63 530.6 798.12 530.58 799.25 530.56 800.38 530.54 801.56 530.54 802.75 530.53 803.92 530.56 805.09 530.59 806.46 530.63 807.82 530.67 809.2 530.7 810.59 530.73 811.78 530.71 812.97 530.68 813.69 531.3 814.41 531.91 813.91 532.72 813.42 533.53 812.54 533.16 811.67 532.8 811.89 531.88 812.11 530.96 813.05 531.03 814 531.11 814.07 532.05 814.15 533 812.37 533.27 810.59 533.55 809.2 533.58 807.82 533.61 806.46 533.65 805.09 533.69 803.92 533.72 802.75 533.75 801.56 533.74 800.38 533.74 799.25 533.72 798.12 533.7 796.63 533.68 795.14 533.67 793.71 533.64 792.27 533.61 791.01 533.57 789.75 533.53 788.69 533.5 787.62 533.47 786.43 533.45 785.24 533.44 784.06 533.41 782.89 533.39 781.71 533.36 780.53 533.32 779.12 533.3 777.7 533.27 775.94 533.27 774.18 533.28 772.25 533.33 770.31 533.38 768.53 533.43 766.74 533.49 765.29 533.51 763.83 533.53 762.64 533.53 761.46 533.53 760.36 533.51 759.27 533.5 758.12 533.49 756.98 533.48 755.73 533.47 754.49 533.46 753.34 533.44 752.18 533.42 750.77 533.41 749.36 533.41 747.91 533.41 746.46 533.41 745.02 533.41 743.59 533.4 742.16 533.4 740.73 533.39 739.23 533.39 737.73 533.39 736.32 533.38 734.9 533.37 733.61 533.34 732.33 533.31 731.02 533.27 729.71 533.23 728.25 533.19 726.79 533.16 725.15 533.15 723.51 533.14 721.45 533.14 719.39 533.14 716.69 533.14 714 533.14 711.3 533.15 708.6 533.16 706.14 533.25 703.69 533.33 701.59 533.46 699.49 533.58 698.99 533.58 698.49 533.58 698.27 533.54 698.05 533.51 697.85 533.41 697.65 533.3 697.49 533.14 697.33 532.98 697.22 532.78 697.12 532.58 697.09 532.36 697.05 532.14 697.09 531.92 697.12 531.7 697.22 531.5 697.33 531.3 697.49 531.14 697.65 530.98 697.85 530.87 698.05 530.77 698.27 530.74 698.49 530.7 698.99 530.7 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 2.8808px; height: 38.7394px; left: 1100.42px; top: 530.871px;" data-origin-id="4b39ab07b62fe4b939f0923e63730a1a" data-block-id="16bfc207b453d4be6492f2ceafac3fca" data-name="drawing-525c6f"><div class="sl-block-content" data-points="806.86 534.06,806.86 538.55,806.86 542.41,806.86 545.89,806.86 548.4,806.86 552.07,806.86 554.08,806.86 556.72,806.86 559.19,806.86 561.9,806.86 564.5,806.86 566.9,806.86 570.16,806.86 572.58" data-timestamp="1664359242696" style="z-index: 40;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="805.4199829101562 532.635009765625 2.88079833984375 38.73944091796875"><path fill="rgb(145, 255, 207)" d="M 808.3008001831055 535.0421875 Q 808.3 535.04 808.2 537 808.1 538.96 808.05 540.85 808.01 542.74 808.01 544.39 808.01 546.05 808.03 547.48 808.05 548.91 808.05 550.51 808.04 552.11 808.08 553.26 808.11 554.41 808.13 555.69 808.15 556.97 808.16 558.24 808.17 559.51 808.18 560.84 808.18 562.17 808.19 563.45 808.19 564.73 808.19 566.04 808.19 567.34 808.17 568.85 808.15 570.36 807.61 571 807.06 571.63 806.35 571.2 805.63 570.76 805.95 569.98 806.27 569.21 807.09 569.4 807.91 569.6 807.84 570.43 807.77 571.27 806.94 571.34 806.1 571.4 805.81 569.37 805.53 567.34 805.53 566.04 805.53 564.73 805.53 563.45 805.54 562.17 805.54 560.84 805.55 559.51 805.56 558.24 805.57 556.97 805.59 555.69 805.61 554.41 805.64 553.26 805.68 552.11 805.67 550.51 805.67 548.91 805.69 547.48 805.71 546.05 805.71 544.39 805.71 542.74 805.67 540.85 805.62 538.96 805.52 537 805.42 535.04 805.42 534.55 805.42 534.06 805.45 533.84 805.49 533.61 805.59 533.41 805.69 533.21 805.85 533.05 806.01 532.89 806.21 532.79 806.41 532.69 806.64 532.65 806.86 532.62 807.08 532.65 807.31 532.69 807.51 532.79 807.71 532.89 807.87 533.05 808.03 533.21 808.13 533.41 808.23 533.61 808.27 533.84 808.3 534.06 808.3 534.55 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 106.494px; height: 3px; left: 996.9px; top: 568.236px;" data-origin-id="15239d2e72b4b35257ee4144709c9769" data-block-id="0a71e018207dbb3c044c4987395aecce" data-name="drawing-c92cb1"><div class="sl-block-content" data-points="703.38 571.5,705.8 571.5,712.19 571.5,723.87 571.5,739.26 571.5,754.74 571.5,768.98 571.5,779.54 571.5,787.55 571.5,794.76 571.5,799.53 571.5,802.27 571.5,804.73 571.5,807.22 571.5,809.53 571.5" data-timestamp="1664359244779" style="z-index: 41;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="701.9000244140625 570 106.49407958984375 3"><path fill="rgb(145, 255, 207)" d="M 703.909375 570.0019437988282 Q 703.91 570 705.44 570.06 706.96 570.13 710.53 570.31 714.09 570.49 720.05 570.49 726.01 570.5 733.5 570.5 740.99 570.5 748.56 570.5 756.14 570.5 762.91 570.5 769.68 570.5 774.87 570.5 780.06 570.5 784.13 570.5 788.19 570.5 791.59 570.5 794.98 570.5 797.27 570.5 799.56 570.5 801.02 570.5 802.47 570.5 803.73 570.5 804.99 570.49 806.29 570.49 807.59 570.48 808.1 570.91 808.6 571.34 808.25 571.91 807.91 572.47 807.29 572.22 806.68 571.96 806.83 571.32 806.99 570.67 807.65 570.73 808.31 570.78 808.37 571.44 808.42 572.1 806.7 572.3 804.99 572.51 803.73 572.5 802.47 572.5 801.02 572.5 799.56 572.5 797.27 572.5 794.98 572.5 791.59 572.5 788.19 572.5 784.13 572.5 780.06 572.5 774.87 572.5 769.68 572.5 762.91 572.5 756.14 572.5 748.56 572.5 740.99 572.5 733.5 572.5 726.01 572.5 720.05 572.51 714.09 572.51 710.53 572.69 706.96 572.87 705.44 572.94 703.91 573 703.64 573 703.38 573 703.15 572.96 702.92 572.92 702.71 572.82 702.5 572.71 702.33 572.55 702.17 572.38 702.06 572.17 701.96 571.96 701.92 571.73 701.88 571.5 701.92 571.27 701.96 571.04 702.06 570.83 702.17 570.62 702.33 570.45 702.5 570.29 702.71 570.18 702.92 570.08 703.15 570.04 703.38 570 703.64 570 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="3704a10ebcc13d2e3381af9a6db4d7bf" data-name="group-75f79e"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1050.59px 626.769px; z-index: 42;" data-fragment-index="14">
+<div class="sl-block" data-block-type="drawing" style="width: 2.77997px; height: 37.1683px; left: 998.13px; top: 607.575px;" data-origin-id="0cbe4476fea658de980b3c164b1df9a3" data-block-id="ca520ff9808c3eacbd5f1a1bedeb9e59" data-name="drawing-b0a882"><div class="sl-block-content" data-points="704.52 533.95,704.52 540.28,704.52 546.34,704.52 551.98,704.52 557.01,704.52 560.15,704.52 562.71,704.52 565.6,704.52 568.55,704.52 570.96" data-timestamp="1664359230707" style="z-index: 43;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="703.1300048828125 532.5750122070312 2.77996826171875 37.16827392578125"><path fill="rgb(145, 255, 207)" d="M 705.9094140625 535.3346875 Q 705.91 535.33 705.74 538.16 705.56 540.99 705.54 543.95 705.52 546.9 705.52 549.68 705.52 552.45 705.52 554.79 705.52 557.13 705.52 558.73 705.53 560.33 705.56 561.69 705.58 563.04 705.62 564.49 705.66 565.93 705.68 567.37 705.7 568.82 705.2 569.4 704.7 569.98 704.05 569.58 703.4 569.18 703.69 568.48 703.99 567.77 704.73 567.95 705.47 568.13 705.41 568.89 705.35 569.65 704.59 569.71 703.83 569.77 703.6 567.85 703.38 565.93 703.42 564.49 703.46 563.04 703.48 561.69 703.51 560.33 703.52 558.73 703.52 557.13 703.52 554.79 703.52 552.45 703.52 549.68 703.52 546.9 703.5 543.95 703.48 540.99 703.3 538.16 703.13 535.33 703.13 534.64 703.13 533.95 703.16 533.74 703.2 533.52 703.3 533.33 703.4 533.13 703.55 532.98 703.7 532.83 703.9 532.73 704.09 532.63 704.31 532.59 704.52 532.56 704.73 532.59 704.95 532.63 705.14 532.73 705.34 532.83 705.49 532.98 705.64 533.13 705.74 533.33 705.84 533.52 705.88 533.74 705.91 533.95 705.91 534.64 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 117.045px; height: 3.20502px; left: 992.07px; top: 605.537px;" data-origin-id="4319aff5bd560969f63d110331b0959e" data-block-id="6b6fd8ce0f140a6de170608e332bf758" data-name="drawing-83eb73"><div class="sl-block-content" data-points="698.49 532.14,703.06 532.14,707.96 532.14,713.32 532.14,719.11 532.14,723.29 532.14,726.52 532.14,729.47 532.14,732.08 532.14,734.57 532.14,737.36 532.14,740.46 532.14,743.27 532.14,746.16 532.14,749.02 532.14,752.05 532.14,754.18 532.14,756.75 532.14,759.07 532.14,761.2 532.14,763.47 532.14,766.27 532.14,769.82 532.14,773.82 532.14,777.49 532.14,780.36 532.14,782.65 532.14,784.94 532.14,787.47 532.14,789.43 532.14,790.79 532.14,791.73 532.14,793.24 532.14,794.52 532.14,796.22 532.14,797.79 532.14,798.84 532.14,799.93 532.14,801.02 532.14,802.38 532.14,804.74 532.14,807.47 532.14,810.44 532.14,812.61 532.14,813.69 532.14,814.57 532.14" data-timestamp="1664359240379" style="z-index: 44;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="697.0700073242188 530.5374755859375 117.04486083984375 3.20501708984375"><path fill="rgb(145, 255, 207)" d="M 699.4896875 530.702441418457 Q 699.49 530.7 701.59 530.82 703.69 530.95 706.14 531.03 708.6 531.12 711.3 531.13 714 531.14 716.69 531.14 719.39 531.14 721.45 531.14 723.51 531.14 725.15 531.13 726.79 531.12 728.25 531.09 729.71 531.05 731.02 531.01 732.33 530.97 733.61 530.94 734.9 530.91 736.32 530.9 737.73 530.89 739.23 530.89 740.73 530.89 742.16 530.88 743.59 530.88 745.02 530.87 746.46 530.87 747.91 530.87 749.36 530.87 750.77 530.87 752.18 530.86 753.34 530.84 754.49 530.82 755.73 530.81 756.98 530.8 758.12 530.79 759.27 530.78 760.36 530.77 761.46 530.75 762.64 530.75 763.83 530.75 765.29 530.77 766.74 530.79 768.53 530.85 770.31 530.9 772.25 530.95 774.18 531 775.94 531.01 777.7 531.01 779.12 530.98 780.53 530.96 781.71 530.92 782.89 530.89 784.06 530.87 785.24 530.84 786.43 530.83 787.62 530.81 788.69 530.78 789.75 530.75 791.01 530.71 792.27 530.67 793.71 530.64 795.14 530.61 796.63 530.6 798.12 530.58 799.25 530.56 800.38 530.54 801.56 530.54 802.75 530.53 803.92 530.56 805.09 530.59 806.46 530.63 807.82 530.67 809.2 530.7 810.59 530.73 811.78 530.71 812.97 530.68 813.69 531.3 814.41 531.91 813.91 532.72 813.42 533.53 812.54 533.16 811.67 532.8 811.89 531.88 812.11 530.96 813.05 531.03 814 531.11 814.07 532.05 814.15 533 812.37 533.27 810.59 533.55 809.2 533.58 807.82 533.61 806.46 533.65 805.09 533.69 803.92 533.72 802.75 533.75 801.56 533.74 800.38 533.74 799.25 533.72 798.12 533.7 796.63 533.68 795.14 533.67 793.71 533.64 792.27 533.61 791.01 533.57 789.75 533.53 788.69 533.5 787.62 533.47 786.43 533.45 785.24 533.44 784.06 533.41 782.89 533.39 781.71 533.36 780.53 533.32 779.12 533.3 777.7 533.27 775.94 533.27 774.18 533.28 772.25 533.33 770.31 533.38 768.53 533.43 766.74 533.49 765.29 533.51 763.83 533.53 762.64 533.53 761.46 533.53 760.36 533.51 759.27 533.5 758.12 533.49 756.98 533.48 755.73 533.47 754.49 533.46 753.34 533.44 752.18 533.42 750.77 533.41 749.36 533.41 747.91 533.41 746.46 533.41 745.02 533.41 743.59 533.4 742.16 533.4 740.73 533.39 739.23 533.39 737.73 533.39 736.32 533.38 734.9 533.37 733.61 533.34 732.33 533.31 731.02 533.27 729.71 533.23 728.25 533.19 726.79 533.16 725.15 533.15 723.51 533.14 721.45 533.14 719.39 533.14 716.69 533.14 714 533.14 711.3 533.15 708.6 533.16 706.14 533.25 703.69 533.33 701.59 533.46 699.49 533.58 698.99 533.58 698.49 533.58 698.27 533.54 698.05 533.51 697.85 533.41 697.65 533.3 697.49 533.14 697.33 532.98 697.22 532.78 697.12 532.58 697.09 532.36 697.05 532.14 697.09 531.92 697.12 531.7 697.22 531.5 697.33 531.3 697.49 531.14 697.65 530.98 697.85 530.87 698.05 530.77 698.27 530.74 698.49 530.7 698.99 530.7 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 2.8808px; height: 38.7394px; left: 1100.42px; top: 607.635px;" data-origin-id="16bfc207b453d4be6492f2ceafac3fca" data-block-id="a69ca9e91574b13f3cdb2b44a08c2a8e" data-name="drawing-178144"><div class="sl-block-content" data-points="806.86 534.06,806.86 538.55,806.86 542.41,806.86 545.89,806.86 548.4,806.86 552.07,806.86 554.08,806.86 556.72,806.86 559.19,806.86 561.9,806.86 564.5,806.86 566.9,806.86 570.16,806.86 572.58" data-timestamp="1664359242696" style="z-index: 45;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="805.4199829101562 532.635009765625 2.88079833984375 38.73944091796875"><path fill="rgb(145, 255, 207)" d="M 808.3008001831055 535.0421875 Q 808.3 535.04 808.2 537 808.1 538.96 808.05 540.85 808.01 542.74 808.01 544.39 808.01 546.05 808.03 547.48 808.05 548.91 808.05 550.51 808.04 552.11 808.08 553.26 808.11 554.41 808.13 555.69 808.15 556.97 808.16 558.24 808.17 559.51 808.18 560.84 808.18 562.17 808.19 563.45 808.19 564.73 808.19 566.04 808.19 567.34 808.17 568.85 808.15 570.36 807.61 571 807.06 571.63 806.35 571.2 805.63 570.76 805.95 569.98 806.27 569.21 807.09 569.4 807.91 569.6 807.84 570.43 807.77 571.27 806.94 571.34 806.1 571.4 805.81 569.37 805.53 567.34 805.53 566.04 805.53 564.73 805.53 563.45 805.54 562.17 805.54 560.84 805.55 559.51 805.56 558.24 805.57 556.97 805.59 555.69 805.61 554.41 805.64 553.26 805.68 552.11 805.67 550.51 805.67 548.91 805.69 547.48 805.71 546.05 805.71 544.39 805.71 542.74 805.67 540.85 805.62 538.96 805.52 537 805.42 535.04 805.42 534.55 805.42 534.06 805.45 533.84 805.49 533.61 805.59 533.41 805.69 533.21 805.85 533.05 806.01 532.89 806.21 532.79 806.41 532.69 806.64 532.65 806.86 532.62 807.08 532.65 807.31 532.69 807.51 532.79 807.71 532.89 807.87 533.05 808.03 533.21 808.13 533.41 808.23 533.61 808.27 533.84 808.3 534.06 808.3 534.55 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 106.494px; height: 3px; left: 996.9px; top: 645px;" data-origin-id="0a71e018207dbb3c044c4987395aecce" data-block-id="a91d7fafbe69d4f632774827effd74ad" data-name="drawing-3af845"><div class="sl-block-content" data-points="703.38 571.5,705.8 571.5,712.19 571.5,723.87 571.5,739.26 571.5,754.74 571.5,768.98 571.5,779.54 571.5,787.55 571.5,794.76 571.5,799.53 571.5,802.27 571.5,804.73 571.5,807.22 571.5,809.53 571.5" data-timestamp="1664359244779" style="z-index: 46;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="701.9000244140625 570 106.49407958984375 3"><path fill="rgb(145, 255, 207)" d="M 703.909375 570.0019437988282 Q 703.91 570 705.44 570.06 706.96 570.13 710.53 570.31 714.09 570.49 720.05 570.49 726.01 570.5 733.5 570.5 740.99 570.5 748.56 570.5 756.14 570.5 762.91 570.5 769.68 570.5 774.87 570.5 780.06 570.5 784.13 570.5 788.19 570.5 791.59 570.5 794.98 570.5 797.27 570.5 799.56 570.5 801.02 570.5 802.47 570.5 803.73 570.5 804.99 570.49 806.29 570.49 807.59 570.48 808.1 570.91 808.6 571.34 808.25 571.91 807.91 572.47 807.29 572.22 806.68 571.96 806.83 571.32 806.99 570.67 807.65 570.73 808.31 570.78 808.37 571.44 808.42 572.1 806.7 572.3 804.99 572.51 803.73 572.5 802.47 572.5 801.02 572.5 799.56 572.5 797.27 572.5 794.98 572.5 791.59 572.5 788.19 572.5 784.13 572.5 780.06 572.5 774.87 572.5 769.68 572.5 762.91 572.5 756.14 572.5 748.56 572.5 740.99 572.5 733.5 572.5 726.01 572.5 720.05 572.51 714.09 572.51 710.53 572.69 706.96 572.87 705.44 572.94 703.91 573 703.64 573 703.38 573 703.15 572.96 702.92 572.92 702.71 572.82 702.5 572.71 702.33 572.55 702.17 572.38 702.06 572.17 701.96 571.96 701.92 571.73 701.88 571.5 701.92 571.27 701.96 571.04 702.06 570.83 702.17 570.62 702.33 570.45 702.5 570.29 702.71 570.18 702.92 570.08 703.15 570.04 703.38 570 703.64 570 Z"></path></svg></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="8072ae3b3917de0746ed1de7dc4eb975" data-name="group-96c561"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 755.147px 627.5px; z-index: 47;" data-fragment-index="14">
+<div class="sl-block" data-block-type="drawing" style="width: 2.77997px; height: 37.1683px; left: 702.684px; top: 608.307px;" data-origin-id="ca520ff9808c3eacbd5f1a1bedeb9e59" data-block-id="206837f03aa2b9b0cefb6053504e2042" data-name="drawing-958721"><div class="sl-block-content" data-points="704.52 533.95,704.52 540.28,704.52 546.34,704.52 551.98,704.52 557.01,704.52 560.15,704.52 562.71,704.52 565.6,704.52 568.55,704.52 570.96" data-timestamp="1664359230707" style="z-index: 48;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="703.1300048828125 532.5750122070312 2.77996826171875 37.16827392578125"><path fill="rgb(145, 255, 207)" d="M 705.9094140625 535.3346875 Q 705.91 535.33 705.74 538.16 705.56 540.99 705.54 543.95 705.52 546.9 705.52 549.68 705.52 552.45 705.52 554.79 705.52 557.13 705.52 558.73 705.53 560.33 705.56 561.69 705.58 563.04 705.62 564.49 705.66 565.93 705.68 567.37 705.7 568.82 705.2 569.4 704.7 569.98 704.05 569.58 703.4 569.18 703.69 568.48 703.99 567.77 704.73 567.95 705.47 568.13 705.41 568.89 705.35 569.65 704.59 569.71 703.83 569.77 703.6 567.85 703.38 565.93 703.42 564.49 703.46 563.04 703.48 561.69 703.51 560.33 703.52 558.73 703.52 557.13 703.52 554.79 703.52 552.45 703.52 549.68 703.52 546.9 703.5 543.95 703.48 540.99 703.3 538.16 703.13 535.33 703.13 534.64 703.13 533.95 703.16 533.74 703.2 533.52 703.3 533.33 703.4 533.13 703.55 532.98 703.7 532.83 703.9 532.73 704.09 532.63 704.31 532.59 704.52 532.56 704.73 532.59 704.95 532.63 705.14 532.73 705.34 532.83 705.49 532.98 705.64 533.13 705.74 533.33 705.84 533.52 705.88 533.74 705.91 533.95 705.91 534.64 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 117.045px; height: 3.20502px; left: 696.624px; top: 606.269px;" data-origin-id="6b6fd8ce0f140a6de170608e332bf758" data-block-id="d0eac3a54722f8c9457b6c432f1edd02" data-name="drawing-9a65b8"><div class="sl-block-content" data-points="698.49 532.14,703.06 532.14,707.96 532.14,713.32 532.14,719.11 532.14,723.29 532.14,726.52 532.14,729.47 532.14,732.08 532.14,734.57 532.14,737.36 532.14,740.46 532.14,743.27 532.14,746.16 532.14,749.02 532.14,752.05 532.14,754.18 532.14,756.75 532.14,759.07 532.14,761.2 532.14,763.47 532.14,766.27 532.14,769.82 532.14,773.82 532.14,777.49 532.14,780.36 532.14,782.65 532.14,784.94 532.14,787.47 532.14,789.43 532.14,790.79 532.14,791.73 532.14,793.24 532.14,794.52 532.14,796.22 532.14,797.79 532.14,798.84 532.14,799.93 532.14,801.02 532.14,802.38 532.14,804.74 532.14,807.47 532.14,810.44 532.14,812.61 532.14,813.69 532.14,814.57 532.14" data-timestamp="1664359240379" style="z-index: 49;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="697.0700073242188 530.5374755859375 117.04486083984375 3.20501708984375"><path fill="rgb(145, 255, 207)" d="M 699.4896875 530.702441418457 Q 699.49 530.7 701.59 530.82 703.69 530.95 706.14 531.03 708.6 531.12 711.3 531.13 714 531.14 716.69 531.14 719.39 531.14 721.45 531.14 723.51 531.14 725.15 531.13 726.79 531.12 728.25 531.09 729.71 531.05 731.02 531.01 732.33 530.97 733.61 530.94 734.9 530.91 736.32 530.9 737.73 530.89 739.23 530.89 740.73 530.89 742.16 530.88 743.59 530.88 745.02 530.87 746.46 530.87 747.91 530.87 749.36 530.87 750.77 530.87 752.18 530.86 753.34 530.84 754.49 530.82 755.73 530.81 756.98 530.8 758.12 530.79 759.27 530.78 760.36 530.77 761.46 530.75 762.64 530.75 763.83 530.75 765.29 530.77 766.74 530.79 768.53 530.85 770.31 530.9 772.25 530.95 774.18 531 775.94 531.01 777.7 531.01 779.12 530.98 780.53 530.96 781.71 530.92 782.89 530.89 784.06 530.87 785.24 530.84 786.43 530.83 787.62 530.81 788.69 530.78 789.75 530.75 791.01 530.71 792.27 530.67 793.71 530.64 795.14 530.61 796.63 530.6 798.12 530.58 799.25 530.56 800.38 530.54 801.56 530.54 802.75 530.53 803.92 530.56 805.09 530.59 806.46 530.63 807.82 530.67 809.2 530.7 810.59 530.73 811.78 530.71 812.97 530.68 813.69 531.3 814.41 531.91 813.91 532.72 813.42 533.53 812.54 533.16 811.67 532.8 811.89 531.88 812.11 530.96 813.05 531.03 814 531.11 814.07 532.05 814.15 533 812.37 533.27 810.59 533.55 809.2 533.58 807.82 533.61 806.46 533.65 805.09 533.69 803.92 533.72 802.75 533.75 801.56 533.74 800.38 533.74 799.25 533.72 798.12 533.7 796.63 533.68 795.14 533.67 793.71 533.64 792.27 533.61 791.01 533.57 789.75 533.53 788.69 533.5 787.62 533.47 786.43 533.45 785.24 533.44 784.06 533.41 782.89 533.39 781.71 533.36 780.53 533.32 779.12 533.3 777.7 533.27 775.94 533.27 774.18 533.28 772.25 533.33 770.31 533.38 768.53 533.43 766.74 533.49 765.29 533.51 763.83 533.53 762.64 533.53 761.46 533.53 760.36 533.51 759.27 533.5 758.12 533.49 756.98 533.48 755.73 533.47 754.49 533.46 753.34 533.44 752.18 533.42 750.77 533.41 749.36 533.41 747.91 533.41 746.46 533.41 745.02 533.41 743.59 533.4 742.16 533.4 740.73 533.39 739.23 533.39 737.73 533.39 736.32 533.38 734.9 533.37 733.61 533.34 732.33 533.31 731.02 533.27 729.71 533.23 728.25 533.19 726.79 533.16 725.15 533.15 723.51 533.14 721.45 533.14 719.39 533.14 716.69 533.14 714 533.14 711.3 533.15 708.6 533.16 706.14 533.25 703.69 533.33 701.59 533.46 699.49 533.58 698.99 533.58 698.49 533.58 698.27 533.54 698.05 533.51 697.85 533.41 697.65 533.3 697.49 533.14 697.33 532.98 697.22 532.78 697.12 532.58 697.09 532.36 697.05 532.14 697.09 531.92 697.12 531.7 697.22 531.5 697.33 531.3 697.49 531.14 697.65 530.98 697.85 530.87 698.05 530.77 698.27 530.74 698.49 530.7 698.99 530.7 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 2.8808px; height: 38.7394px; left: 804.974px; top: 608.366px;" data-origin-id="a69ca9e91574b13f3cdb2b44a08c2a8e" data-block-id="bfa51ae13f5999b7696b57d4fc5b9b1e" data-name="drawing-ddd041"><div class="sl-block-content" data-points="806.86 534.06,806.86 538.55,806.86 542.41,806.86 545.89,806.86 548.4,806.86 552.07,806.86 554.08,806.86 556.72,806.86 559.19,806.86 561.9,806.86 564.5,806.86 566.9,806.86 570.16,806.86 572.58" data-timestamp="1664359242696" style="z-index: 50;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="805.4199829101562 532.635009765625 2.88079833984375 38.73944091796875"><path fill="rgb(145, 255, 207)" d="M 808.3008001831055 535.0421875 Q 808.3 535.04 808.2 537 808.1 538.96 808.05 540.85 808.01 542.74 808.01 544.39 808.01 546.05 808.03 547.48 808.05 548.91 808.05 550.51 808.04 552.11 808.08 553.26 808.11 554.41 808.13 555.69 808.15 556.97 808.16 558.24 808.17 559.51 808.18 560.84 808.18 562.17 808.19 563.45 808.19 564.73 808.19 566.04 808.19 567.34 808.17 568.85 808.15 570.36 807.61 571 807.06 571.63 806.35 571.2 805.63 570.76 805.95 569.98 806.27 569.21 807.09 569.4 807.91 569.6 807.84 570.43 807.77 571.27 806.94 571.34 806.1 571.4 805.81 569.37 805.53 567.34 805.53 566.04 805.53 564.73 805.53 563.45 805.54 562.17 805.54 560.84 805.55 559.51 805.56 558.24 805.57 556.97 805.59 555.69 805.61 554.41 805.64 553.26 805.68 552.11 805.67 550.51 805.67 548.91 805.69 547.48 805.71 546.05 805.71 544.39 805.71 542.74 805.67 540.85 805.62 538.96 805.52 537 805.42 535.04 805.42 534.55 805.42 534.06 805.45 533.84 805.49 533.61 805.59 533.41 805.69 533.21 805.85 533.05 806.01 532.89 806.21 532.79 806.41 532.69 806.64 532.65 806.86 532.62 807.08 532.65 807.31 532.69 807.51 532.79 807.71 532.89 807.87 533.05 808.03 533.21 808.13 533.41 808.23 533.61 808.27 533.84 808.3 534.06 808.3 534.55 Z"></path></svg></div></div>
+<div class="sl-block" data-block-type="drawing" style="width: 106.494px; height: 3px; left: 701.454px; top: 645.731px;" data-origin-id="a91d7fafbe69d4f632774827effd74ad" data-block-id="a82fcc8b23dd336593a22437fd6ac38c" data-name="drawing-982c24"><div class="sl-block-content" data-points="703.38 571.5,705.8 571.5,712.19 571.5,723.87 571.5,739.26 571.5,754.74 571.5,768.98 571.5,779.54 571.5,787.55 571.5,794.76 571.5,799.53 571.5,802.27 571.5,804.73 571.5,807.22 571.5,809.53 571.5" data-timestamp="1664359244779" style="z-index: 51;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="none" width="100%" height="100%" viewbox="701.9000244140625 570 106.49407958984375 3"><path fill="rgb(145, 255, 207)" d="M 703.909375 570.0019437988282 Q 703.91 570 705.44 570.06 706.96 570.13 710.53 570.31 714.09 570.49 720.05 570.49 726.01 570.5 733.5 570.5 740.99 570.5 748.56 570.5 756.14 570.5 762.91 570.5 769.68 570.5 774.87 570.5 780.06 570.5 784.13 570.5 788.19 570.5 791.59 570.5 794.98 570.5 797.27 570.5 799.56 570.5 801.02 570.5 802.47 570.5 803.73 570.5 804.99 570.49 806.29 570.49 807.59 570.48 808.1 570.91 808.6 571.34 808.25 571.91 807.91 572.47 807.29 572.22 806.68 571.96 806.83 571.32 806.99 570.67 807.65 570.73 808.31 570.78 808.37 571.44 808.42 572.1 806.7 572.3 804.99 572.51 803.73 572.5 802.47 572.5 801.02 572.5 799.56 572.5 797.27 572.5 794.98 572.5 791.59 572.5 788.19 572.5 784.13 572.5 780.06 572.5 774.87 572.5 769.68 572.5 762.91 572.5 756.14 572.5 748.56 572.5 740.99 572.5 733.5 572.5 726.01 572.5 720.05 572.51 714.09 572.51 710.53 572.69 706.96 572.87 705.44 572.94 703.91 573 703.64 573 703.38 573 703.15 572.96 702.92 572.92 702.71 572.82 702.5 572.71 702.33 572.55 702.17 572.38 702.06 572.17 701.96 571.96 701.92 571.73 701.88 571.5 701.92 571.27 701.96 571.04 702.06 570.83 702.17 570.62 702.33 570.45 702.5 570.29 702.71 570.18 702.92 570.08 703.15 570.04 703.38 570 703.64 570 Z"></path></svg></div></div>
+</div></div></section><section data-background-color="#000000" data-id="4b4059788e02c4d50b920d7941dac030">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 108px;" data-block-id="faba50ef77c4998635b0d05889e31d9e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">We need the following operations to be performed in the circuit</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="bf2aaa8afd798d86299ac2bbae544a5f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 11;">
+<h1>Blake2s Using Lookups</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-abf957" data-block-id="8b818284a4bea5822dabd873359b2c68" style="width: auto; height: auto; left: 302px; top: 269px;"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="2"><div class="math-input">\begin{aligned}
+a \oplus b &amp;= 
+00  
+110011  
+001010  
+111011  
+010001  
+110011 
+\\[5pt]
+\text{ROTR}^{16}(a \oplus b) &amp;=  
+\underbrace{\textcolor{red}{1011}  
+\textcolor{red}{010001}  
+\textcolor{red}{110011}  }_{16} 
+00  
+110011  
+001010  
+11  \\
+\text{ROTR}^{12}(a \oplus b) &amp;=  
+\underbrace{\textcolor{red}{010001}  
+\textcolor{red}{110011}  }_{12}
+00  
+110011  
+001010  
+111011 \\
+\text{ROTR}^{8}(a \oplus b) &amp;=  
+\underbrace{ \textcolor{red}{01}  
+\textcolor{red}{110011}  }_{8}
+00  
+110011  
+001010  
+111011  
+0100
+\\
+\text{ROTR}^{7}(a \oplus b) &amp;=  
+\underbrace{ \textcolor{red}{1}  
+\textcolor{red}{110011}  }_{7}
+00  
+110011  
+001010  
+111011  
+01000 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 455px; top: 186px;" data-block-id="d9f91b02a690c61ff4648ce8968a355c" data-name="math-2baf45"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 50%; color: rgb(255, 255, 255);" data-fragment-index="1"><div class="math-input">\begin{aligned}
+a &amp;= 
+10 110100 101000 000010 100000 100011 
+\\[1pt]
+b &amp;= 
+10 000111 100010 111001 110000 010000 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1135.05px; left: 80px; top: 587px;" data-block-id="14a2a057116d9118ff7f6c5fdc34bb46" data-name="text-336e90"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="7">How do we design lookup tables for these?</li>
+	<li class="fragment" data-fragment-index="8">Goal: create slices to minimise non-linear terms</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="width: 633px; height: 78px; left: 278px; top: 300.5px;" data-name="shape-31567d" data-block-id="0b8eecaf8c08969d3028621d3912909e"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 15;" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 633 78"><rect width="633" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 633px; height: 78px; left: 278px; top: 360.5px;" data-block-id="e8c87d99325f9e30d07adb2c3b6a11c7" data-name="shape-dfa2dc"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 16;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 633 78"><rect width="633" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 633px; height: 78px; left: 278px; top: 424.5px;" data-block-id="61c58dbf14c41f558554f215771aaa94" data-name="shape-2ec130"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 17;" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 633 78"><rect width="633" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 633px; height: 78px; left: 278px; top: 500.5px;" data-block-id="a6bf5c9e19f20d444920abd1e9841968" data-name="shape-353c56"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 18;" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 633 78"><rect width="633" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="#000000" data-id="6f6eb8bb728d16fe42859c5414efc3f0">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 108px;" data-block-id="c09929bc3efc381bdf642232a14b5111"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Lets try slice size to be 7:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="c70a11463087e923e93cd4477d501361"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 11;">
+<h1>Blake2s Using Lookups</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-abf957" style="width: auto; height: auto; left: 160px; top: 199px;" data-block-id="6d4cc6ee3996ac79b5949c631bc16bba"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 50%; color: rgb(204, 204, 204);" data-fragment-index="1"><div class="math-input">\begin{aligned}
+a \oplus b &amp;= 
+\textcolor{lightgreen}{0011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{0011001} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{0101110} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{1101000} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{1110011} 
+\\[5pt]
+\text{ROTR}^{16}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{skyblue}{10} \ \textcolor{grey}{\|} \  
+\textcolor{orange}{1101000} \ \textcolor{grey}{\|} \  
+\textcolor{yellow}{1110011}  
+}_{16} \ \textcolor{grey}{\|} \  
+\textcolor{lightgreen}{0011} \ \textcolor{grey}{\|} \  
+\textcolor{pink}{0011001} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{01011}  
+\\
+\text{ROTR}^{12}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{orange}{01000} \ \textcolor{grey}{\|} \  
+\textcolor{yellow}{1110011} 
+}_{12} \ \textcolor{grey}{\|} \  
+\textcolor{lightgreen}{0011}  \ \textcolor{grey}{\|} \  
+\textcolor{pink}{0011001}  \ \textcolor{grey}{\|} \  
+\textcolor{skyblue}{0101110}  \ \textcolor{grey}{\|} \  
+\textcolor{orange}{11} 
+\\
+\text{ROTR}^{8}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{orange}{0} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{1110011} 
+}_{8}\ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{0011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{0011001} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{0101110} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{110100}  
+\\
+\text{ROTR}^{7}(a \oplus b) &amp;= 
+\underbrace{
+\textcolor{yellow}{1110011}
+}_{7}\ \textcolor{grey}{\|} \  
+\textcolor{lightgreen}{0011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{0011001} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{0101110} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{1101000} 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-29ea26" data-block-id="6345e9710f58f0c3683f962ab8b3377d" style="width: auto; height: auto; left: 960px; top: 241px;"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="3"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^{2}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 313px;" data-block-id="e85fac03b2e50c1f065feaee49ff0478" data-name="math-a045f2"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="5"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^{5}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 385px;" data-block-id="4618f08f18ffb288488f090ddb5a45d9" data-name="math-5c9973"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="7"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^{1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 451px;" data-block-id="74fadfc0e1ed69529d361b7a236f3fc1" data-name="math-92f503"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="9"><div class="math-input">\texttt{// linear }
+\text{XOR}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1135.05px; left: 80px; top: 539px;" data-block-id="d350afabe34749c32af04139ff1b8763" data-name="text-43487b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="10">Here, we need to implement:</li>
+	<li class="fragment" data-fragment-index="12">Total table size:</li>
+	<li class="fragment" data-fragment-index="14">Can we reduce the table size by tweaking the slice size?  </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 362px; top: 591.5px;" data-block-id="b55c8c7732c328835849821faea3b97f" data-name="math-400720"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 60%; color: rgb(170, 170, 170);" data-fragment-index="13"><div class="math-input">2^{4 \times 2} + 
+2^{7 \times 2} + 
+2^{7 \times 2} + 
+2^{7 \times 2} + 
+2^{7 \times 2} = 65792</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-becef9" data-block-id="a9fe3f6d1520d6bdd7de9f2d4b950bd7" style="width: 770px; height: 78px; left: 141px; top: 235px;"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 19;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 78px; left: 141px; top: 300.5px;" data-block-id="2a7999c4b4861bc3bd31755d02ffc029" data-name="shape-31567d"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 20;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 78px; left: 141px; top: 380px;" data-block-id="c5612f907acf892abe27dc129d72c4f9" data-name="shape-49369d"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 21;" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 65px; left: 141px; top: 451px;" data-block-id="a5e674e10b50d0a6a78ccf2941fe478e" data-name="shape-1ddfc0"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 65"><rect width="770" height="65" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 545px; top: 547px;" data-block-id="93a5cd7fe454478600e5d33dc72095e9" data-name="math-7314b7"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="11"><div class="math-input">\text{XOR}, \ 
+\text{ROTR}^1, \ 
+\text{ROTR}^2, \ 
+\text{ROTR}^5, \ </div></div></div></section><section data-background-color="#000000" data-id="e64d6b81aa742d3bc081ac3479e0e46f">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="eab8c728913285d4c024a10cf3702a51"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 10;">
+<h1>Blake2s Using Lookups</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 108px;" data-block-id="7bc7254c337ab0ce23f01dc2ed1d7633"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Lets try slice size to be 6:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-abf957" style="width: auto; height: auto; left: 160px; top: 199px;" data-block-id="284aedf11ea3bab4024cdadd96aa65e4"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 50%; color: rgb(204, 204, 204);" data-fragment-index="1"><div class="math-input">\begin{aligned}
+a \oplus b &amp;= 
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{111011} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{010001} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{110011} 
+\\[5pt]
+\text{ROTR}^{16}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{skyblue}{1011} \ \textcolor{grey}{\|} \  
+\textcolor{orange}{010001} \ \textcolor{grey}{\|} \  
+\textcolor{yellow}{110011}  
+}_{16} \ \textcolor{grey}{\|} \  
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \  
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{11}  
+\\
+\text{ROTR}^{12}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{orange}{010001} \ \textcolor{grey}{\|} \  
+\textcolor{yellow}{110011} 
+}_{12} \ \textcolor{grey}{\|} \  
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011}  \ \textcolor{grey}{\|} \  
+\textcolor{pink}{001010}  \ \textcolor{grey}{\|} \  
+\textcolor{skyblue}{111011}  
+\\
+\text{ROTR}^{8}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{orange}{01} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{110011} 
+}_{8}\ \textcolor{grey}{\|} \ 
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{111011} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{0100}  
+\\
+\text{ROTR}^{7}(a \oplus b) &amp;= 
+\underbrace{
+\textcolor{orange}{1} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{110011}
+}_{7}\ \textcolor{grey}{\|} \  
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{111011} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{01000} 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-29ea26" style="width: auto; height: auto; left: 960px; top: 241px;" data-block-id="a60ea3f372b9861a5a6f193af4784625"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="3"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^{4}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 313px;" data-name="math-a045f2" data-block-id="b99bc11f8c53fdfa84b9bec3689ea9c8"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="5"><div class="math-input">\texttt{// linear }
+\text{XOR}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 385px;" data-name="math-5c9973" data-block-id="fbfcdfd8b260e44ff965c20efb226a54"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="7"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^{2}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 960px; top: 451px;" data-name="math-92f503" data-block-id="a8d0ce11fa6fafb924621507c0e04302"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="9"><div class="math-input">\texttt{// non-linear }
+\text{ROTR}^1</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1135.05px; left: 80px; top: 539px;" data-name="text-43487b" data-block-id="7b8ad1c25521f0799cedd5839ccb54fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="10">Here, we need to implement:</li>
+	<li class="fragment" data-fragment-index="12">Total table size:</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 362px; top: 590.5px;" data-name="math-400720" data-block-id="e0e36648a34dbad9ef4763434bf16e47"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 60%; color: rgb(170, 170, 170);" data-fragment-index="13"><div class="math-input">2^{2 \times 2} + 
+2^{6 \times 2} + 
+2^{6 \times 2} + 
+2^{6 \times 2} + 
+2^{6 \times 2} = 16400</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 548.5px; top: 547px;" data-block-id="fb7a805cc1f375ee75fb92f6914b0184" data-name="math-892779"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="11"><div class="math-input">\text{ROTR}^{1}, 
+\text{ROTR}^{2},
+\text{ROTR}^{4},
+\text{XOR}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-becef9" style="width: 770px; height: 78px; left: 141px; top: 235px;" data-block-id="36cd99db5c915740342b47e5e5f724ab"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 20;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 78px; left: 141px; top: 300.5px;" data-name="shape-31567d" data-block-id="4910fae895ef1c82ade5312700e23f1a"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 21;" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 78px; left: 141px; top: 381px;" data-name="shape-49369d" data-block-id="3070961f81c7b591d17816e8969356d8"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 78"><rect width="770" height="78" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 770px; height: 65px; left: 141px; top: 451px;" data-name="shape-1ddfc0" data-block-id="3c2392b39c6c5813696a1b449cf9cc22"><div class="sl-block-content fragment fade-out" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 23;" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 770 65"><rect width="770" height="65" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></section><section data-background-color="#000000" data-id="a4225a0db5899fcdcc0e8d9e93fde7ef">
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="e31aa9b44506e49b3eebedb7656c4ac5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 70%; z-index: 10;">
+<h1>Blake2s Using Lookups</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-abf957" style="width: auto; height: auto; left: 265px; top: 236px;" data-block-id="4a7c7ca7f56dd3dc5435a72bb54dde3a"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 50%; color: rgb(204, 204, 204);" data-fragment-index="1"><div class="math-input">\begin{aligned}
+\text{ROTR}^{16}(a \oplus b) &amp;=  
+\underbrace{
+\textcolor{skyblue}{1011} \ \textcolor{grey}{\|} \  
+\textcolor{orange}{010001} \ \textcolor{grey}{\|} \  
+\textcolor{yellow}{110011}  
+}_{16} \ \textcolor{grey}{\|} \  
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \  
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{11}  
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-702d6f" style="height: auto; width: 1135.05px; left: 80px; top: 108px;" data-block-id="b7bb24e06482bf19b123aa116cd06138"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Multi-table 1: \(\text{ROTR}^{16}(a \oplus b)\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 378px; top: 185px;" data-block-id="b8cb432455f0d4f460534ce0cc737c87" data-name="math-bb3de5"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 50%; color: rgb(204, 204, 204);" data-fragment-index="1"><div class="math-input">\begin{aligned}
+a \oplus b &amp;= 
+\textcolor{red}{00} \ \textcolor{grey}{\|} \ 
+\textcolor{lightgreen}{110011} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{001010} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{111011} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{010001} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{110011} 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1135.05px; left: 80px; top: 315px;" data-block-id="8fdcee3a9b04205f192b19ffa894ba08" data-name="text-027e22"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="2">Linear shifts can be handled by scaling of slices by constants </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 289px; top: 387px;" data-block-id="f788c296b9c2ea93d6124452ecfe75fd" data-name="math-8e32e6"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 50%; color: rgb(136, 136, 136);" data-fragment-index="2"><div class="math-input">\text{ROTR}^{16} \equiv 
+\Big\{
+\textcolor{red}{\text{XOR}_2} \ \textcolor{grey}{\|} \ 
+\textcolor{green}{\text{XOR}_6} \ \textcolor{grey}{\|} \ 
+\textcolor{pink}{\text{XOR}_6} \ \textcolor{grey}{\|} \ 
+\textcolor{skyblue}{\text{ROTR}^{4}} \ \textcolor{grey}{\|} \ 
+\textcolor{orange}{\text{XOR}_6} \ \textcolor{grey}{\|} \ 
+\textcolor{yellow}{\text{XOR}_6}
+\Big\}</div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-6b12d0" data-block-id="2c1a557ffbc4b21767298c115772c2af" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 935px; top: 432px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="36" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 16;" data-line-width="1px" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="36" height="52" viewbox="0 0 36 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="35.361580042339384" y2="50.85561561671244"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="35.361580042339384" y2="50.85561561671244"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(34.861580042339384,50.35561561671244) rotate(145.305)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 845px; top: 432px;" data-block-id="0d5bf97151ab3aa610e6b32c0f9e9b55" data-name="line-05f84f"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="18" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 17;" data-line-width="1px" data-fragment-index="7"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="18" height="52" viewbox="0 0 18 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="17.845778872233666" y2="50.61002785311948"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="17.845778872233666" y2="50.61002785311948"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(17.345778872233666,50.11002785311948) rotate(160.907)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 747px; top: 432px;" data-block-id="67d0e0710562a621311a1f0aabfd0fe1" data-name="line-6116e2"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="11" data-line-y2="57" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 18;" data-line-width="1px" data-fragment-index="6"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="11" height="57" viewbox="0 0 11 57"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="11.121027470597745" y2="55.536233256733766"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="11.121027470597745" y2="55.536233256733766"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(10.621027470597745,55.036233256733766) rotate(169.077)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 640px; top: 432px;" data-block-id="521ad33afe3c98422937cce29c770ad0" data-name="line-dd179b"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="15" data-line-y2="54.5" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 19;" data-line-width="1px" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="15" height="54.5" viewbox="0 0 15 54.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="14.969275871014373" y2="53.07170233135223"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="14.969275871014373" y2="53.07170233135223"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(14.469275871014373,52.57170233135223) rotate(164.612)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 553px; top: 432px;" data-block-id="49ddb365672e4b5b395343e47dab244e" data-name="line-8d9d97"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="17" data-line-y2="52" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 20;" data-line-width="1px" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="17" height="52" viewbox="0 0 17 52"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="16.878522287385156" y2="50.59900934964871"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="16.878522287385156" y2="50.59900934964871"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(16.378522287385156,50.09900934964871) rotate(161.896)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 464.5px; top: 432px;" data-block-id="43c974fa643387e0c3c0f15005efd1b2" data-name="line-e378da"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="15.5" data-line-y2="54.5" data-line-color="#888888" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 21;" data-line-width="1px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="15.5" height="54.5" viewbox="0 0 15.5 54.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="15.452889113268899" y2="53.07628752730032"></line><line class="line-element" stroke="#888888" stroke-width="1" x1="0.5" y1="0.5" x2="15.452889113268899" y2="53.07628752730032"></line><path style="fill: rgba(0,0,0,0);" stroke="#888888" stroke-width="1" transform="translate(14.952889113268899,52.57628752730032) rotate(164.124)" d="M 6 6 L 0 0 L -6 6"></path></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-6245f4" data-block-id="906f004ff5568c3fc4379dd7f6c0f385" style="width: auto; height: auto; left: 959px; top: 484px;"><div class="sl-block-content notranslate fragment" style="z-index: 22; font-size: 55%; color: rgb(254, 255, 0);" data-fragment-index="8"><div class="math-input">s_0</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 851px; top: 484px;" data-block-id="c70ecc6225ee08c437a5e3d18c41b3e5" data-name="math-769119"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 55%; color: rgb(255, 165, 0);" data-fragment-index="7"><div class="math-input">s_1</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 746px; top: 484px;" data-block-id="9e5264f53905408c36fb5ee87ac58e11" data-name="math-e2b6be"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 55%; color: rgb(135, 205, 235);" data-fragment-index="6"><div class="math-input">s_2</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 653px; top: 484px;" data-block-id="e6548337626cac6b52ffd96319605ddb" data-name="math-c65b97"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 55%; color: rgb(254, 192, 203);" data-fragment-index="5"><div class="math-input">s_3</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 561px; top: 484px;" data-block-id="5a6442234f3dd481ccf82f855777f94d" data-name="math-8e1371"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 55%; color: rgb(144, 238, 143);" data-fragment-index="4"><div class="math-input">s_4</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 468px; top: 484px;" data-block-id="faa594f5a98c2c2c06b0fbb02a5e560f" data-name="math-6d6ebe"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 55%; color: rgb(255, 0, 0);" data-fragment-index="3"><div class="math-input">s_5</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 218px; top: 488px;" data-block-id="f0ebb3f21a634de2cd2f7d448da3d473" data-name="math-647e0c"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 50%; color: rgb(204, 204, 204);" data-fragment-index="15"><div class="math-input">\begin{aligned}
+\text{ROTR}^{16}(a \oplus b) &amp;:= 
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 433px; top: 486.5px;" data-block-id="0604303ac69e428a1c38b4bcf720ecd4" data-name="math-506973"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="9"><div class="math-input">2^{14}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 505px; top: 484px;" data-block-id="049142a0c174fe8738232ed2e87a1f75" data-name="math-f35421"><div class="sl-block-content notranslate fragment" style="z-index: 30; font-size: 50%; color: rgb(102, 102, 102);" data-fragment-index="10"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 535px; top: 489px;" data-block-id="11d7a328be31d68275788dabb212839c" data-name="math-802765"><div class="sl-block-content notranslate fragment" style="z-index: 31; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="10"><div class="math-input">2^{8}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 627px; top: 489px;" data-block-id="141832c0b8d82a1c7c29db9f0718c2bf" data-name="math-2ad312"><div class="sl-block-content notranslate fragment" style="z-index: 32; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="11"><div class="math-input">2^{2}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 720px; top: 489px;" data-block-id="57fd6baa8df9f742a641f3c50a1e423d" data-name="math-7ecb08"><div class="sl-block-content notranslate fragment" style="z-index: 33; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="12"><div class="math-input">2^{0}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 924px; top: 486.5px;" data-block-id="c5fcfe8cc4f92701282bd1970bf2aac2" data-name="math-5df158"><div class="sl-block-content notranslate fragment" style="z-index: 34; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="14"><div class="math-input">2^{16}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 816px; top: 486.5px;" data-block-id="92df5aa9865041026b3325899cac06c1" data-name="math-f08dd0"><div class="sl-block-content notranslate fragment" style="z-index: 35; font-size: 50%; color: rgb(170, 170, 170);" data-fragment-index="13"><div class="math-input">2^{22}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 597px; top: 484px;" data-block-id="eb9201ca10e522cff0d97ba7bb169976" data-name="math-7c5a55"><div class="sl-block-content notranslate fragment" style="z-index: 36; font-size: 50%; color: rgb(102, 102, 102);" data-fragment-index="11"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 690px; top: 484px;" data-block-id="4a3cc84757a69521179b3105dd997cc5" data-name="math-728f2d"><div class="sl-block-content notranslate fragment" style="z-index: 37; font-size: 50%; color: rgb(102, 102, 102);" data-fragment-index="12"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 787px; top: 484px;" data-block-id="371050d415442532b98084a8ad35f8ea" data-name="math-28dcc9"><div class="sl-block-content notranslate fragment" style="z-index: 38; font-size: 50%; color: rgb(102, 102, 102);" data-fragment-index="13"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 889px; top: 484px;" data-block-id="9d6dd79779aa9adb25a40e21cda75ae2" data-name="math-c9d01f"><div class="sl-block-content notranslate fragment" style="z-index: 39; font-size: 50%; color: rgb(102, 102, 102);" data-fragment-index="14"><div class="math-input">+</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1135.05px; left: 79.975px; top: 552.5px;" data-block-id="76c5dc2d0d62eb0a09187a1013153eee" data-name="text-cba995"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 40; color: rgb(255, 255, 255); text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="16">Similarly, we will have 3 more multi-tables </li>
+	<li class="fragment" data-fragment-index="16">Now lets dive into the code!</li>
+</ul>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2456286,"slug":"ultraplonk-part-2","title":"UltraPlonk: Part 2","description":"High-level summary of how Aztec works.","width":1280,"height":720,"margin":0.05,"visibility":"all","published_at":"2022-09-04T19:55:52.876Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/e8f6a7c0b6f447813811952ac37f3b68/thumb.jpg?1664352376","view_count":68,"user":{"id":1496266,"username":"suyashbagad_aztec","name":"Suyash Bagad","description":"Cryptography Engineer ","thumbnail_url":"https://media.slid.es/avatars/1496266/suyash-profile.jpg","account_type":"enterprise","team_id":2257,"settings":{"id":6852744,"present_controls":true,"present_upsizing":true,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null},"membership":{"role":"owner","manager":true,"activated":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-mint","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":false,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":11,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":null,"data_updated_at":1664371811246,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 1280,
+				height: 720,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				scrollActivationWidth: null,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+
+	</body>
+</html>

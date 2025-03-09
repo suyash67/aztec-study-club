@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "CQ Lookup Protocol"}' />
+		<title>CQ Lookup Protocol</title>
+
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-black-mint">
+		<div class="reveal">
+			<div class="slides">
+				<section data-id="4e68b1d6b4de0325af7537773281bceb" data-background-color="#000000"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 249px; height: auto;" data-block-id="18a183c2ef7a0be0dca19d0432a3e075" data-name="text-77f26f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>CQ Lookup</h1>
+</div></div>
+
+
+
+</section><section data-id="e3228d45db3d6a200dfadb04c4eda11a" data-background-color="rgb(0, 0, 0)"><div class="sl-block" data-block-type="math" data-name="math-5c6468" data-block-id="d9fd1895b9e69666ea6e507919fde153" style="width: auto; height: auto; left: 504px; top: 288px;"><div class="sl-block-content notranslate fragment" style="z-index: 31; font-size: 53%;" data-fragment-index="5"><div class="math-input">\begin{aligned}
+\textsf{lhs} =&amp;\ (\textcolor{brown}{\beta} + f_1)(\textcolor{brown}{\beta} + f_2)(\textcolor{brown}{\beta} + f_3)
+\dots(\textcolor{brown}{\beta} + f_{18})(\textcolor{brown}{\beta} + f_{19}) \\
+=&amp;\ \prod_{i=1}^{n} (\textcolor{brown}{\beta} + f_i)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 504px; top: 115.5px;" data-block-id="0b1ce682b459df047c21b992db6092b5" data-name="math-97ce1e"><div class="sl-block-content notranslate fragment" style="z-index: 71; font-size: 53%;" data-fragment-index="7"><div class="math-input">\begin{aligned}
+\textsf{rhs} =&amp;\ (\textcolor{brown}{\beta} + t_1)^4
+(\textcolor{brown}{\beta} + t_2)^2
+(\textcolor{brown}{\beta} + t_3)^4
+(\textcolor{brown}{\beta} + t_4)^2
+(\textcolor{brown}{\beta} + t_5)^1
+(\textcolor{brown}{\beta} + t_6)^3
+(\textcolor{brown}{\beta} + t_7)^3\\
+=&amp;\ \prod_{i=1}^{N} (\textcolor{brown}{\beta} + t_i)^{m_i}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-c97f1c" data-block-id="206346ef9d16348de5487b97c5f34b63" style="width: auto; height: auto; left: 481.5px; top: 441.5px;"><div class="sl-block-content notranslate fragment" style="z-index: 72; font-size: 55%;" data-fragment-index="8"><div class="math-input">\implies 
+\prod_{j=1}^{n} (\textcolor{brown}{\beta} + f_j) = 
+\prod_{i=1}^{N} (\textcolor{brown}{\beta} + t_i)^{m_i}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 481.5px; top: 514px;" data-block-id="60fa656bdc6dbfff6ff2e1ce041d410b" data-name="math-159773"><div class="sl-block-content notranslate fragment" style="z-index: 73; font-size: 55%;" data-fragment-index="9"><div class="math-input">\implies 
+\sum_{j=1}^{n} \text{log}(\textcolor{brown}{\beta} + f_j) = 
+\sum_{i=1}^{N} m_i \cdot \text{log}(\textcolor{brown}{\beta} + t_i)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 480px; top: 581.5px;" data-block-id="2d5b87c847d25b3b8bfe8c665d7d84ad" data-name="math-96b87f"><div class="sl-block-content notranslate fragment" style="z-index: 74; font-size: 55%;" data-fragment-index="10"><div class="math-input">\implies 
+\begin{aligned}
+\sum_{j=1}^{n} \frac{1}{(\textcolor{brown}{\beta} + f_j)} = 
+\sum_{i=1}^{N} \frac{m_i}{(\textcolor{brown}{\beta} + t_i)}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="7e886034a29fe2707b50678aa1c5ebf4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 75;">
+<h1>Lookup Argument</h1>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-dfb929" data-block-id="5e71598c84322843b9e8df2c53f19e7b" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 347.75px 428.5px; z-index: 10;" data-fragment-index="4">
+<div class="sl-block" data-block-type="math" data-name="math-3d91ef" data-block-id="5538ddf251788194cc4ed24eb87e6f97" style="width: auto; height: auto; left: -74px; top: 414.5px;"><div class="sl-block-style" style="z-index: 11; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 11; font-size: 30%;"><div class="math-input">\underbrace{\hspace{13.4cm}}_{}</div></div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-block-id="7fc9f4ca0ed5b41b35cac3b1a417008b" data-name="group-446d0b"><div class="sl-block-content sl-block-group-content" style="transform-origin: 358.875px 369px; z-index: 12;">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 220.25px; top: 428.5px;" data-origin-id="763d9a16bd39411b96b00c8adbe952c8" data-block-id="3e6b5dd22ab92cb8b441a7dbf0c73b75" data-name="line-a3eeee"><div class="sl-block-content" data-line-x1="261.25" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="261.25" height="1" viewbox="0 0 261.25 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="261.75" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="261.75" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 481.5px; top: 308.5px;" data-origin-id="9e61671e4d22b01119c319ba293f6bb8" data-block-id="39ca33ec2bcbe5cf4c67dbad068fb198" data-name="line-ffff5d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="15.5" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 14;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="15.5" height="1" viewbox="0 0 15.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="12" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="12" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(11.5,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 481.5px; top: 308.5px;" data-block-id="e761104a168f6714dba406574b6feede" data-name="line-880e9c"><div class="sl-block-content" data-line-x1="0" data-line-y1="120" data-line-x2="0" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="120" viewbox="0 0 1 120"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="120.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="120.5" x2="0.5" y2="0.5"></line></svg></div></div>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-87d674" data-block-id="ca0d0f27c2150f4928116827b97ec227" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 470.25px 243px; z-index: 76;" data-fragment-index="6">
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 352.5px; top: 236px;" data-block-id="9592a5285c54dd04bf795dd1aa4b5b75" data-name="math-7ff282"><div class="sl-block-style" style="z-index: 81; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 81; font-size: 30%;"><div class="math-input">\underbrace{\hspace{4.9cm}}_{}</div></div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-f3db5d" data-block-id="c1b7f3264f3b37d88263e7aa7c6bf90b"><div class="sl-block-content sl-block-group-content" style="transform-origin: 480.75px 190.5px; z-index: 77;">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 464px; top: 248.5px;" data-block-id="8df49846806a50d80d89d38a693baec6" data-name="line-b2439c"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="15.5" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 78;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="15.5" height="1" viewbox="0 0 15.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="16" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="16" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 479.5px; top: 131.5px;" data-block-id="763d9a16bd39411b96b00c8adbe952c8" data-name="line-5945fb"><div class="sl-block-content" data-line-x1="0.5" data-line-y1="0" data-line-x2="0" data-line-y2="117" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="none" style="z-index: 79;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="117" viewbox="0 0 1 117"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="1" y1="0.5" x2="0.5" y2="117.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="1" y1="0.5" x2="0.5" y2="117.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 479.5px; top: 131.5px;" data-block-id="9e61671e4d22b01119c319ba293f6bb8" data-name="line-e81e6b"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="17.5" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 80;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="17.5" height="1" viewbox="0 0 17.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="14" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="14" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(13.5,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-8b8498" data-block-id="904d8cd742c70e20ae52ab1c5a1e11c6" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 340.75px 225px; z-index: 104;" data-fragment-index="0">
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-96ac87" data-block-id="a4beb3d0ea711621ce3c208ccff6fa8e"><div class="sl-block-content sl-block-group-content" style="transform-origin: 283px 248.5px; z-index: 105;">
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 145.5px;" data-block-id="c487476b5e6b3a215a110779bfd73c5e" data-name="shape-56ad63"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(102, 78, 167)" data-shape-stretch="true" style="z-index: 106;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(102, 78, 167)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 175.5px;" data-block-id="94db9a623c7533d102276db6f4e839c9" data-name="shape-f67294"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(203, 183, 255)" data-shape-stretch="true" style="z-index: 107;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(203, 183, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 205.5px;" data-block-id="95ecd2180800ea9d989c172ec224f03e" data-name="shape-ec3606"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(135, 255, 255)" data-shape-stretch="true" style="z-index: 108;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(135, 255, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 235.5px;" data-block-id="569faf7c3ab0b3513b37c6b04cede9f3" data-name="shape-75f2c0"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(144, 238, 143)" data-shape-stretch="true" style="z-index: 109;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(144, 238, 143)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 265.5px;" data-block-id="8dc2d03eaed071e92e588e237581db0e" data-name="shape-2f55ca"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 146)" data-shape-stretch="true" style="z-index: 110;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 255, 146)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 295.5px;" data-block-id="72c8dca19dab95acf3b40cefe92bc2ae" data-name="shape-6ad23f"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 195, 105)" data-shape-stretch="true" style="z-index: 111;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 195, 105)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 270px; top: 325.5px;" data-block-id="c623410d5b7226efb4fabb4d2579e321" data-name="shape-8cd27a"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 157, 186)" data-shape-stretch="true" style="z-index: 112;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 157, 186)"></rect></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 141.5px; left: 270px; top: 98.5px;" data-block-id="c87b9f8113a839e4ccd86fd72d2ddf71" data-name="text-233b81"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 113; text-align: left; line-height: 1.43; font-size: 70%;" data-has-line-height="">
+<p>Table</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-442f53" data-block-id="5c4ec50e31edbd87073a4d2bd0f64cb4" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 127.125px 405px; z-index: 82;" data-fragment-index="1">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 141.5px; left: 56.25px; top: 98.5px;" data-name="text-f03387" data-block-id="0b44ed7c9099774ab4e32d252517e4a9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 103; text-align: right; line-height: 1.43; font-size: 70%;" data-has-line-height="">
+<p>Values</p>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-fedd9e" data-block-id="371e1431771c863756eb080c3d100930"><div class="sl-block-content sl-block-group-content" style="transform-origin: 185px 428.5px; z-index: 83;">
+<div class="sl-block" data-block-type="shape" data-name="shape-899a60" data-block-id="ad8f7deeef39aca324f475320e5e7563" style="width: 26px; height: 26px; left: 172px; top: 145.5px;"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 255, 146)" data-shape-stretch="true" style="z-index: 84;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 255, 146)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 175.5px;" data-block-id="a80d5c4625a8e44100d19b5ddfba31e9" data-name="shape-859f67"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(144, 238, 143)" data-shape-stretch="true" style="z-index: 85;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(144, 238, 143)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 205.5px;" data-block-id="1e558504929b0a05a181834e06869c33" data-name="shape-df0b38"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(144, 238, 143)" data-shape-stretch="true" style="z-index: 86;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(144, 238, 143)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 235.5px;" data-block-id="c89ea2127a71e9bc56b5f6a9bf8b02e9" data-name="shape-594e34"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(203, 183, 255)" data-shape-stretch="true" style="z-index: 87;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(203, 183, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 265.5px;" data-block-id="0f6bb7e04a74a44b579b70c20bec44eb" data-name="shape-d7d3d4"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(203, 183, 255)" data-shape-stretch="true" style="z-index: 88;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(203, 183, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 295.5px;" data-block-id="987ac05919e43e416ee27df3dd118cd8" data-name="shape-b7b4e6"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(135, 255, 255)" data-shape-stretch="true" style="z-index: 89;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(135, 255, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 325.5px;" data-block-id="33530f391c52bf9a717fc5a8b0c0d3f4" data-name="shape-cf194d"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(135, 255, 255)" data-shape-stretch="true" style="z-index: 90;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(135, 255, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 355.5px;" data-block-id="8a3fa884c46b95ffbf2558eca30ab2d2" data-name="shape-06d220"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(135, 255, 255)" data-shape-stretch="true" style="z-index: 91;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(135, 255, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 385.5px;" data-block-id="946a5daf1a1cbfadc0c16789ad30f6b9" data-name="shape-7c8396"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(135, 255, 255)" data-shape-stretch="true" style="z-index: 92;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(135, 255, 255)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 415.5px;" data-block-id="112c781f6c52519f8a278ad79d1c82d5" data-name="shape-af72ca"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 195, 105)" data-shape-stretch="true" style="z-index: 93;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 195, 105)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 445.5px;" data-block-id="f03019910bab32830201cbce04c60dfb" data-name="shape-8f4861"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 195, 105)" data-shape-stretch="true" style="z-index: 94;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 195, 105)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 475.5px;" data-block-id="052cdac8d5e272cc6589d529e19104cf" data-name="shape-471c1b"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 195, 105)" data-shape-stretch="true" style="z-index: 95;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 195, 105)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 505.5px;" data-block-id="87d04897aa3118f5e767bdd4cd02fae2" data-name="shape-b60bf7"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(103, 78, 167)" data-shape-stretch="true" style="z-index: 96;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(103, 78, 167)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 535.5px;" data-block-id="50094d3a180356d795f90796da3bc4bd" data-name="shape-c48120"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(103, 78, 167)" data-shape-stretch="true" style="z-index: 97;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(103, 78, 167)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 565.5px;" data-block-id="dc83be1b761a40cc2d1a02461fd3944a" data-name="shape-1ce7d0"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(103, 78, 167)" data-shape-stretch="true" style="z-index: 98;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(103, 78, 167)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 595.5px;" data-block-id="10594e180aad0ff79adf2b16639dcb41" data-name="shape-ee2ba3"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(103, 78, 167)" data-shape-stretch="true" style="z-index: 99;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(103, 78, 167)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 625.5px;" data-block-id="a7b34811df0c5ffd5bc19aeaf17e25d1" data-name="shape-b18e75"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 157, 186)" data-shape-stretch="true" style="z-index: 100;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 157, 186)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 655.5px;" data-block-id="eaa554c2f38e2eda749e70e03fa36094" data-name="shape-2599d9"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 157, 186)" data-shape-stretch="true" style="z-index: 101;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 157, 186)"></rect></svg></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 26px; height: 26px; left: 172px; top: 685.5px;" data-block-id="8b5a4cf44368e44b1ddefb092edd13a5" data-name="shape-3a584e"><div class="sl-block-content" data-shape-type="rect" data-shape-fill-color="rgb(255, 157, 186)" data-shape-stretch="true" style="z-index: 102;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 26 26"><rect width="26" height="26" rx="0" ry="0" class="shape-element" fill="rgb(255, 157, 186)"></rect></svg></div></div>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-32b883" data-block-id="87935cd04e6475ea303d359ea5a4d37b" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 375.5px 248px; z-index: 16;" data-fragment-index="3">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 157.5px;" data-block-id="2caa2d86cc4ba403a3ba4e723273fc98" data-name="line-848153"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 143px;" data-block-id="2a55eaa4199b6c7d49dbc5101b1c5232" data-name="math-445ab3"><div class="sl-block-content notranslate" style="z-index: 18; font-size: 40%; color: rgb(102, 78, 167);"><div class="math-input">(\textcolor{brown}{\beta} + t_1)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 188.5px;" data-block-id="07903b7fff57732027b95701de8a3547" data-name="line-a63f44"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 174px;" data-block-id="f6a6606bf36794625f6eb04ded9299d0" data-name="math-9a3950"><div class="sl-block-content notranslate" style="z-index: 20; font-size: 40%; color: rgb(203, 183, 255);"><div class="math-input">(\textcolor{brown}{\beta} + t_2)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 218.5px;" data-block-id="59b0f06014fe964bc8a63336dfdf814b" data-name="line-2a4120"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 21;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 204px;" data-block-id="1fa84e3accb28b3cdbec8698c4b33bbb" data-name="math-fa9fe2"><div class="sl-block-content notranslate" style="z-index: 22; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + t_3)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 248.5px;" data-block-id="cf237079b5238cc6af8882a1c09be91b" data-name="line-cde42f"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 23;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 234px;" data-block-id="31a95286c2a32ee9995e094aa23c0498" data-name="math-908312"><div class="sl-block-content notranslate" style="z-index: 24; font-size: 40%; color: rgb(144, 238, 143);"><div class="math-input">(\textcolor{brown}{\beta} + t_4)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 279.5px;" data-block-id="cb01f7691e5698c25ab4994e01c58a8f" data-name="line-77ba1a"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 25;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 265px;" data-block-id="8a03c21549b89f67b26af2f857c2d76b" data-name="math-a8ead2"><div class="sl-block-content notranslate" style="z-index: 26; font-size: 40%; color: rgb(255, 255, 146);"><div class="math-input">(\textcolor{brown}{\beta} + t_5)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 309.5px;" data-block-id="87ff2732c3e83568ba0e518b7423e696" data-name="line-a9fca0"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 27;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 295px;" data-block-id="08c31cda353a29da504c3bf31a0155a3" data-name="math-92c598"><div class="sl-block-content notranslate" style="z-index: 28; font-size: 40%; color: rgb(255, 195, 105);"><div class="math-input">(\textcolor{brown}{\beta} + t_6)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 306px; top: 339.5px;" data-block-id="c33b13ea235c5fa8e62664f0881b2ea1" data-name="line-40ee2a"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 29;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="0.5" y1="0.5" x2="66.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(66,0) rotate(90)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 386px; top: 325px;" data-block-id="bb39e2e8242caf31877a262c9663f2d2" data-name="math-274c4c"><div class="sl-block-content notranslate" style="z-index: 30; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + t_7)</div></div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-842eff" data-block-id="3bd7dbc296a79291ec0fbb95ea1829b4" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 87px 428px; z-index: 32;" data-fragment-index="2">
+<div class="sl-block" data-block-type="line" data-name="line-382324" data-block-id="645ccac305404242ac7e39a627c95123" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 158.5px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 33;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-4cc962" data-block-id="417d015b162e3fcbca8e7884c45f2778" style="width: auto; height: auto; left: 12px; top: 144px;"><div class="sl-block-content notranslate" style="z-index: 34; font-size: 40%; color: rgb(102, 102, 102);"><div class="math-input">(\textcolor{brown}{\beta} + f_1)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 188.5px;" data-block-id="a732866bd2e6e476813603b592319935" data-name="line-b3c7d4"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 35;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 174px;" data-block-id="794aa1bf96cfcf3c573e2096589a4cee" data-name="math-130a54"><div class="sl-block-content notranslate" style="z-index: 36; font-size: 40%; color: rgb(208, 255, 207);"><div class="math-input">(\textcolor{brown}{\beta} + f_2)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 218.5px;" data-block-id="2d0750fd5046ec4a7a53f6c548e5da6d" data-name="line-bb9d72"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 37;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 204px;" data-block-id="118af6050aa4584f08ac3b3a8b1893d7" data-name="math-b8411b"><div class="sl-block-content notranslate" style="z-index: 38; font-size: 40%; color: rgb(208, 255, 207);"><div class="math-input">(\textcolor{brown}{\beta} + f_3)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 248.5px;" data-block-id="a25106f448dfc864a533417e0b48ba7e" data-name="line-317fc2"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 39;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 234px;" data-block-id="82619c5760e853399b6a250266aade1e" data-name="math-14c0cc"><div class="sl-block-content notranslate" style="z-index: 40; font-size: 40%; color: rgb(203, 183, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_4)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 278.5px;" data-block-id="25d5e352ce544d0e234f5ab55380e508" data-name="line-f29cb8"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 41;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 264px;" data-block-id="6de85096090891226890e7059937986e" data-name="math-375157"><div class="sl-block-content notranslate" style="z-index: 42; font-size: 40%; color: rgb(203, 183, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_5)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 308.5px;" data-block-id="3d2a486c1956856f6cd7c63acb3a528e" data-name="line-0152d9"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 43;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 294px;" data-block-id="c10a8b2eb7861aa0e2103bc5debf70a1" data-name="math-6be78c"><div class="sl-block-content notranslate" style="z-index: 44; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_6)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 338.5px;" data-block-id="08e6980f32bd31427e5705e12f8f307b" data-name="line-7f7d37"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 45;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 324px;" data-block-id="95da7ca47bca051718744e2b6a8d85c4" data-name="math-87624e"><div class="sl-block-content notranslate" style="z-index: 46; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_7)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 368.5px;" data-block-id="fab83ca4a58c6555f069c2d52aca8b2e" data-name="line-ef8679"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 47;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 354px;" data-block-id="833f6dae71432490e02a533b4810d7ab" data-name="math-b5ff69"><div class="sl-block-content notranslate" style="z-index: 48; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_8)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 398.5px;" data-block-id="cc218061c66d4e3ff871c80a15a7f42d" data-name="line-335ad6"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 49;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 384px;" data-block-id="0a406d46758cfc44e5336c5c4d306d6a" data-name="math-f67f47"><div class="sl-block-content notranslate" style="z-index: 50; font-size: 40%; color: rgb(135, 255, 255);"><div class="math-input">(\textcolor{brown}{\beta} + f_9)</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 428.5px;" data-block-id="ed508d4c8ccaf67b112c8b007644788d" data-name="line-3d5b7f"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 51;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 414px;" data-block-id="e4d9ab4ccaeee16240f2e896557713ae" data-name="math-ce57b2"><div class="sl-block-content notranslate" style="z-index: 52; font-size: 40%; color: rgb(255, 228, 178);"><div class="math-input">(\textcolor{brown}{\beta} + f_{10})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 458.5px;" data-block-id="02f522f871470348b4013d06cdb6e075" data-name="line-1d19fb"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 53;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 444px;" data-block-id="83c892962ecc391bad12396b868987df" data-name="math-3cadc8"><div class="sl-block-content notranslate" style="z-index: 54; font-size: 40%; color: rgb(255, 228, 178);"><div class="math-input">(\textcolor{brown}{\beta} + f_{11})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 488.5px;" data-block-id="fd64c713d1bfaf03162ea18590d72c34" data-name="line-62566c"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 55;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 474px;" data-block-id="a2f7301dd432188bb3a227efffe287c4" data-name="math-7038ea"><div class="sl-block-content notranslate" style="z-index: 56; font-size: 40%; color: rgb(255, 228, 178);"><div class="math-input">(\textcolor{brown}{\beta} + f_{12})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 518.5px;" data-block-id="ceea1f200a9727dd8699abc4921f0e60" data-name="line-7e8a9d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 57;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 504px;" data-block-id="360661155d80486828b218c9d1afc60f" data-name="math-78d3ad"><div class="sl-block-content notranslate" style="z-index: 58; font-size: 40%; color: rgb(103, 78, 167);"><div class="math-input">(\textcolor{brown}{\beta} + f_{13})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 548.5px;" data-block-id="b945b629ffb735ed84a8592ac5cb0f26" data-name="line-582ec1"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 59;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 534px;" data-block-id="79340f2d92e226029912b2b238a61de5" data-name="math-9767fa"><div class="sl-block-content notranslate" style="z-index: 60; font-size: 40%; color: rgb(103, 78, 167);"><div class="math-input">(\textcolor{brown}{\beta} + f_{14})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 578.5px;" data-block-id="58d36781f5183512356db8ebc320f49f" data-name="line-a34c11"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 61;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 564px;" data-block-id="316ddd2a4b257e189eea1ed0aa12810c" data-name="math-c7d7e3"><div class="sl-block-content notranslate" style="z-index: 62; font-size: 40%; color: rgb(103, 78, 167);"><div class="math-input">(\textcolor{brown}{\beta} + f_{15})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 608.5px;" data-block-id="7933fd8959913ff2c07cab076ee3f2f3" data-name="line-fc79bc"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 63;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 594px;" data-block-id="6dff17b0d8bd43092f74baf4628537fd" data-name="math-87c3a4"><div class="sl-block-content notranslate" style="z-index: 64; font-size: 40%; color: rgb(103, 78, 167);"><div class="math-input">(\textcolor{brown}{\beta} + f_{16})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 638.5px;" data-block-id="26b7e64ce748aa070d58f34bc2b30425" data-name="line-6aab48"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 65;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 624px;" data-block-id="a8c10746fb31eca7e07ce4d14ab9eb67" data-name="math-7aae96"><div class="sl-block-content notranslate" style="z-index: 66; font-size: 40%; color: rgb(255, 157, 186);"><div class="math-input">(\textcolor{brown}{\beta} + f_{17})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 668.5px;" data-block-id="c121d8567f332c8ffa10bb866c3fb91c" data-name="line-e3f5a2"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 67;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 654px;" data-block-id="53967f6db00b18258058ff17dce8264b" data-name="math-8a8e53"><div class="sl-block-content notranslate" style="z-index: 68; font-size: 40%; color: rgb(255, 157, 186);"><div class="math-input">(\textcolor{brown}{\beta} + f_{18})</div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 92px; top: 698.5px;" data-block-id="910136bf3deeeaaabb5c7c4c80f4215f" data-name="line-2e7662"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="70" data-line-y2="0" data-line-color="#aaaaaa" data-line-start-type="arrow" data-line-end-type="none" style="z-index: 69;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="70" height="1" viewbox="0 0 70 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><line class="line-element" stroke="#aaaaaa" stroke-width="1" x1="4.5" y1="0.5" x2="70.5" y2="0.5"></line><polygon fill="#aaaaaa" transform="translate(4,0) rotate(90)" points="0,4 4,-4 -4,-4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 12px; top: 684px;" data-block-id="2acfb740b0835dc1e5e41aa16c6b8a5b" data-name="math-eb1acd"><div class="sl-block-content notranslate" style="z-index: 70; font-size: 40%; color: rgb(255, 157, 186);"><div class="math-input">(\textcolor{brown}{\beta} + f_{19})</div></div></div>
+</div></div></section><section data-id="f24fcf31d398343bd8db7326cc232bff" data-background-color="rgb(0, 0, 0)"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="b1f5fbe19eb2115833df625d567dcc7f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Cached Quotient</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 471.5px; top: 180px;" data-name="math-96b87f" data-block-id="8e7590d8d9d81755800e116905f250d1"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 55%;" data-fragment-index="1"><div class="math-input">\begin{aligned}
+\sum_{j\in[n]} \frac{1}{(\textcolor{brown}{\beta} + f_j)} = 
+\sum_{i\in[N]} \frac{m_i}{(\textcolor{brown}{\beta} + t_i)}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 106px;" data-name="text-f03387" data-block-id="7a957673df2642f0f3db147ca58fb046"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">Given \(\{f_i\}_{i\in[n]}\) and <span style="color:rgb(255, 255, 255)">\(\{t_i\}_{i\in[N]},\) we wish to prove the relation</span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 285px;" data-block-id="52eaec3d4588246f188f6c5955da2e7b" data-name="text-21ee56"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="2">We define two polynomials \(A(X)\) and \(B(X)\) such that</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 270px; top: 366px;" data-block-id="ec9d9368c4c8ecae3899eee0ff9ac24a" data-name="math-09264d"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 55%;" data-fragment-index="3"><div class="math-input">\begin{aligned}
+\forall i \in[N]: \ A_i =  \frac{m_i}{(\textcolor{brown}{\beta} + t_i)}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 720px; top: 362px;" data-block-id="3fe581747e7f9ed2eda713ac9dc739e1" data-name="math-572591"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 55%;" data-fragment-index="4"><div class="math-input">\begin{aligned}
+\forall j\in[n]: \ B_j = \frac{1}{(\textcolor{brown}{\beta} + f_j)}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 447px;" data-block-id="4e2298a8d8ae836b593bd7962dd0ec25" data-name="text-8a9af4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="5">We know that \(Q_{A,i} := A_i(t_i+\textcolor{brown}{\beta})-m_i\) must be \(0\ \forall i\in [N]\)</li>
+	<li class="fragment" data-fragment-index="6">Similarly, \(Q_{B,j}:=B_j(f_j+\textcolor{brown}{\beta}) - 1\) must be \(0\ \forall j\in [n]\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1d3eb9" data-block-id="f9a303e023cebbd531ef717be9c205b9" style="width: auto; height: auto; left: 312px; top: 577px;"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 55%;" data-fragment-index="7"><div class="math-input">A(X)(T(X) + \textcolor{brown}{\beta}) - m(X) = Q_A(X)\textcolor{grey}{Z_{\mathbb{V}}(X)}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 366px; top: 636px;" data-block-id="7ddf9aa33de4dd9d44bb3a0237bdbab4" data-name="math-f74c11"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 55%;" data-fragment-index="8"><div class="math-input">B(X)(F(X) + \textcolor{brown}{\beta}) - 1 = Q_B(X)\textcolor{grey}{Z_{\mathbb{H}}(X)}</div></div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="a25472443c917f964441369518c7289d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="1c801bb456bb761bf8e5b92472e35fa2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Cached Quotient</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1072px; left: 80px; top: 107px;" data-name="text-f03387" data-block-id="7b8c3e8f05ea5eb4d5fb656bc7851e9b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">The prover needs to do two things:
+	<ul>
+		<li class="fragment" data-fragment-index="1">Prove the he knows the polynomials \(A(.), B(.), Q_A(.), Q_B(.), F(.), m(.)\)</li>
+		<li class="fragment" data-fragment-index="2">Prove the relationship between these polynomials</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="3">
+<span style="color:#00FF00">Solution</span>: Open these polynomials at appropriate points
+	<ul>
+		<li class="fragment" data-fragment-index="4">Open \(A(X), B(X)\) at \(X=0\) by computing \(a_0=A(0), b_0=B(0)\) </li>
+		<li class="fragment" data-fragment-index="5">Open <span style="color:rgb(255, 255, 255)">\(Q_A(X), Q_B(X), F(X), m(X)\) at a random \(X=\gamma\) by computing \(a_{\gamma}=A(\gamma), b_{\gamma}=B(\gamma), f_\gamma = F(\gamma), m_{\gamma}=m(\gamma)\)</span>
+</li>
+	</ul>
+	</li>
+	<li class="fragment" data-fragment-index="6">How does this suffice to prove the correct relationship?
+	<ul>
+		<li class="fragment" data-fragment-index="7">Verifier computes \(Q_{A, B}(\gamma)\) himself as:</li>
+	</ul>
+	</li>
+</ul>
+
+<p> </p>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1d3eb9" style="width: auto; height: auto; left: 216px; top: 577px;" data-block-id="7a072f95af4781b906bd788da8510d6f"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 55%;" data-fragment-index="8"><div class="math-input">\begin{aligned}
+Q_A(\gamma) = 
+\frac{A(\gamma)(T(\gamma) + \textcolor{brown}{\beta}) - m(\gamma)}{\textcolor{grey}{Z_{\mathbb{V}}(\gamma)}}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 683px; top: 577px;" data-block-id="5613fc6a72ed9020f69db6f735978e76" data-name="math-706c8e"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 55%;" data-fragment-index="9"><div class="math-input">\begin{aligned}
+Q_B(\gamma) = 
+\frac{B(\gamma)(F(\gamma) + \textcolor{brown}{\beta}) - 1}{\textcolor{grey}{Z_{\mathbb{H}}(\gamma)}}
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1146px; left: 80px; top: 658px;" data-name="text-21ee56" data-block-id="6840febd0cc37df49676d390a3ce41df"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; text-align: left; line-height: 1.43;" data-has-line-height="" data-fragment-index="10">
+<ul>
+	<li class="">
+<span style="color:#FF0000">Problem</span>: Opening \(Q_A\) and computing \(T(\gamma)\) is a \(\mathcal{O}(N)\)</li>
+</ul>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="1b228944970cb9a483f572ce4365fa22"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="7fb2f8487ac6ff10f8d233527efce1c2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Cached Quotient</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1146px; left: 80px; top: 92px;" data-name="text-21ee56" data-block-id="aaaa752a0b96c8258f84242c1171c098"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">
+<span style="color:#FF0000">Problem</span>: Opening \(Q_A\) and computing \(T(\gamma)\) is \(\mathcal{O}(N)\)</li>
+	<li class="fragment" data-fragment-index="1">
+<span style="color:rgb(0, 255, 0)">Solution</span><span style="color:rgb(255, 255, 255)">: Check correctness of \(Q_A(.)\) using a pairing</span>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 402px; top: 209px;" data-block-id="2c2324fb070072d783d559259598c5ff" data-name="math-52e6ff"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 55%;" data-fragment-index="2"><div class="math-input">A(x)(T(x) + \textcolor{brown}{\beta}) = Q_A(x)\textcolor{grey}{Z_{\mathbb{V}}(x)} + m(x)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 358px; top: 313px;" data-name="math-5b1ba2" data-block-id="7ad4460fb49c90655fc55a9b6350c219"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 55%;" data-fragment-index="4"><div class="math-input">\implies 
+e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) = 
+e\Big(\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big)\cdot 
+e\Big(\textcolor{orange}{[m]_1 - \textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, \ \textcolor{lightgreen}{[1]_2}\Big)</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 432px;" data-block-id="6687f5b3c735ced6f14f89596d8be6c2" data-name="text-edddc7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; text-align: left; line-height: 1.43;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="7">
+<span style="color:#FF0000">Problem</span>: Computing commitment to \(Q_A\) is \(\mathcal{O}(N)\)</li>
+	<li class="fragment" data-fragment-index="8">
+<span style="color:#00FF00">Solution</span>: Use cached quotients \(\{\textcolor{lightgreen}{[Q_i]_1}\}_{i\in[N]}\) to do it in \(\mathcal{O}(n)\)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 403px; top: 261px;" data-block-id="58f16a26c63399c694ecb5b71b92287f" data-name="math-d93c4c"><div class="sl-block-content notranslate fragment" style="z-index: 23; font-size: 55%;" data-fragment-index="3"><div class="math-input">\implies
+A(x)T(x) = Q_A(x)\textcolor{grey}{Z_{\mathbb{V}}(x)} + m(x) - \textcolor{brown}{\beta}A(x)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 453px; top: 559.75px;" data-block-id="b89884964947dec3e97d71462313b7b5" data-name="math-18334f"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 55%;" data-fragment-index="9"><div class="math-input">[Q_A]_1 = \sum_{\{ i\in[N] \ | \ A_i \neq 0\}} \ A_i \cdot \textcolor{lightgreen}{[Q_i]_1}
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 445.5px; top: 636px;" data-block-id="567a3523b113092f9f5911a191693e1f" data-name="math-26e453"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 55%;" data-fragment-index="11"><div class="math-input">\begin{aligned}
+Q_i(X) = \frac{L_i(X)(T(X) - t_i)}{\textcolor{grey}{Z_{\mathbb{V}}(X)}}
+\end{aligned}
+</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-0a3500" data-block-id="af6cd369c19fcda0bebd6cff88878f43" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 325px 369.5px; z-index: 14;" data-fragment-index="6">
+<div class="sl-block" data-block-type="line" data-name="line-ecd3f3" data-block-id="808f2eaafc5f18aae187b20821e67c5d" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 478px; top: 356.5px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="13" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 15;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="13" viewbox="0 0 1 13"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="13.5" x2="0.5" y2="4.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="13.5" x2="0.5" y2="4.5"></line><polygon fill="#666666" transform="translate(0,4) rotate(0)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 341px; top: 369.5px;" data-block-id="edf433cd9c5cf4c3741b21e4d8d90c54" data-name="line-ca922d"><div class="sl-block-content" data-line-x1="137" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="137" height="1" viewbox="0 0 137 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="137.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="137.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-946fd6" data-block-id="6ce267077e55e98a331ad82339119a1e" style="height: auto; width: 164px; left: 171px; top: 356px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: right; font-size: 70%; color: rgb(170, 170, 170);">
+<p>Prover</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-864d1f" data-block-id="5039a9e4433548da9a0018ba1b74a639" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 355px 386.875px; z-index: 18;" data-fragment-index="5">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 538px; top: 356.5px;" data-block-id="5378f6f8709411755aeca628cca53911" data-name="line-d103ea"><div class="sl-block-content" data-line-x1="0" data-line-y1="46.75" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="46.75" viewbox="0 0 1 46.75"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="47.25" x2="0.5" y2="4.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="47.25" x2="0.5" y2="4.5"></line><polygon fill="#666666" transform="translate(0,3.9999999999999996) rotate(0)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 341px; top: 403.75px;" data-block-id="e9e982d7d41ffffeb1bba36ae5a82d9f" data-name="line-decc95"><div class="sl-block-content" data-line-x1="197" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 20;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="197" height="1" viewbox="0 0 197 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="197.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="197.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 164px; left: 171px; top: 390.25px;" data-block-id="de993ff059a4485dda706370efca80f0" data-name="text-79a1b5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: right; font-size: 70%; color: rgb(170, 170, 170);">
+<p>Pre-computed</p>
+</div></div>
+</div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-194398" data-block-id="bcd02481e5b3a21090c670268ef8c362" style="height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 1046.5px 579px; z-index: 26;" data-fragment-index="10">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 839px; top: 576px;" data-block-id="59da856ed32cc5d1e369268eb4d4eec8" data-name="line-11df39"><div class="sl-block-content" data-line-x1="121" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="arrow" style="z-index: 27;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="121" height="1" viewbox="0 0 121 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="121.5" y1="0.5" x2="4.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="121.5" y1="0.5" x2="4.5" y2="0.5"></line><polygon fill="#666666" transform="translate(4,0) rotate(270)" points="0,-4 4,4 -4,4"></polygon></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 282px; left: 972px; top: 561px;" data-block-id="fd9b132c2ee6d297edca4652b423bb13" data-name="text-7e5d1a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28; text-align: left; font-size: 70%; color: rgb(170, 170, 170);">
+<p>Pre-computed in \(\mathcal{O}(N\text{log}N)\)</p>
+</div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="b19324573ea4847ca397f4292e117a83"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="ec48f10542502a084ec26e73f61fe270"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 15;">
+<h1>CQ Protocol</h1>
+</div></div>
+<div class="sl-block" data-block-type="line" data-name="line-6dd94a" data-block-id="08951920706c4a9a79a2e9b0d64f8505" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 170px; top: 94px;"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="616" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-style="solid" data-line-width="1px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="616" viewbox="0 0 1 616"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="616.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="616.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 546px; left: 184px; top: 111px;" data-block-id="6fb2f203db61397999049fab27b26dca" data-name="text-b3472f"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17; text-align: left; font-size: 90%;" data-fragment-index="1">
+<p>Compute \(\textcolor{orange}{[m]_1}\) given multiplicities \(\{m_j\}_{j\in[n]}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 226px; left: 1015px; top: 146px;" data-block-id="109b9dacca5eaf76fa9387afca603eea" data-name="text-a7ec00"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18; text-align: right; font-size: 90%;" data-fragment-index="4">
+<p>Generate \(\beta \leftarrow \mathbb{F}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 41px; top: 166px;" data-block-id="8003738782fbfcdd719c4839bcea3064" data-name="line-c5f29f"><div class="sl-block-content fragment" data-line-x1="984" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 19;" data-line-style="solid" data-line-width="1px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="984" height="1" viewbox="0 0 984 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="982.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="982.5" y1="0.5" x2="0.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#666666" stroke-width="1" transform="translate(982,0) rotate(270)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 546px; left: 185px; top: 176px;" data-block-id="a5b5adfd9287df7fda2947db6d132c19" data-name="text-823c69"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20; text-align: left; font-size: 90%;" data-fragment-index="5">
+<p>Define \(A_i = \frac{m_i}{\beta + t_i} \ \forall i\in [N]\) and compute \(\textcolor{orange}{[A]_1}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 546px; left: 185px; top: 234px;" data-block-id="abfab41aec41bb9a76295692a562f23a" data-name="text-e2f89b"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21; text-align: left; font-size: 90%;" data-fragment-index="7">
+<p>Compute \(\textcolor{orange}{[Q_A]_1} = \sum_{i\in[N], A_i\neq 0}A_i\cdot \textcolor{lightgreen}{[Q_i]_1}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 546px; left: 184px; top: 295px;" data-block-id="a8ff21fe497ce8aad4306e11e37d95e5" data-name="text-538e80"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22; text-align: left; font-size: 90%;" data-fragment-index="9">
+<p>Define \(B_i = \frac{1}{\beta + f_i} \ \forall i\in [n]\) and compute \(\textcolor{orange}{[B]_1}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 684px; left: 184px; top: 357px;" data-block-id="99aeb806c0bde56842d05ab4403d2f47" data-name="text-eb1948"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23; text-align: left; font-size: 90%;" data-fragment-index="11">
+<p>Compute \(Q_B(X) = \frac{B(X)(f(X) + \beta) - 1}{\textcolor{grey}{Z_{\mathbb{H}}(X)}},\) compute \(\textcolor{orange}{[Q_B]_1}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="math" data-name="math-12e257" data-block-id="df9f4246b0716a21d0eed46d63c47b82" style="width: auto; height: auto; left: 75.5px; top: 111.1px;"><div class="sl-block-content notranslate fragment" style="z-index: 24; font-size: 55%;" data-fragment-index="2"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 75.5px; top: 177.1px;" data-block-id="9b53263782c47058e4d6a50447359d8f" data-name="math-70a773"><div class="sl-block-content notranslate fragment" style="z-index: 25; font-size: 55%;" data-fragment-index="6"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 75.5px; top: 235.1px;" data-block-id="fcb7ac427def565ba828e938b010e0bc" data-name="math-272bde"><div class="sl-block-content notranslate fragment" style="z-index: 26; font-size: 55%;" data-fragment-index="8"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 75.5px; top: 292.1px;" data-block-id="cfb44c7af596dee61dc02a391c87a8b6" data-name="math-9d2028"><div class="sl-block-content notranslate fragment" style="z-index: 27; font-size: 55%;" data-fragment-index="10"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 47px; top: 357px;" data-block-id="5a2c0d39f36fc8db6e7e27decd3190fb" data-name="math-10f714"><div class="sl-block-content notranslate fragment" style="z-index: 28; font-size: 55%;" data-fragment-index="12"><div class="math-input">\mathcal{O}(n \ \text{log}n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 703px; top: 550px;" data-name="math-5b1ba2" data-block-id="7d7f6601fd7b16b4c6820c068c1ae3e4"><div class="sl-block-content notranslate fragment" style="z-index: 29; font-size: 45%;" data-fragment-index="20"><div class="math-input">
+e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) = 
+e\Big(\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big)\cdot 
+e\Big(\textcolor{orange}{[m]_1 - \textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, \ \textcolor{lightgreen}{[1]_2}\Big)</div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 226px; left: 1014px; top: 394.1px;" data-block-id="8fe462c0d930ded88a1e739221a268a1" data-name="text-6a6382"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 30; text-align: right; font-size: 90%;" data-fragment-index="14">
+<p>Generate \(\gamma\leftarrow \mathbb{F}\)</p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 41px; top: 411.1px;" data-block-id="50ce6608dc658f3e871d58e70272c8c6" data-name="line-06d028"><div class="sl-block-content fragment" data-line-x1="984" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 31;" data-line-style="solid" data-line-width="1px" data-fragment-index="13"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="984" height="1" viewbox="0 0 984 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="982.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="982.5" y1="0.5" x2="0.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#666666" stroke-width="1" transform="translate(982,0) rotate(270)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 40.5px; top: 535px;" data-block-id="e3675cee0e8fb4f1a1a4d74cb2ecf5d8" data-name="line-3b359d"><div class="sl-block-content fragment" data-line-x1="984.5" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 32;" data-line-style="solid" data-line-width="1px" data-fragment-index="19"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="984.5" height="1" viewbox="0 0 984.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="983" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="983" y1="0.5" x2="0.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#666666" stroke-width="1" transform="translate(982.5,0) rotate(270)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-df1248" data-block-id="9982f2b939e478c2313ac4766b6664e0" style="width: auto; height: auto; left: 184px; top: 430px;"><div class="sl-block-content notranslate fragment" style="z-index: 33; font-size: 55%;" data-fragment-index="15"><div class="math-input">\textcolor{orange}{[W_\gamma]_1} \leftarrow
+\textsf{\textcolor{grey}{KZG.open}}(\{B, f, Q_B\}, \ \textcolor{brown}{\gamma})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 184px; top: 482px;" data-block-id="4db6d2f6e9a0e67d87c234c0f0e0ed93" data-name="math-94a17c"><div class="sl-block-content notranslate fragment" style="z-index: 34; font-size: 55%;" data-fragment-index="17"><div class="math-input">\textcolor{orange}{[W_0]_1} \leftarrow
+\textsf{\textcolor{grey}{KZG.open}}(\{A, B\}, \ \textcolor{brown}{0})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 976px; top: 140px;" data-block-id="5f766fa646bf40b15818d9b5e201a5fc" data-name="math-01a9fe"><div class="sl-block-content notranslate fragment" style="z-index: 35; font-size: 35%;" data-fragment-index="3"><div class="math-input">\textcolor{orange}{[m]_1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 852px; top: 384px;" data-block-id="dc2c13d3d5fb2a15a5a488027a7c7b18" data-name="math-37d392"><div class="sl-block-content notranslate fragment" style="z-index: 36; font-size: 35%;" data-fragment-index="13"><div class="math-input">\textcolor{orange}{[A]_1 \ [Q_A]_1 \ [B]_1 \ [Q_B]_1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 922px; top: 508px;" data-block-id="9964e76ef11230e398119e49c7ae8549" data-name="math-95ffe3"><div class="sl-block-content notranslate fragment" style="z-index: 37; font-size: 35%;" data-fragment-index="19"><div class="math-input">\textcolor{orange}{[W_\gamma]_1 \ [W_0]_1}</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 693px; top: 605px;" data-block-id="426e8a4898be9271815f2814dd15a4e7" data-name="math-38faa9"><div class="sl-block-content notranslate fragment" style="z-index: 38; font-size: 45%;" data-fragment-index="21"><div class="math-input">e\Big(\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 693px; top: 660px;" data-block-id="0a437a64c4b06535e26cc382c9556792" data-name="math-71252a"><div class="sl-block-content notranslate fragment" style="z-index: 39; font-size: 45%;" data-fragment-index="22"><div class="math-input">e\Big(\textcolor{orange}{[W_0]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(
+\textcolor{grey}{[C_0]_1} - 
+\textcolor{grey}{[v_0]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 76px; top: 430px;" data-block-id="87634a9e2f9599594205d803ab8ea473" data-name="math-708d4f"><div class="sl-block-content notranslate fragment" style="z-index: 40; font-size: 55%;" data-fragment-index="16"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 76px; top: 482px;" data-block-id="adb001ebcddfd279c86745f04eeda2c2" data-name="math-c2d39a"><div class="sl-block-content notranslate fragment" style="z-index: 41; font-size: 55%;" data-fragment-index="18"><div class="math-input">\mathcal{O}(n)</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-bb69cb" data-block-id="f5dc025f45cf2e903bdc9f1c4f91a264"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 646px 402.5px; z-index: 10;" data-fragment-index="0">
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 1250px; top: 94px;" data-block-id="ce7a58b4c0a34db9abe0d6da0cdb0005" data-name="line-a9ee70"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="0" data-line-y2="616" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 11;" data-line-style="solid" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="616" viewbox="0 0 1 616"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="0.5" y2="616.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="0.5" x2="0.5" y2="616.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 41px; top: 94px;" data-block-id="784ea5098493b8701ba46c64e4be0173" data-name="line-c53f65"><div class="sl-block-content" data-line-x1="1209" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;" data-line-style="solid" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1209" height="1" viewbox="0 0 1209 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="1209.5" y1="0.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="1209.5" y1="0.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 41px; top: 94px;" data-block-id="fa056d30e700c11e5dca2e02b6a69053" data-name="line-7bdf83"><div class="sl-block-content" data-line-x1="0" data-line-y1="616" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-line-style="solid" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="616" viewbox="0 0 1 616"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="616.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="616.5" x2="0.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 41px; top: 710px;" data-block-id="59e2e148fa53c0278ed10579655dd1fe" data-name="line-bb91dd"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="1209" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 14;" data-line-style="solid" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1209" height="1" viewbox="0 0 1209 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="1209.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="0.5" x2="1209.5" y2="0.5"></line></svg></div></div>
+</div></div></section><section data-background-color="rgb(0, 0, 0)" data-id="7e047e288a29678ae4ff8096df435fc4" data-auto-animate="" data-auto-animate-easing="ease-out"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="48a10d9c3e277979c276729a8d0a12b3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>CQ Aggregation</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 173.5px;" data-name="math-5b1ba2" data-block-id="ace340d93dd4b81f9459fcb0960f1987"><div class="sl-block-content notranslate fragment" style="z-index: 11; font-size: 45%;" data-fragment-index="1"><div class="math-input">
+e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) = 
+e\Big(\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big)\cdot 
+e\Big(\textcolor{orange}{[m]_1 - \textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, \ \textcolor{lightgreen}{[1]_2}\Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 230.5px;" data-name="math-38faa9" data-block-id="3f82efd0930e4f1de4a90f00d2dbc6c5"><div class="sl-block-content notranslate fragment" style="z-index: 12; font-size: 45%;" data-fragment-index="2"><div class="math-input">e\Big(\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 287.5px;" data-name="math-71252a" data-block-id="8099ba525941576539aa8e375dccd4e5"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 45%;" data-fragment-index="3"><div class="math-input">e\Big(\textcolor{orange}{[W_0]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(
+\textcolor{grey}{[C_0]_1} - 
+\textcolor{grey}{[v_0]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 401.5px;" data-block-id="4e047042c678336ce75ea9773a614cf1" data-name="math-3fa07e"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 45%;" data-fragment-index="5"><div class="math-input">e\Big(\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+=
+e\Big(
+\textcolor{orange}{[P_B]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 344.5px;" data-block-id="e82420e4059dda9787c8098fb3a292ad" data-name="math-0e3924"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 45%;" data-fragment-index="4"><div class="math-input">e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+=
+e\Big(
+\textcolor{orange}{[P_A]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 460px; top: 264.5px;" data-block-id="3f85381b0745fab3b02f92753662dc96" data-name="math-f2512e"><div class="sl-block-style" style="z-index: 16; transform: rotate(-90deg);"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 35%;" data-fragment-index="6"><div class="math-input">\underbrace{\hspace{2cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 536px; top: 260px;" data-block-id="1b8c998d62e768c41e7d6a4f63624f5f" data-name="math-a97e35"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 45%;" data-fragment-index="7"><div class="math-input">e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + 
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 324px; top: 377.5px;" data-block-id="0f4ee04eb6a9e28310f3ce7e420c97a1" data-name="math-7614c3"><div class="sl-block-style" style="z-index: 18; transform: rotate(-90deg);"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 35%;" data-fragment-index="9"><div class="math-input">\underbrace{\hspace{2cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 400px; top: 373px;" data-block-id="d9c70f5b4e0d2be1a7350cc7c72e21ee" data-name="math-7d2a8c"><div class="sl-block-content notranslate fragment" style="z-index: 19; font-size: 45%;" data-fragment-index="10"><div class="math-input">e\Big(\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+=
+e\Big(
+\textcolor{orange}{[P_A]_1} + \textcolor{brown}{\mu}
+\textcolor{orange}{[P_B]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 106.5px;" data-block-id="9cbdbe06a7911dfcfef4348edbbac094" data-name="math-aa04fa"><div class="sl-block-content notranslate fragment" style="z-index: 20; font-size: 45%;" data-fragment-index="0"><div class="math-input">\pi_{\textsf{cq}} = \Big( \textcolor{orange}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{skyblue}{a_0, b_\gamma, f_\gamma, } \Big)</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-ceae71" data-block-id="37090b1f8ceec649768a1889e5bc502f" style="width: 467px; height: 100px; left: 40px; top: 230.5px;"><div class="sl-block-style" style="z-index: 21; opacity: 0.7;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 21;" data-fragment-index="8"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 467 100"><rect width="467" height="100" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 330px; height: 100px; left: 40px; top: 342.5px;" data-block-id="66b11d433369542fd2c2c192c0428552" data-name="shape-b24385"><div class="sl-block-style" style="z-index: 22; opacity: 0.7;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 22;" data-fragment-index="11"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 330 100"><rect width="330" height="100" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></div></section><section data-auto-animate-easing="ease-out" data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="480a17009a2888316d300fa54090c3f6"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="afe553e5f777064ec99f6164a95f0736"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>CQ Aggregation</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 173.5px;" data-name="math-5b1ba2" data-block-id="b3a7821465e5a14c62bace3c3f158079"><div class="sl-block-content notranslate" style="z-index: 11; font-size: 45%;"><div class="math-input">
+e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) = 
+e\Big(\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big)\cdot 
+e\Big(\textcolor{orange}{[m]_1 - \textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, \ \textcolor{lightgreen}{[1]_2}\Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 231px;" data-name="math-a97e35" data-block-id="7732bf7ecd7924c44e2f9e14f33b7ef3"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 45%;"><div class="math-input">e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big)
+=
+e\Big(\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + 
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 289px;" data-name="math-7d2a8c" data-block-id="9258c61af3595949972a4a360a49ff17"><div class="sl-block-content notranslate" style="z-index: 13; font-size: 45%;"><div class="math-input">e\Big(\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+=
+e\Big(
+\textcolor{orange}{[P_A]_1} + \textcolor{brown}{\mu}
+\textcolor{orange}{[P_B]_1}, \ \textcolor{lightgreen}{[1]_2}\Big)
+</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 106.5px;" data-name="math-aa04fa" data-block-id="0459420835e03b02549960bca6b78fac"><div class="sl-block-content notranslate" style="z-index: 14; font-size: 45%;"><div class="math-input">\pi_{\textsf{cq}} = \Big( \textcolor{orange}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{skyblue}{a_0, b_\gamma, f_\gamma, } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 577px; top: 414.5px;" data-block-id="f6a0ccd00cad946104f46d3d02f888fb" data-name="math-4253a8"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 45%;" data-fragment-index="1"><div class="math-input">\begin{aligned}
+&amp; e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{\mu'}\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+\end{aligned}
+\ 
+=
+\ 
+e\left(
+\def\arraystretch{1.5}
+\begin{array}{l}
+\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + &amp; \\
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1} + &amp;  \textcolor{lightgreen}{[1]_2} \\
+\textcolor{brown}{\mu'}\textcolor{orange}{[P_A]_1} + 
+\textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[P_B]_1}, &amp; 
+\end{array}
+\right)
+</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-77fea8" data-block-id="f1c319c9c4a98b931a7bd34df756c0b8" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 817.75px 321.5px; z-index: 16;" data-fragment-index="0">
+<div class="sl-block" data-block-type="math" data-name="math-d67b8e" data-block-id="6684ca37250ec0df86d21e0ef71b9031" style="width: auto; height: auto; left: 722px; top: 265px;"><div class="sl-block-style" style="z-index: 17; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 17; font-size: 35%;"><div class="math-input">\underbrace{\hspace{2.1cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-95d385" data-block-id="944bace2700a1d6a01b8eaeeb431e4a0" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 786.5px; top: 281px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="89.5" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 18;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="89.5" height="1" viewbox="0 0 89.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="90" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="0.5" x2="90" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 876px; top: 280.5px;" data-block-id="9e5f9dadb1fd8412e32831064e9e2657" data-name="line-921bb9"><div class="sl-block-content" data-line-x1="0" data-line-y1="133.5" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 19;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="133.5" viewbox="0 0 1 133.5"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="132" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="132" x2="0.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#666666" stroke-width="1" transform="translate(0,131.5) rotate(0)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-9ce74e" data-block-id="e62b810852606fef9a0d1379709a41f9" style="width: 739px; height: 105px; left: 32px; top: 228.5px;"><div class="sl-block-style" style="z-index: 20; opacity: 0.7;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 20;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 739 105"><rect width="739" height="105" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></div></section><section data-auto-animate-easing="ease-out" data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="ff19dfcfbabbfdd935b1db389a56abec"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="591794a5750d874752ad892f32b2745f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>CQ Aggregation</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 173.5px;" data-name="math-5b1ba2" data-block-id="8cb635cd8abe3f692230b713c16fd509"><div class="sl-block-content notranslate" style="z-index: 11; font-size: 45%;"><div class="math-input">
+e\Big(\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) = 
+e\Big(\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big)\cdot 
+e\Big(\textcolor{orange}{[m]_1 - \textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, \ \textcolor{lightgreen}{[1]_2}\Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 106.5px;" data-name="math-aa04fa" data-block-id="bb1b6ae8403804dbae1111efba179acc"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 45%;"><div class="math-input">\pi_{\textsf{cq}} = \Big( \textcolor{orange}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{skyblue}{a_0, b_\gamma, f_\gamma, } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 236px;" data-name="math-4253a8" data-block-id="a4b1b72712b373bf96a4b96239aa75c0"><div class="sl-block-content notranslate" style="z-index: 13; font-size: 45%;"><div class="math-input">\begin{aligned}
+&amp; e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{\mu'}\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+\end{aligned}
+\ 
+=
+\ 
+e\left(
+\def\arraystretch{1.5}
+\begin{array}{l}
+\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + &amp; \\
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1} + &amp;  \textcolor{lightgreen}{[1]_2} \\
+\textcolor{brown}{\mu'}\textcolor{orange}{[P_A]_1} + 
+\textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[P_B]_1}, &amp; 
+\end{array}
+\right)
+</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1fc138" data-block-id="a7bf88562d4df882a9ecab47f13c0de1" style="width: auto; height: auto; left: 538.5px; top: 402px;"><div class="sl-block-content notranslate fragment" style="z-index: 18; font-size: 45%;" data-fragment-index="1"><div class="math-input">\begin{aligned}
+&amp; e\Big(\textcolor{brown}{\mu''}\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{-\mu''}\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{\mu'}\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+\end{aligned}
+\ 
+=
+\ 
+e\left(
+\def\arraystretch{1.5}
+\begin{array}{l}
+\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + &amp; \\
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1} + &amp;  \textcolor{lightgreen}{[1]_2} \\
+\textcolor{brown}{\mu'}\textcolor{orange}{[P_A]_1} + 
+\textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[P_B]_1} + &amp; \\
+\textcolor{brown}{\mu''}\textcolor{orange}{[m]_1 - \textcolor{brown}{\mu''}\textcolor{brown}{\beta}\textcolor{orange}{[A]_1}}, &amp; 
+\end{array}
+\right)
+</div></div></div>
+<div class="sl-block sl-block-group" data-block-type="group" data-name="group-7ad010" data-block-id="45b05b4352e3f2485f32db1981e8deb0" style="width: auto; height: auto;"><div class="sl-block-content sl-block-group-content fragment" style="transform-origin: 779.5px 288.25px; z-index: 14;" data-fragment-index="0">
+<div class="sl-block" data-block-type="math" data-name="math-7d51d3" data-block-id="3a1ee43bc3419937c8b50ecb4108de33" style="width: auto; height: auto; left: 638.5px; top: 249.5px;"><div class="sl-block-style" style="z-index: 15; transform: rotate(-90deg);"><div class="sl-block-content notranslate" style="z-index: 15; font-size: 35%;"><div class="math-input">\underbrace{\hspace{3.8cm}}_{}</div></div></div></div>
+<div class="sl-block" data-block-type="line" data-name="line-0023bd" data-block-id="33b602bf50355d2fd6fce3671ba81072" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 745px; top: 265.5px;"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="96" data-line-y2="0" data-line-color="#666666" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="96" height="1" viewbox="0 0 96 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="96.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="0.5" x2="96.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 841px; top: 265.5px;" data-block-id="093f4d02529a9977baa048f56a8189b7" data-name="line-8e3531"><div class="sl-block-content" data-line-x1="0" data-line-y1="140" data-line-x2="0" data-line-y2="0" data-line-color="#666666" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 17;" data-line-width="1px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="140" viewbox="0 0 1 140"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="138.5" x2="0.5" y2="0.5"></line><line class="line-element" stroke="#666666" stroke-width="1" x1="0.5" y1="138.5" x2="0.5" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#666666" stroke-width="1" transform="translate(0,138) rotate(0)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-3cb755" data-block-id="a39bc686a874e9c9845d5ec70c61a10e" style="width: 683px; height: 187.5px; left: 40px; top: 170.5px;"><div class="sl-block-style" style="z-index: 19; opacity: 0.7;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 19;" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 683 188"><rect width="683" height="187.5" rx="0" ry="0" class="shape-element" fill="#000000"></rect></svg></div></div></div></section><section data-auto-animate-easing="ease-out" data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="61d1d3aaa0372b0204b552dc756f083c"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="109bdeffef07bceed405587235d1981c"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>CQ Aggregation</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 106.5px;" data-name="math-aa04fa" data-block-id="8c9b419dd6ed4b72a2f0af080299bd3b"><div class="sl-block-content notranslate" style="z-index: 11; font-size: 45%;"><div class="math-input">\pi_{\textsf{cq}} = \Big( \textcolor{orange}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{skyblue}{a_0, b_\gamma, f_\gamma } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-1fc138" style="width: auto; height: auto; left: 40px; top: 170.5px;" data-block-id="07c24894b562de11e52984b7f29ae10a"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 45%;"><div class="math-input">\begin{aligned}
+&amp; e\Big(\textcolor{brown}{\mu''}\textcolor{orange}{[A]_1}, \ \textcolor{lightgreen}{[T]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{-\mu''}\textcolor{orange}{[Q_A]_1}, \ \textcolor{lightgreen}{[Z_{\mathbb{V}}]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{orange}{[W_\gamma]_1} + \textcolor{brown}{\mu}\textcolor{orange}{[W_\gamma]_1}, \ \textcolor{lightgreen}{[x]_2}\Big) \cdot \\
+&amp; e\Big(\textcolor{brown}{\mu'}\textcolor{orange}{[A]_1} + \textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[B]_1}, \ \textcolor{lightgreen}{[x^{N-n}]_2}\Big)
+\end{aligned}
+\ 
+=
+\ 
+e\left(
+\def\arraystretch{1.5}
+\begin{array}{l}
+\textcolor{brown}{\mu''}\textcolor{orange}{[m]_1 - \textcolor{brown}{\mu''}\textcolor{brown}{\beta}\textcolor{orange}{[A]_1}} + &amp; \\
+\textcolor{brown}{\gamma}\textcolor{orange}{[W_\gamma]_1} + 
+\textcolor{grey}{[C_\gamma]_1} - 
+\textcolor{grey}{[v_\gamma]_1} + &amp; \\
+\textcolor{brown}{\mu}\textcolor{grey}{[C_0]_1} - 
+\textcolor{brown}{\mu}\textcolor{grey}{[v_0]_1} + &amp;  \textcolor{lightgreen}{[1]_2} \\
+\textcolor{brown}{\mu'}\textcolor{orange}{[P_A]_1} + 
+\textcolor{brown}{\mu'}\textcolor{brown}{\mu}\textcolor{orange}{[P_B]_1}, &amp; 
+\end{array}
+\right)
+</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-4baae5" data-block-id="75cfe689086589ee95f2f443ae4fd0fa" style="width: auto; height: auto; left: 40px; top: 382.5px;"><div class="sl-block-content notranslate fragment" style="z-index: 13; font-size: 55%;" data-fragment-index="0"><div class="math-input">\implies
+e(\textcolor{orange}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+e(\textcolor{orange}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot 
+e(\textcolor{orange}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+e(\textcolor{orange}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\stackrel{?}{=}
+e(\textcolor{orange}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 513.5px;" data-block-id="f35007a20d947008b385f295bab091cf" data-name="math-b09070"><div class="sl-block-content notranslate fragment" style="z-index: 14; font-size: 55%;" data-fragment-index="2"><div class="math-input">\implies
+e(\textcolor{teal}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+e(\textcolor{teal}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot 
+e(\textcolor{teal}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+e(\textcolor{teal}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\stackrel{?}{=}
+e(\textcolor{teal}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 449.5px;" data-block-id="b01e395ab14453c72b1f6c289bd934aa" data-name="math-90520b"><div class="sl-block-content notranslate fragment" style="z-index: 15; font-size: 45%;" data-fragment-index="1"><div class="math-input">\pi_{\textsf{cq}}' = \Big( \textcolor{teal}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{lightgrey}{a_0, b_\gamma, f_\gamma } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 615.5px;" data-block-id="2f60542751c4ee9bfb9fd28c2ac713d7" data-name="math-f742e7"><div class="sl-block-content notranslate fragment" style="z-index: 16; font-size: 55%;" data-fragment-index="3"><div class="math-input">\implies
+\begin{aligned}
+&amp; e(\textcolor{orange}{[L_a]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+  e(\textcolor{orange}{[L_b]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot \\
+&amp; e(\textcolor{orange}{[L_c]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+  e(\textcolor{orange}{[L_d]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\end{aligned}
+\stackrel{?}{=}
+e(\textcolor{orange}{[R]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div></section><section data-auto-animate-easing="ease-out" data-background-color="rgb(0, 0, 0)" data-auto-animate="" data-id="acdb072001ff084558ee00d50b3d8145"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="d5b3f92d8c2b95da0feea5b35a80969a"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 11;">
+<h1>CQ Aggregation</h1>
+</div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 106.5px;" data-name="math-aa04fa" data-block-id="aba8ee1a11175e87add4f78b050d3c7a"><div class="sl-block-content notranslate" style="z-index: 12; font-size: 45%;"><div class="math-input">\pi_{\textsf{cq}} = \Big( \textcolor{orange}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{skyblue}{a_0, b_\gamma, f_\gamma } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-4baae5" style="width: auto; height: auto; left: 40px; top: 170.5px;" data-block-id="a4947090849b4744bdfcded4aa5a8cb9"><div class="sl-block-content notranslate" style="z-index: 13; font-size: 55%;"><div class="math-input">\implies
+e(\textcolor{orange}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+e(\textcolor{orange}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot 
+e(\textcolor{orange}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+e(\textcolor{orange}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\stackrel{?}{=}
+e(\textcolor{orange}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 301.5px;" data-name="math-b09070" data-block-id="399adfa585d88937f90b4db97a6e5d2b"><div class="sl-block-content notranslate" style="z-index: 14; font-size: 55%;"><div class="math-input">\implies
+e(\textcolor{teal}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+e(\textcolor{teal}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot 
+e(\textcolor{teal}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+e(\textcolor{teal}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\stackrel{?}{=}
+e(\textcolor{teal}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 237.5px;" data-name="math-90520b" data-block-id="ef05580a0c30db1663ee8ce2ccd34e43"><div class="sl-block-content notranslate" style="z-index: 15; font-size: 45%;"><div class="math-input">\pi_{\textsf{cq}}' = \Big( \textcolor{teal}{[f]_1, [m]_1, [A]_1, [B]_1, [Q_A]_1, [Q_B]_1, [P_A]_1, [P_B]_1}, \textcolor{lightgrey}{a_0, b_\gamma, f_\gamma } \Big)</div></div></div>
+<div class="sl-block" data-block-type="math" style="width: auto; height: auto; left: 40px; top: 383.5px;" data-name="math-f742e7" data-block-id="aef2d16ee1fc8176713385df20d74307"><div class="sl-block-content notranslate" style="z-index: 16; font-size: 55%;"><div class="math-input">\implies
+\begin{aligned}
+&amp; e(\textcolor{orange}{[L_a]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_a]_1}, \textcolor{lightgreen}{[S_a]_2}) \cdot
+  e(\textcolor{orange}{[L_b]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_b]_1}, \textcolor{lightgreen}{[S_b]_2}) \cdot \\
+&amp; e(\textcolor{orange}{[L_c]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_c]_1}, \textcolor{lightgreen}{[S_c]_2}) \cdot 
+  e(\textcolor{orange}{[L_d]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[L_d]_1}, \textcolor{lightgreen}{[S_d]_2})
+\end{aligned}
+\stackrel{?}{=}
+e(\textcolor{orange}{[R]_1} + \textcolor{brown}{\mu'''}\textcolor{teal}{[R]_1}, \textcolor{lightgreen}{[1]_2})</div></div></div>
+<div class="sl-block" data-block-type="math" data-name="math-c0b7ac" data-block-id="5e277054415aa96b534bfdee4c707c08" style="width: auto; height: auto; left: 261.5px; top: 529.75px;"><div class="sl-block-content notranslate fragment" style="z-index: 17; font-size: 48%;" data-fragment-index="0"><div class="math-input">\begin{aligned}
+&amp; e\Big(\sum_k \textcolor{brown}{\eta^k} \textcolor{orange}{[L_{a,k}]_1}, \ \textcolor{lightgreen}{[S_{a,k}]_2} \Big) \cdot
+  e\Big(\sum_k \textcolor{brown}{\eta^k} \textcolor{orange}{[L_{b,k}]_1}, \ \textcolor{lightgreen}{[S_{b,k}]_2} \Big) \cdot \\ 
+&amp; e\Big(\sum_k \textcolor{brown}{\eta^k} \textcolor{orange}{[L_{c,k}]_1}, \ \textcolor{lightgreen}{[S_{c,k}]_2} \Big) \cdot 
+  e\Big(\sum_k \textcolor{brown}{\eta^k} \textcolor{orange}{[L_{d,k}]_1}, \ \textcolor{lightgreen}{[S_{d,k}]_2} \Big)
+\end{aligned}
+\stackrel{?}{=}
+\begin{aligned}
+e\Big(\sum_k \textcolor{brown}{\eta^k} \textcolor{orange}{[R_{k}]_1}, \ \textcolor{lightgreen}{[1]_2} \Big)
+\end{aligned}</div></div></div>
+<div class="sl-block" data-block-type="shape" data-name="shape-97bd2d" data-block-id="d7f881d0fc6a175fe06186532f9459dd" style="width: 806px; height: 167.5px; left: 237px; top: 508px;"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 10;" data-shape-stroke-color="#aaaaaa" data-shape-stroke-width="1px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 806 168"><defs><clippath id="shape-mask-2-1672815283029"><rect width="806" height="167.5" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#aaaaaa" stroke-width="2"></rect></clippath></defs><rect width="806" height="167.5" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#aaaaaa" stroke-width="2" clip-path="url(#shape-mask-2-1672815283029)"></rect></svg></div></div></section><section data-id="eb7389db5b8df4c1423d40a340dc1355" data-background-color="rgb(0, 0, 0)"><div class="sl-block" data-block-type="text" style="width: 806px; left: 237px; top: 6px; height: auto;" data-name="text-5fc907" data-block-id="579b4ce1a990cff720c8c18f5bd0dd1d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 229, 153); font-size: 80%; z-index: 10;">
+<h1>Discussion</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 1120px; left: 80px; top: 108px;" data-name="text-21ee56" data-block-id="4cc7ea680c97758f15a71450f821702a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left; line-height: 1.56;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">CQ can enable <span style="color:#00FF00">arbitrary</span> lookup table sizes without\(^*\) any trade-offs!</li>
+	<li class="fragment" data-fragment-index="2">A same set of lookup tables can be used across <span style="color:#00FF00">multiple circuits</span>
+</li>
+	<li class="fragment" data-fragment-index="3">Pre-computation is heavy but needs to be done <span style="color:#00FF00">once</span> (like SRS)</li>
+	<li class="fragment" data-fragment-index="4">Need a <span style="color:#FF0000">new setup</span> ceremony (as we need \(\{[x^i]_2\}_{i\in[N]}\))</li>
+	<li class="fragment" data-fragment-index="5">
+<span style="color:#00FF00">Updating</span> pre-computed lookup tables is possible (Baloo?)</li>
+	<li class="fragment" data-fragment-index="6">Looks like we need <span style="color:#FF0000">5 pairings</span> on-chain (instead of 2)</li>
+	<li class="fragment" data-fragment-index="7">CQ + Plonk \(\implies\) Will need to <span style="color:#FF0000">open</span> polynomials at \(&gt;2\) points</li>
+	<li class="fragment" data-fragment-index="8">Thus, looks inevitable to use <span style="color:#00FF00">Shplonk</span>
+</li>
+	<li class="fragment" data-fragment-index="9">Adding <span style="color:#FF0000">ZK</span> is a pain? Do we need ZK for public kernel circuits? </li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-578dcc" data-block-id="88b4db244d60d16c7e909a42daf6e6f2" style="height: auto; width: 600px; left: 80px; top: 681px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; font-size: 80%; color: rgb(170, 170, 170);" data-fragment-index="1">
+<p>\(^* \text{T } \&amp; \text{ C apply.}\)</p>
+</div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2528373,"slug":"cq-lookup","title":"CQ Lookup Protocol","description":"","width":1280,"height":720,"margin":0.05,"visibility":"all","published_at":"2023-01-02T06:06:56.861Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/ab2b82d805241cd3818a6d0f6466da6b/thumb.jpg?1673514117","view_count":174,"user":{"id":1496266,"username":"suyashbagad_aztec","name":"Suyash Bagad","description":"Cryptography Engineer ","thumbnail_url":"https://media.slid.es/avatars/1496266/suyash-profile.jpg","account_type":"enterprise","team_id":2257,"settings":{"id":6852744,"present_controls":true,"present_upsizing":true,"present_pointer":true,"present_notes":true,"default_deck_tag_id":null},"membership":{"role":"owner","manager":true,"activated":true}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"black-mint","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":false,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":12,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":null,"data_updated_at":1673966592880,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 1280,
+				height: 720,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				scrollActivationWidth: null,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+
+	</body>
+</html>
