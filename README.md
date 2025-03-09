@@ -1,0 +1,1 @@
+To view the slides, download one or more of the directories. In each directory, you'll find an `index.html` file, if you open that in a browser, you should be able to see the slides (offline as well).
